@@ -27,6 +27,7 @@ Have fun with JavaScript!
   * Name
   * Description
   * Add button
+  * Notes: fix left margin in profile.
 ** Elements
   * 6 pictures with description
 ** Footer

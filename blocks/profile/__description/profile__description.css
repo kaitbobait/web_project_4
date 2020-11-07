@@ -4,6 +4,10 @@
   color: white;
   font-family: 'Inter', sans-serif;
   padding: 0;
-  margin: 27.75px 25px 0 0;
+  margin: 27.75px 18px 0 0;
+  /* text-overflow: ellipsis;
+  overflow: hidden; */
+  white-space: nowrap;
+  /*need max-width for text-overflow?*/
   
 }
