@@ -11,5 +11,6 @@
 /*fonts*/
 @import url('vendor/vendor.css');
 
-
+/*places*/
+@import url('blocks/places/places.css');
 
