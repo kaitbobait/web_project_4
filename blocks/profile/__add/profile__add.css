@@ -1,0 +1,11 @@
+
+.profile__add {
+  display: flex;
+  margin: 75px 0 0;
+  padding: 0;
+  width: 150px;
+  height: 50px;
+  background-color: transparent;
+  border: 2px solid white;
+  text-overflow: ellipsis;
+}

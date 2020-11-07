@@ -1,0 +1,13 @@
+
+
+.profile__img {
+  background-image: url('../../../images/profile.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  height: 127.5px;
+  width: 168.75px;
+  padding: 0;
+  margin: 0;
+}
