@@ -1,11 +1,14 @@
 
 .profile__name {
-  display: inline;
+  display: inline-block;
   font-weight: 500;
   font-style: normal;
   font-size: 42px;
+  max-width: 373px;
   margin: 0;
   padding: 0 18px 16px 0;
-  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   
 }

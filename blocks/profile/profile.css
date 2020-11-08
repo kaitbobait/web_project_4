@@ -12,6 +12,7 @@
   max-width: 898px;
   grid-template-columns: 168.75px 1fr 150px;
   align-items: center;
-  /* padding: 0 0 0 22.5px; */
-  margin: 0 auto 47.25px;
+  padding: 0;
+  margin: 0 200px 47.25px 177.5px;
 }
+
