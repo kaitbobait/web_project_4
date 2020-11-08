@@ -27,6 +27,7 @@ Have fun with JavaScript!
   * Name
   * Description
   * Add button
+  * Notes: fix left margin in profile(DONE), fix name to have ellipses(DONE), move edit button higher up
 ** Elements
   * 6 pictures with description
 ** Footer
