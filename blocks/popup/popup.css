@@ -1,2 +1,14 @@
 
 @import url('__container/popup__container.css');
+@import url('__close-button/popup__close-button.css');
+@import url('__form/popup__form.css');
+@import url('__save-button/popup__save-button.css');
+
+.popup {
+  display: flex;
+  position: fixed;
+  width: 430px;
+  height: 330px;
+  top: 195px;
+  left: 425px;
+}
