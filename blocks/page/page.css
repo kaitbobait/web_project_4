@@ -4,3 +4,10 @@
 .page {
   background-color: black;
 }
+
+/* .page_overlay {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  background-color: rgba(0,0,0, 0.5);
+} */

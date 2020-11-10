@@ -7,7 +7,6 @@
 @import url('__save-button/popup__save-button.css');
 
 .popup {
-  /* display: flex; */
   display: none;
   position: fixed;
   width: 430px;
@@ -17,8 +16,4 @@
   top: 195px;
   left: 425px;
 }
-
-/* .popup_open {
-  display: flex;
-} */
 

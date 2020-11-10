@@ -7,7 +7,7 @@
   <link href="normalize.css" type="text/css" rel="stylesheet">
   <link href="style.css" type="text/css" rel="stylesheet">
 </head>
-<body class="page">
+<body class="page page_overlay">
   <div class="page__content">
     <header class="header">
       <img class="logo" src="images/logo.png"alt="Around logo">
@@ -23,7 +23,7 @@
           <p class="profile__title">Explorer</p>
         </div>
         <button class="profile__add" type="button">
-          <img class="profile__add-button" src="images/add-button.png" alt="plus sign">
+          <img class="profile__add-img" src="images/add-button.png" alt="plus sign">
         </button>
       </section>
       <!-- popup section after created below -->
@@ -87,10 +87,11 @@
         </ul>
       </section>
       <!-- Temporary popup section placement -->
-      <section class="popup popup_open">
+      <section class="popup">
+        <div class=popup__close-container>
+          <button class="popup__close-button"></button>
+        </div>
         <div class="popup__container">
-          
-          <button class="popup__close-button">close</button>
           <h2 class="popup__intro">Edit profile</h2>
           <form class="popup__form" action="#" >
             <input class="input input__name" type="text" name="name" placeholder="Jacques Cousteau">
