@@ -20,15 +20,13 @@
             <button class="profile__edit" type="button">
               <img src="images/pencil.svg" alt="pencil icon">
             </button>  
-          
           <p class="profile__title">Explorer</p>
         </div>
-        
-          <!-- <img class="profile__edit-img" src="images/edit.png" alt="edit button"> -->
         <button class="profile__add" type="button">
           <img class="profile__add-button" src="images/add-button.png" alt="plus sign">
         </button>
       </section>
+      <!-- popup section after created below -->
       <section class="places">
         <ul class="places__list">
           <li class="places__item">
@@ -87,6 +85,18 @@
             </div>
           </li>
         </ul>
+      </section>
+      <!-- Temporary popup section placement -->
+      <section class="popup">
+        <div class="popup__container">
+          <button class="popup__close-button">close</button>
+          <h2 class="popup__text">Edit profile</h2>
+          <form class="popup__form" action="#" >
+            <input class="form__input" type="text" name="name" value="Jacques Cousteau">
+            <input class="form__input" type="text" name="description" value="Explorer">
+            <button class="popup__form-button">save</button>
+          </form>
+        </div>
       </section>
     </main>
     <footer class="footer">
