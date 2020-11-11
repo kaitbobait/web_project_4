@@ -10,10 +10,12 @@
   display: none;
   position: fixed;
   width: 430px;
-  height: 330px;
+  /* height: 330px; */
   padding: 0;
   margin: 0 auto;
   top: 195px;
   left: 425px;
+  background-color: transparent;
+  height: 370px;
 }
 

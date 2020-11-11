@@ -1,5 +1,3 @@
-/*page section*/
-// let pageOverlay = document.querySelector('.page_overlay');
 
 /*profile section*/
 let editButton = document.querySelector('.profile__edit'); /*edit profile button*/
@@ -18,7 +16,6 @@ document.onload = closePopup();
 /*opens popup box*/
 function openPopup() {
   popup.classList.add('popup_open');
-  //pageOverlay.style.display = "block";
 }
 
 /*closes popup box*/

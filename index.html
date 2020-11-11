@@ -7,7 +7,7 @@
   <link href="normalize.css" type="text/css" rel="stylesheet">
   <link href="style.css" type="text/css" rel="stylesheet">
 </head>
-<body class="page page_overlay">
+<body class="page">
   <div class="page__content">
     <header class="header">
       <img class="logo" src="images/logo.png"alt="Around logo">
@@ -88,14 +88,12 @@
       </section>
       <!-- Temporary popup section placement -->
       <section class="popup">
-        <div class=popup__close-container>
-          <button class="popup__close-button"></button>
-        </div>
         <div class="popup__container">
+          <button class="popup__close-button"></button>
           <h2 class="popup__intro">Edit profile</h2>
           <form class="popup__form" action="#" >
-            <input class="input input__name" type="text" name="name" placeholder="Jacques Cousteau">
-            <input class="input input__title" type="text" name="description" placeholder="Explorer">
+            <input class="input input__name" type="text" name="name" placeholder="Jacques Cousteau" value="Jacques Cousteau">
+            <input class="input input__title" type="text" name="description" placeholder="Explorer" value="Explorer">
             <button class="popup__save-button">Save</button>
           </form>
         </div>
