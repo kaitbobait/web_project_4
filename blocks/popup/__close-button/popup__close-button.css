@@ -1,8 +1,8 @@
 
 .popup__close-button {
-  /* position: absolute;
-  top: 0;
-  right: 0; */
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
   display: inline-block;
   outline: none;
   border: none;
@@ -11,10 +11,12 @@
   background-image: url('../../../images/Close\ Icon.png');
   background-position: center;
   background-repeat: no-repeat;
+  background-color: transparent;
  
   /* background: transparent; */
 }
 
 .popup__close-button:hover {
   cursor: pointer;
+  background-image: url('../../../images/Close\ Icon-gray.png');
 }
