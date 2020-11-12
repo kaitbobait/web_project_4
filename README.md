@@ -1,5 +1,19 @@
 # Project 4: Around The U.S.
 
+### Description
+
+* This is a site that you'll be able to edit your name and occupation. You will be able to add images and titles do the site, as well like "like" any photo.
+
+### Technologies
+
+**In this site, we are using:**
+
+* HTML
+* CSS
+* Javascript
+* BEM methodology
+
+
 ### Overview
 
 * Figma
