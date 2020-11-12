@@ -7,8 +7,8 @@ let profileTitle = document.querySelector('.profile__title'); /*profile descript
 /* form section */
 let buttonClose = document.querySelector('.popup__close-button'); /*close button for the popup*/
 let popup = document.querySelector('.popup'); /*popup has display: none*/
-let newName = document.querySelector('.input__name'); /*name written in the name input */
-let newTitle = document.querySelector('.input__title'); /*title written in the title input */
+let newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
+let newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
 let saveButton = document.querySelector('.popup__save-button'); /* save button */
 
 document.onload = closePopup();
