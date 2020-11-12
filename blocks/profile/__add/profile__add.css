@@ -16,8 +16,7 @@
 
 .profile__add:hover {
   cursor: pointer;
-  border: 2px solid rgba(255, 255, 255, .6);
-  background-image: url('../../../images/add-button-gray.png');
+  opacity: .6;
 }
 
 @media only screen and (max-width: 879px) {

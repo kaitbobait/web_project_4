@@ -8,7 +8,7 @@
   border: none;
   height: 40px;
   width: 40px;
-  background-image: url('../../../images/Close\ Icon.png');
+  background-image: url('../../../images/close-icon.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
@@ -18,5 +18,5 @@
 
 .popup__close-button:hover {
   cursor: pointer;
-  background-image: url('../../../images/Close\ Icon-gray.png');
+  opacity: .6;
 }
