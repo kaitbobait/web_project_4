@@ -2,4 +2,7 @@
 .places__item {
   border-radius: 10px;
   list-style: none;
+  max-width: 282px;
+  margin: 0;
+  padding: 0;
 }

@@ -19,3 +19,18 @@
   border: 2px solid rgba(255, 255, 255, .6);
   background-image: url('../../../images/add-button-gray.png');
 }
+
+@media only screen and (max-width: 879px) {
+  .profile__add {
+    max-width: 282px;
+    width: 100%;
+    margin: 50px auto 0;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .profile__add {
+    margin: 36px auto 0;
+
+  }
+}
