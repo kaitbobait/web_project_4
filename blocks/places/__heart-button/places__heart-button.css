@@ -1,0 +1,10 @@
+
+.places__heart-button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.places__heart-button:hover {
+  cursor: pointer;
+}
