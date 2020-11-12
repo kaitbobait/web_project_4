@@ -1,6 +1,9 @@
 
 @import url('normalize.css');
 
+/*fonts*/
+@import url('../vendor/vendor.css');
+
 @import url('../blocks/logo/logo.css');
 @import url('../blocks/page/page.css');
 
@@ -9,9 +12,6 @@
 
 /*profile*/
 @import url('../blocks/profile/profile.css');
-
-/*fonts*/
-@import url('../vendor/vendor.css');
 
 /*places*/
 @import url('../blocks/places/places.css');
