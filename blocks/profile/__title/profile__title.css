@@ -6,6 +6,7 @@
   line-height: 21.78px;
   text-overflow: ellipsis;
   padding: 0;
+  padding-bottom: calc(72px - 47.25px);
   margin: 0;
 }
 
