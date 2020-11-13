@@ -6,6 +6,10 @@
   padding: 0;
   margin: 0;
   transition: .2s;
+  background-image: url(../../../images/heart.svg;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20.76px 18.13px;
 }
 
 .places__heart-button:hover {
