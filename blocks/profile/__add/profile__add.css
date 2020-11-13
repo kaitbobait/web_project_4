@@ -13,6 +13,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: initial;
+  transition: .2s;
 }
 
 .profile__add:hover {

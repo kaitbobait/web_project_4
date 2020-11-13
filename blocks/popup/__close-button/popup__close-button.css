@@ -12,8 +12,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
- 
-  /* background: transparent; */
+  transition: .3s;
 }
 
 .popup__close-button:hover {
