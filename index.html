@@ -17,31 +17,27 @@
           <div class="profile__description">
               <div class="profile__description-top">
                 <h1 class="profile__name">Jacques Cousteau</h1>
-                <button class="profile__edit" type="button">
+                <button class="profile__edit" aria-label="edit" type="button">
                 </button>  
               </div>
             <p class="profile__title">Explorer</p>
           </div>
-          <button class="profile__add" type="button">
-          </button>
+          <button class="profile__add" aria-label="add" type="button"></button>
         </section>
         <!-- popup section after created below -->
         <section class="places">
           <ul class="places__list">
             <li class="places__item">
-              <div class="places__container">
                 <img class="places__img" src="images/yosemite.jpg" alt="view of Yosemite with river, mountains, and trees">
                 <div class="places__title-section">
                   <h2 class="places__name">Yosemite Valley</h2>
                   <button class="places__heart-button" type="button">
-                    <img class="places__heart" src="images/heart.svg" alt="heart icon">
+                    <img class="places__heart" aria-label="like" src="images/heart.svg" alt="heart icon">
                   </button>
                 </div>
-              </div>
-
+              
             </li>
             <li class="places__item">
-              <div class="places__container">
                 <img class="places__img" src="images/lake-louise.png" alt="beautiful blue lake with mountains in background">
                 <div class="places__title-section">
                   <h2 class="places__name">Lake Louise</h2>
@@ -49,10 +45,9 @@
                     <img class="places__heart" src="images/heart.svg" alt="heart icon">
                   </button>
                 </div>
-              </div>
             </li>
+
             <li class="places__item">
-              <div class="places__container">
                 <img class="places__img" src="images/bald-mountains.png" alt="mountains that are bald with the sunset">
                 <div class="places__title-section">
                   <h2 class="places__name">Bald Mountains</h2>
@@ -60,10 +55,9 @@
                     <img class="places__heart" src="images/heart.svg" alt="heart icon">
                   </button>
                 </div>
-              </div>
             </li>
+          
             <li class="places__item">
-              <div class="places__container">
                 <img class="places__img" src="images/latemar.png" alt="latemar mountains at night with starry sky">
                 <div class="places__title-section">
                   <h2 class="places__name">Latemar</h2>
@@ -71,10 +65,8 @@
                     <img class="places__heart" src="images/heart.svg" alt="heart icon">
                   </button>
                 </div>
-              </div>
             </li>
             <li class="places__item">
-              <div class="places__container">
                 <img class="places__img" src="images/vanoise.png" alt="vanoise lake with mountains">
                 <div class="places__title-section">
                   <h2 class="places__name">Vanoise National Park</h2>
@@ -82,10 +74,9 @@
                     <img class="places__heart" src="images/heart.svg" alt="heart icon">
                   </button>
                 </div>
-              </div>
             </li>
+
             <li class="places__item">
-              <div class="places__container">
                 <img class="places__img" src="images/lago-di-braies.png" alt="canoes on a lake in the mountains">
                 <div class="places__title-section">
                   <h2 class="places__name">Lago di Braies</h2>
@@ -93,17 +84,17 @@
                     <img class="places__heart" src="images/heart.svg" alt="heart icon">
                   </button>
                 </div>
-              </div>
             </li>
           </ul>
         </section>
       </main>
+
       <footer class="footer">
         <p class="footer__copyright">&copy;2020 Around The U.S.</p>
       </footer>
       <div class="popup">
         <div class="popup__container">
-          <button class="popup__close-button" type="button"></button>
+          <button class="popup__close-button" aria-label="Close" type="button"></button>
           <h2 class="popup__intro">Edit profile</h2>
           <form class="popup__form" action="#" >
             <input class="popup__input popup__input_text_name" type="text" name="name" placeholder="name" value="Jacques Cousteau">

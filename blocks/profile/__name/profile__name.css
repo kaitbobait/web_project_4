@@ -17,7 +17,6 @@
 @media only screen and (max-width: 550px) {
   .profile__name {
     font-size: 22px;
-    font-weight: 500;
     line-height: 26.63px;
     text-align: center;
     padding: 0;

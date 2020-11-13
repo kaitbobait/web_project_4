@@ -21,7 +21,6 @@
     max-width: 879px;
     padding: 0 40px 0;
     grid-template-columns: 1fr;
-    align-items: center;
     justify-items: center;
   }
   

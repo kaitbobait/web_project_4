@@ -9,9 +9,10 @@
   height: 50px;
   background-color: transparent;
   border: 2px solid white;
-  background-image: url('../../../images/add-button.png');
+  background-image: url('../../../images/add-button-svg.svg');
   background-position: center;
   background-repeat: no-repeat;
+  background-size: initial;
 }
 
 .profile__add:hover {
@@ -30,6 +31,6 @@
 @media only screen and (max-width: 550px) {
   .profile__add {
     margin: 36px auto 0;
-
+    background-size: 16px 16px;
   }
 }
