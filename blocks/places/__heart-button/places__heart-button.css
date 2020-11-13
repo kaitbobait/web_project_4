@@ -5,8 +5,10 @@
   background-color: transparent;
   padding: 0;
   margin: 0;
+  transition: .2s;
 }
 
 .places__heart-button:hover {
   cursor: pointer;
+  opacity: .6;
 }
