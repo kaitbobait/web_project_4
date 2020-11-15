@@ -12,6 +12,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20.76px 18.13px;
+  flex-shrink: 0;
 }
 
 .places__heart-button:hover {
