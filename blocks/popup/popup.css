@@ -19,3 +19,14 @@
   
 }
 
+.popup__image {
+  position: relative;
+  width: 75vw;
+  height: 75vh;
+  margin: 0 auto;
+  z-index: 50;
+}
+
+.popup__container_image {
+
+}

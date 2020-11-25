@@ -22,9 +22,7 @@ let newTitle = document.querySelector('.popup__input_text_title'); /*title writt
 let saveButton = document.querySelectorAll('.popup__save-button'); /* save button */
 
 /* places image popup */
-// let placesImage = document.querySelectorAll('.places__img');
-// placesImageArray = Array.from(placesImage);
-// console.log(placesImageArray);
+let popupPhoto = document.querySelector('.popup__image');
 
 /* EDIT PROFILE FORM */
 
@@ -99,11 +97,13 @@ function addPlace(place) {
   //opens the popup, but doesn't render picture yet.
   function picturePopup () {
     popupArray[2].classList.add('popup_open');
-    // placeContainer.style.backgroundImage = "url('placeImage) no-repeat;"
+    popupPhoto.src = placeImage.src;
+    console.log(popupPhoto);
+    
   };
-
   //on click on an image in the place cards, a popup of the image will appear
   placeImage.addEventListener('click', picturePopup);
+
   //on click of close button, the popup will disappear
   buttonCloseArray[2].addEventListener('click', closePopup);
 
@@ -153,7 +153,6 @@ function formSubmitAdd(evt) {
     name: imageTitle.value,
     link: imageLink.value
   }
-
   addPlace(place);
   closePopup();
 
@@ -161,6 +160,7 @@ function formSubmitAdd(evt) {
 
 /*when click the save button, runs the formSubmit function */
 form[1].addEventListener('submit', formSubmitAdd);
+
 
 /* delete place card */
 
