@@ -4,6 +4,15 @@ let editButton = document.querySelector('.profile__edit'); /*edit profile button
 let profileName = document.querySelector('.profile__name'); /*profile name */
 let profileTitle = document.querySelector('.profile__title'); /*profile description */
 
+/* add card */
+let addPlaceButton = document.querySelector('.profile__add');
+let popupAdd = document.querySelector('.popup_add'); 
+//same close button but had to target this one specifically to get to close
+let closeButton = document.querySelector('.popup__close-button_add'); 
+let imageTitle = document.querySelector('.popup__input_text_image-title');
+let imageLink = document.querySelector('.popup__input_text_image');
+
+
 /* form section */
 let form = document.querySelector('.popup__form');
 let buttonClose = document.querySelector('.popup__close-button'); /*close button for the popup*/
@@ -12,16 +21,13 @@ let newName = document.querySelector('.popup__input_text_name'); /*name written 
 let newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
 let saveButton = document.querySelector('.popup__save-button'); /* save button */
 
-/*card section*/
 
-
-//add content to card template
-
+/* adds the 6 cards on load */
 function addPlace(place) {
   let placesList = document.querySelector('.places__list');
   let placeTemplate = document.querySelector('#place-template').content;
 
-  //clone content of template tag for places
+  // //clone content of template tag for places
   let placeElement = placeTemplate.cloneNode(true);
   let placeImage = placeElement.querySelector('.places__img');
   let placeName = placeElement.querySelector('.places__name');
@@ -29,10 +35,10 @@ function addPlace(place) {
    /* like button */
   const heartButton = placeElement.querySelector('.places__heart-button');
 
-  /* delete button */
-  const deleteButton = placeElement.querySelector('places__delete-button');
+ 
   placeImage.src = place.link;
   placeName.textContent = place.name;
+
 
   //make cards appear online
   placesList.append(placeElement);
@@ -85,35 +91,39 @@ initialPlaces.forEach((place) => {
 
 });
 
-  /* like button */
+/* delete place card */
 
-// const heartButton = document.querySelector('.places__heart-button');
-//  heartButton.addEventListener('click', function(place) {
-//   heartButton.classList.add('places__heart-button_active');
-//   console.log(place.target);
-// })
+ /* removes the selected place */
+//  function deletePlace() {
+//     /* delete button */
+//   const deleteButton = document.querySelector('places__delete-button');
+//   const placeItem = document.querySelector('.places__item');
+//   placeItem.remove();
+//  }
+
+//  deleteButton.addEventListener('click', deletePlace);
+
+/* EDIT PROFILE FORM */
 
 /*opens popup box*/
-function openPopup() {
+function openPopupEdit() {
   popup.classList.add('popup_open');
-  newName.value = profileName.textContent;
-  newTitle.value = profileTitle.textContent;
-  console.log(openpopup);
+  newName.value = newName.textContent;
+  newTitle.value = newTitle.textContent;
 }
 
 /*closes popup box*/
 function closePopup() {
   popup.classList.remove("popup_open");
-
 }
 
 /*when clicks, the popup box closes */
 buttonClose.addEventListener('click', closePopup);
 /*when clicks, the popup box opens */
-editButton.addEventListener('click', openPopup);
+editButton.addEventListener('click', openPopupEdit);
 
 /*updates the name and title input field, closes the popup, and prevents the default response from browser */
-function formSubmit(evt) {
+function formSubmitEdit(evt) {
   profileName.textContent = newName.value;
   profileTitle.textContent = newTitle.value;
   closePopup();
@@ -121,6 +131,35 @@ function formSubmit(evt) {
 }
 
 /*when click the save button, runs the formSubmit function */
-form.addEventListener('submit', formSubmit);
+form.addEventListener('submit', formSubmitEdit);
 
 
+
+/* ADD PLACE FORM */
+// inputFieldOne.placeholder.textContent = 'Title';
+// inputFieldTwo.placeholder.textContent = 'Image link';
+
+//opens the Add card popup
+function openPopupAdd() {
+  //selects the add place popup
+  popupAdd.classList.add('popup_open');
+
+}
+
+//closes the Add card popup
+function closePopupAdd() {
+  popupAdd.classList.remove("popup_open");
+}
+
+
+
+/*when clicks, the popup box opens */
+addPlaceButton.addEventListener('click', openPopupAdd);
+
+/*when clicks, the popup box closes */
+console.log(closeButton);
+closeButton.addEventListener('click', closePopupAdd);
+// buttonClose.addEventListener('click', closePopupAdd);
+
+//original close button for edit profile
+// buttonClose.addEventListener('click', closePopup);

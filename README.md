@@ -40,7 +40,7 @@ Have fun with JavaScript!
 **2**
 * when a card is added, put to front of card section
 **3**
-* add a "delete" icon to each card
+* (DONE) add a "delete" icon to each card
 * make the "delete" button able to remove that card
 **4**
 * each picture in cards - when clicked, the picture will popup

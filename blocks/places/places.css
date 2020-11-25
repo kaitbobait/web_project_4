@@ -6,6 +6,7 @@
 @import url('__name/places__name.css');
 @import url('__heart-button/places__heart-button.css');
 @import url('__heart-button_active/places__heart-button_active.css');
+@import url('__delete-button/places__delete-button.css');
 
 
 .places {
@@ -14,22 +15,3 @@
   max-width: 880px;
 }
 
-.places__delete-button {
-  position: absolute;
-  top: 18px;
-  right: 15px;
-  background-image: url('../../images/trash.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 18px;
-  height: 19.3px;
-  z-index: 10;
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
-
-.places__delete-button:hover {
-  opacity: 60%;
-  cursor: pointer;
-}
