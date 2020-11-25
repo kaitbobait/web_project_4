@@ -49,12 +49,12 @@ Have fun with JavaScript!
 
 ## Add Card Form
 **5**
-* copy the edit form structure for edit profile popup
-* custom name and image
+* (DONE) copy the edit form structure for edit profile popup
+* (DONE) custom name and image
 **6**
 * save button adds card to page (submit event)
 **7**
-* opens when the + button is clicked, and closes when the close button is clicked
+* (DONE) opens when the + button is clicked, and closes when the close button is clicked
 
 ## Like button
 **8**
