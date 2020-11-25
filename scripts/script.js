@@ -11,14 +11,20 @@ let imageLink = document.querySelector('.popup__input_text_image');
 
 
 /* form section */
-let form = document.querySelector('.popup__form');
+let form = document.querySelectorAll('.popup__form');
+formArray = Array.from(form);
 let buttonClose = document.querySelectorAll('.popup__close-button'); /*close button for the popup*/
 buttonCloseArray = Array.from(buttonClose);
 let popup = document.querySelectorAll('.popup'); /*popup has display: none*/
 popupArray = Array.from(popup);
 let newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
 let newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
-let saveButton = document.querySelector('.popup__save-button'); /* save button */
+let saveButton = document.querySelectorAll('.popup__save-button'); /* save button */
+
+/* places image popup */
+// let placesImage = document.querySelectorAll('.places__img');
+// placesImageArray = Array.from(placesImage);
+// console.log(placesImageArray);
 
 /* EDIT PROFILE FORM */
 
@@ -40,6 +46,8 @@ function closePopup() {
     popupArray[0].classList.remove("popup_open");
   } if (popupArray[1].classList.contains('popup_open')) {
     popupArray[1].classList.remove("popup_open");
+  } if (popupArray[2].classList.contains('popup_open')) {
+    popupArray[2].classList.remove("popup_open");
   }
 };
 
@@ -57,7 +65,7 @@ function formSubmitEdit(evt) {
 }
 
 /*when click the save button, runs the formSubmit function */
-form.addEventListener('submit', formSubmitEdit);
+form[0].addEventListener('submit', formSubmitEdit);
 
 /* PLACE CARD SECTION */
 
@@ -66,29 +74,42 @@ function addPlace(place) {
   let placesList = document.querySelector('.places__list');
   let placeTemplate = document.querySelector('#place-template').content;
 
-  // //clone content of template tag for places
+  // clone content of template tag for places
   let placeElement = placeTemplate.cloneNode(true);
   let placeImage = placeElement.querySelector('.places__img');
   let placeName = placeElement.querySelector('.places__name');
+  let placeContainer = placeElement.querySelector('.place__container');
 
    /* like button */
   const heartButton = placeElement.querySelector('.places__heart-button');
 
- 
   placeImage.src = place.link;
   placeName.textContent = place.name;
 
 
-  //make cards appear online
-  placesList.append(placeElement);
-
-  /* When the heart button is clicked, a new class with a "liked" heart, appears */
+/* When the heart button is clicked, a new class with a "liked" heart, appears */
   heartButton.addEventListener('click', function(place) {
     
       heartButton.classList.add('places__heart-button_active');
       console.log(place.target);
-    
+  
   })
+  /* new card popup */
+  //opens a larger image popup of the place card image
+  //opens the popup, but doesn't render picture yet.
+  function picturePopup () {
+    popupArray[2].classList.add('popup_open');
+    // placeContainer.style.backgroundImage = "url('placeImage) no-repeat;"
+  };
+
+  //on click on an image in the place cards, a popup of the image will appear
+  placeImage.addEventListener('click', picturePopup);
+  //on click of close button, the popup will disappear
+  buttonCloseArray[2].addEventListener('click', closePopup);
+
+   //make cards appear online
+   placesList.prepend(placeElement);
+   
 };
 
 /* 6 place cards to load initially */
@@ -121,10 +142,25 @@ const initialPlaces = [
 
 /* loops through the initialPlaces array to load each place card with the addPlace function */
 initialPlaces.forEach((place) => {
-
   addPlace(place);
 
 });
+
+//updates the title and image, closes the popup, and prevents the default response from browser
+function formSubmitAdd(evt) {
+  evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
+  let place = {
+    name: imageTitle.value,
+    link: imageLink.value
+  }
+
+  addPlace(place);
+  closePopup();
+
+}
+
+/*when click the save button, runs the formSubmit function */
+form[1].addEventListener('submit', formSubmitAdd);
 
 /* delete place card */
 
@@ -161,4 +197,8 @@ buttonCloseArray[1].addEventListener('click', closePopup);
 
 
 /* Image pops up */
+
+// function picturePopup () {
+
+// };
 
