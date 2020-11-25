@@ -3,6 +3,7 @@
   border-radius: 10px;
   list-style: none;
   max-width: 282px;
+  /* max-height: calc(282px + 85px); */
   margin: 0 auto;
   padding: 0;
   overflow: hidden;

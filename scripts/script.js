@@ -17,61 +17,79 @@ let saveButton = document.querySelector('.popup__save-button'); /* save button *
 
 //add content to card template
 
-// function addPlace(place) {
-//   let placesList = document.querySelector('.places__list');
-//   let placeTemplate = document.querySelector('#place-template').content;
+function addPlace(place) {
+  let placesList = document.querySelector('.places__list');
+  let placeTemplate = document.querySelector('#place-template').content;
 
-//   //clone content of template tag for places
-//   let placeElement = placeTemplate.cloneNode(true);
-//   let placeImage = document.querySelector('.places__img');
-//   let placeName = document. querySelector('.places__name');
-//   console.log(placeImage);
-//   console.log(placeName);
+  //clone content of template tag for places
+  let placeElement = placeTemplate.cloneNode(true);
+  let placeImage = placeElement.querySelector('.places__img');
+  let placeName = placeElement.querySelector('.places__name');
+
+   /* like button */
+  const heartButton = placeElement.querySelector('.places__heart-button');
+
+  placeImage.src = place.link;
+  placeName.textContent = place.name;
+
+  //make cards appear online
+  placesList.append(placeElement);
+
+ 
   
-//   placeImage.src = place.link;
-//   placeName.textContent = place.name;
+  
+  heartButton.addEventListener('click', function(place) {
+    
+      heartButton.classList.add('places__heart-button_active');
+      console.log(place.target);
+    
+  })
 
-//   //make cards appear online
-//   placesList.append(placeElement);
-
-// };
-
-
-
-// const initialPlaces = [
-//   {
-//     name: "Yosemite Valley",
-//     link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-//   },
-//   {
-//     name: "Lake Louise",
-//     link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-//   },
-//   {
-//     name: "Bald Mountains",
-//     link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-//   },
-//   {
-//     name: "Latemar",
-//     link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-//   },
-//   {
-//     name: "Vanoise National Park",
-//     link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-//   },
-//   {
-//     name: "Lago di Braies",
-//     link: "https://code.s3.yandex.net/web-code/lago.jpg"
-//   }
-// ]; 
+};
 
 
-// initialPlaces.forEach((place) => {
-//   console.log(place);
-//   addPlace(place);
-// });
+
+const initialPlaces = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  }
+]; 
 
 
+initialPlaces.forEach((place) => {
+
+  addPlace(place);
+
+});
+
+  /* like button */
+
+// const heartButton = document.querySelector('.places__heart-button');
+//  heartButton.addEventListener('click', function(place) {
+//   heartButton.classList.add('places__heart-button_active');
+//   console.log(place.target);
+// })
 
 /*opens popup box*/
 function openPopup() {
