@@ -6,9 +6,6 @@ let profileTitle = document.querySelector('.profile__title'); /*profile descript
 
 /* add card */
 let addPlaceButton = document.querySelector('.profile__add');
-let popupAdd = document.querySelector('.popup_add'); 
-//same close button but had to target this one specifically to get to close
-// let closeButton = document.querySelector('.popup__close-button_add'); 
 let imageTitle = document.querySelector('.popup__input_text_image-title');
 let imageLink = document.querySelector('.popup__input_text_image');
 
@@ -17,7 +14,8 @@ let imageLink = document.querySelector('.popup__input_text_image');
 let form = document.querySelector('.popup__form');
 let buttonClose = document.querySelectorAll('.popup__close-button'); /*close button for the popup*/
 buttonCloseArray = Array.from(buttonClose);
-let popup = document.querySelector('.popup'); /*popup has display: none*/
+let popup = document.querySelectorAll('.popup'); /*popup has display: none*/
+popupArray = Array.from(popup);
 let newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
 let newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
 let saveButton = document.querySelector('.popup__save-button'); /* save button */
@@ -25,16 +23,25 @@ let saveButton = document.querySelector('.popup__save-button'); /* save button *
 /* EDIT PROFILE FORM */
 
 /*opens popup box*/
+// function openPopupEdit() {
+//   popup.classList.add('popup_open');
+//   newName.value = newName.textContent;
+//   newTitle.value = newTitle.textContent;
+// }
 function openPopupEdit() {
-  popup.classList.add('popup_open');
+  popupArray[0].classList.add('popup_open');
   newName.value = newName.textContent;
   newTitle.value = newTitle.textContent;
 }
 
-/*closes popup box*/
+/*closes either popup box if one is open*/
 function closePopup() {
-  popup.classList.remove("popup_open");
-}
+  if (popupArray[0].classList.contains('popup_open')) {
+    popupArray[0].classList.remove("popup_open");
+  } if (popupArray[1].classList.contains('popup_open')) {
+    popupArray[1].classList.remove("popup_open");
+  }
+};
 
 /*when clicks, the popup box closes */
 buttonCloseArray[0].addEventListener('click', closePopup);
@@ -140,20 +147,16 @@ initialPlaces.forEach((place) => {
 /* opens the Add card popup */
 function openPopupAdd() {
   //selects the add place popup
-  popupAdd.classList.add('popup_open');
+  popupArray[1].classList.add('popup_open');
 
 };
 
-//closes the Add card popup
-function closePopupAdd() {
-  popupAdd.classList.remove("popup_open");
-};
 
 /*when clicks, the popup box opens */
 addPlaceButton.addEventListener('click', openPopupAdd);
 
 /*when clicks, the popup box closes */
-buttonCloseArray[1].addEventListener('click', closePopupAdd);
+buttonCloseArray[1].addEventListener('click', closePopup);
 
 
 
