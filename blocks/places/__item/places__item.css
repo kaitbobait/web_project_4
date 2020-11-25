@@ -1,5 +1,6 @@
 
 .places__item {
+  position: relative;
   border-radius: 10px;
   list-style: none;
   max-width: 282px;

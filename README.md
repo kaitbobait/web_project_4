@@ -34,26 +34,35 @@ Have fun with JavaScript!
 
 ### To Do List:
 
-**Cards**
+##Cards
+**1**
 * (DONE)create the 6 cards in JS - view project section on Practicum
+**2**
 * when a card is added, put to front of card section
+**3**
 * add a "delete" icon to each card
 * make the "delete" button able to remove that card
+**4**
 * each picture in cards - when clicked, the picture will popup
 * when picture is popped up, when closed, should exit the popup
 * max-width of an opened pictures is 75vw, max height: 75vh;
 
-**Add Card Form**
+## Add Card Form
+**5**
 * copy the edit form structure for edit profile popup
 * custom name and image
+**6**
 * save button adds card to page (submit event)
+**7**
 * opens when the + button is clicked, and closes when the close button is clicked
 
-**Like button**
+## Like button
+**8**
 * (DONE)If user clicks "like button", the heart changes its color
 * make it toggle (not a requirement, but good idea)
 
-**Popups**
+## Popups
+**9**
 * make the popup opening and closing look smooth
 * when opened: smoothly appear out from transparency
 * when closed: smoothly become completely transparent again

@@ -29,6 +29,8 @@ function addPlace(place) {
    /* like button */
   const heartButton = placeElement.querySelector('.places__heart-button');
 
+  /* delete button */
+  const deleteButton = placeElement.querySelector('places__delete-button');
   placeImage.src = place.link;
   placeName.textContent = place.name;
 
