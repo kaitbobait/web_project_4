@@ -6,6 +6,9 @@
 @import url('__form/popup__form.css');
 @import url('__input/popup__input.css');
 @import url('__save-button/popup__save-button.css');
+@import url('__container_image/popup__container_image.css');
+@import url('__image/popup__image.css');
+@import url('__image-title/popup__image-title.css');
 
 .popup {
   display: none;
@@ -19,14 +22,4 @@
   
 }
 
-.popup__image {
-  position: relative;
-  width: 75vw;
-  height: 75vh;
-  margin: 0 auto;
-  z-index: 50;
-}
 
-.popup__container_image {
-
-}

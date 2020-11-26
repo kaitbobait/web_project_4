@@ -23,6 +23,7 @@ let saveButton = document.querySelectorAll('.popup__save-button'); /* save butto
 
 /* places image popup */
 let popupPhoto = document.querySelector('.popup__image');
+let popupTitle = document.querySelector('.popup__image-title');
 
 /* EDIT PROFILE FORM */
 
@@ -98,6 +99,7 @@ function addPlace(place) {
   function picturePopup () {
     popupArray[2].classList.add('popup_open');
     popupPhoto.src = placeImage.src;
+    popupTitle.textContent = placeName.textContent;
     console.log(popupPhoto);
     
   };

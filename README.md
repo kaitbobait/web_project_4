@@ -38,21 +38,22 @@ Have fun with JavaScript!
 **1**
 * (DONE)create the 6 cards in JS - view project section on Practicum
 **2**
-* when a card is added, put to front of card section
+* (DONE) when a card is added, put to front of card section
 **3**
 * (DONE) add a "delete" icon to each card
 * make the "delete" button able to remove that card
 **4**
-* each picture in cards - when clicked, the picture will popup
-* when picture is popped up, when closed, should exit the popup
-* max-width of an opened pictures is 75vw, max height: 75vh;
+* (DONE) each picture in cards - when clicked, the picture will popup
+* (DONE) when picture is popped up, when closed, should exit the popup
+* (DONE) max-width of an opened pictures is 75vw, max height: 75vh;
+* Add title to bottom of popup image
 
 ## Add Card Form
 **5**
 * (DONE) copy the edit form structure for edit profile popup
 * (DONE) custom name and image
 **6**
-* save button adds card to page (submit event)
+* (DONE) save button adds card to page (submit event)
 **7**
 * (DONE) opens when the + button is clicked, and closes when the close button is clicked
 
@@ -67,3 +68,9 @@ Have fun with JavaScript!
 * when opened: smoothly appear out from transparency
 * when closed: smoothly become completely transparent again
 * for tips: view practicum project page
+
+## Media Query 
+**10**
+* customize add place popup form
+**11**
+*customize picture popup

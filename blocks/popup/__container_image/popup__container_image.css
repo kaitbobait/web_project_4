@@ -1,0 +1,15 @@
+
+.popup__container_image {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 5;
+  max-width: 75vw;
+  max-height: 75vw;
+  background-color: transparent;
+  margin: 90px auto 0;
+  padding: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: none;
+}
