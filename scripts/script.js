@@ -1,28 +1,28 @@
 
 /*profile section*/
-let editButton = document.querySelector('.profile__edit'); /*edit profile button*/
+const editButton = document.querySelector('.profile__edit'); /*edit profile button*/
 let profileName = document.querySelector('.profile__name'); /*profile name */
 let profileTitle = document.querySelector('.profile__title'); /*profile description */
 
 /* add card */
-let addPlaceButton = document.querySelector('.profile__add');
+const addPlaceButton = document.querySelector('.profile__add');
 let imageTitle = document.querySelector('.popup__input_text_image-title');
 let imageLink = document.querySelector('.popup__input_text_image');
 
 /* form section */
-let form = document.querySelectorAll('.popup__form');
+const form = document.querySelectorAll('.popup__form');
 formArray = Array.from(form);
-let buttonClose = document.querySelectorAll('.popup__close-button'); /*close button for the popup*/
+const buttonClose = document.querySelectorAll('.popup__close-button'); /*close button for the popup*/
 buttonCloseArray = Array.from(buttonClose);
-let popup = document.querySelectorAll('.popup'); /*popup has display: none*/
+const popup = document.querySelectorAll('.popup'); /*popup has display: none*/
 popupArray = Array.from(popup);
 let newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
 let newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
-let saveButton = document.querySelectorAll('.popup__save-button'); /* save button */
+const saveButton = document.querySelectorAll('.popup__save-button'); /* save button */
 
 /* places image popup */
-let popupPhoto = document.querySelector('.popup__image');
-let popupTitle = document.querySelector('.popup__image-title');
+const popupPhoto = document.querySelector('.popup__image');
+const popupTitle = document.querySelector('.popup__image-title');
 
 
 
@@ -49,7 +49,6 @@ function closePopup() {
   } if (popupArray[2].classList.contains('popup_open_image')) {
     popupArray[2].classList.remove("popup_open_image");
   }
-
 };
 
 /*when clicks, the popup box closes */
@@ -62,7 +61,6 @@ function formSubmitEdit(evt) {
   profileName.textContent = newName.value;
   profileTitle.textContent = newTitle.value;
   closePopup();
-  form.body.style.animation = "animation: fade-out .4s ease";
   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
 }
 
@@ -73,29 +71,29 @@ form[0].addEventListener('submit', formSubmitEdit);
 
 /* Adds the 6 cards on load */
 function addPlace(place) {
-  let placesList = document.querySelector('.places__list');
-  let placeTemplate = document.querySelector('#place-template').content;
+  const placesList = document.querySelector('.places__list');
+  const placeTemplate = document.querySelector('#place-template').content;
 
   // clone content of template tag for places
-  let placeElement = placeTemplate.cloneNode(true);
+  const placeElement = placeTemplate.cloneNode(true);
   let placeImage = placeElement.querySelector('.places__img');
   let placeName = placeElement.querySelector('.places__name');
-  let placeContainer = placeElement.querySelector('.place__container');
+  const placeContainer = placeElement.querySelector('.place__container');
 
    /* like button */
   const heartButton = placeElement.querySelector('.places__heart-button');
 
   placeImage.src = place.link;
+  placeImage.alt = place.name;
   placeName.textContent = place.name;
 
 
 /* When the heart button is clicked, a new class with a "liked" heart, appears */
   heartButton.addEventListener('click', function(place) {
-    
-      heartButton.classList.add('places__heart-button_active');
+      heartButton.classList.toggle('places__heart-button_active');
       console.log(place.target);
-  
-  })
+  });
+
   /* new card popup */
   //opens a larger image popup of the place card image
   //opens the popup, but doesn't render picture yet.
@@ -111,11 +109,11 @@ function addPlace(place) {
   //on click of close button, the popup will disappear
   buttonCloseArray[2].addEventListener('click', closePopup);
 
-  let deleteButton = placeElement.querySelector('.places__delete-button');
+  const deleteButton = placeElement.querySelector('.places__delete-button');
   deleteButton.addEventListener('click', deletePlace);
 
-   //make cards appear online
-   placesList.prepend(placeElement);
+  //make cards appear online
+  placesList.prepend(placeElement);
    
 };
 
@@ -156,7 +154,7 @@ initialPlaces.forEach((place) => {
 //updates the title and image, closes the popup, and prevents the default response from browser
 function formSubmitAdd(evt) {
   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
-  let place = {
+  const place = {
     name: imageTitle.value,
     link: imageLink.value
   }

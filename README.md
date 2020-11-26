@@ -60,14 +60,12 @@ Have fun with JavaScript!
 ## Like button
 **8**
 * (DONE)If user clicks "like button", the heart changes its color
-* make it toggle (not a requirement, but good idea)
+* (DONE) make it toggle (not a requirement, but good idea)
 
 ## Popups
 **9**
-* make the popup opening and closing look smooth
-* when opened: smoothly appear out from transparency
+* (DONE) when opened: smoothly appear out from transparency
 * when closed: smoothly become completely transparent again
-* for tips: view practicum project page
 
 ## Media Query 
 **10**
