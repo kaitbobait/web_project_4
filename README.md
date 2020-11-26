@@ -46,7 +46,7 @@ Have fun with JavaScript!
 * (DONE) each picture in cards - when clicked, the picture will popup
 * (DONE) when picture is popped up, when closed, should exit the popup
 * (DONE) max-width of an opened pictures is 75vw, max height: 75vh;
-* Add title to bottom of popup image
+* (DONE) Add title to bottom of popup image
 
 ## Add Card Form
 **5**

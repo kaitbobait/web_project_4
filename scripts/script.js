@@ -9,7 +9,6 @@ let addPlaceButton = document.querySelector('.profile__add');
 let imageTitle = document.querySelector('.popup__input_text_image-title');
 let imageLink = document.querySelector('.popup__input_text_image');
 
-
 /* form section */
 let form = document.querySelectorAll('.popup__form');
 formArray = Array.from(form);
@@ -24,6 +23,8 @@ let saveButton = document.querySelectorAll('.popup__save-button'); /* save butto
 /* places image popup */
 let popupPhoto = document.querySelector('.popup__image');
 let popupTitle = document.querySelector('.popup__image-title');
+
+
 
 /* EDIT PROFILE FORM */
 
@@ -109,6 +110,9 @@ function addPlace(place) {
   //on click of close button, the popup will disappear
   buttonCloseArray[2].addEventListener('click', closePopup);
 
+  let deleteButton = placeElement.querySelector('.places__delete-button');
+  deleteButton.addEventListener('click', deletePlace);
+
    //make cards appear online
    placesList.prepend(placeElement);
    
@@ -163,18 +167,12 @@ function formSubmitAdd(evt) {
 /*when click the save button, runs the formSubmit function */
 form[1].addEventListener('submit', formSubmitAdd);
 
-
 /* delete place card */
 
  /* removes the selected place */
-//  function deletePlace() {
-//     /* delete button */
-//   const deleteButton = document.querySelector('places__delete-button');
-//   const placeItem = document.querySelector('.places__item');
-//   placeItem.remove();
-//  }
-
-//  deleteButton.addEventListener('click', deletePlace);
+ function deletePlace(evt) {
+  evt.target.closest('.places__item').remove();
+ };
 
 
 
