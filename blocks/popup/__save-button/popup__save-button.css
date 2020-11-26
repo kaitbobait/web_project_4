@@ -1,3 +1,11 @@
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 .popup__save-button {
   display: flex;

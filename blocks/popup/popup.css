@@ -10,6 +10,16 @@
 @import url('__image/popup__image.css');
 @import url('__image-title/popup__image-title.css');
 
+
+/* @keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+} */
+
 .popup {
   display: none;
   height: 100%;
@@ -19,7 +29,9 @@
   left: 0;
   padding: 0;
   margin: 0 auto;
-  
+  animation: fade-out .4s ease;
 }
+
+
 
 

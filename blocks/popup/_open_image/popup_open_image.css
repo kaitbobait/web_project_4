@@ -1,3 +1,4 @@
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -8,12 +9,8 @@
 }
 
 
-
-.popup_open {
+.popup_open_image {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 1;
-  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.9);
   animation: fade-in .4s ease;
 }
-

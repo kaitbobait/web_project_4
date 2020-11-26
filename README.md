@@ -41,7 +41,7 @@ Have fun with JavaScript!
 * (DONE) when a card is added, put to front of card section
 **3**
 * (DONE) add a "delete" icon to each card
-* make the "delete" button able to remove that card
+* (DONE) make the "delete" button able to remove that card
 **4**
 * (DONE) each picture in cards - when clicked, the picture will popup
 * (DONE) when picture is popped up, when closed, should exit the popup
@@ -73,4 +73,4 @@ Have fun with JavaScript!
 **10**
 * customize add place popup form
 **11**
-*customize picture popup
+* customize picture popup

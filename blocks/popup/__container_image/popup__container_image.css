@@ -13,3 +13,8 @@
   background-repeat: no-repeat;
   box-shadow: none;
 }
+
+@media only screen and (max-width: 320px) {
+  .popup__container_image {
+    margin: 0 40px 0;
+}

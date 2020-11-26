@@ -46,9 +46,10 @@ function closePopup() {
     popupArray[0].classList.remove("popup_open");
   } if (popupArray[1].classList.contains('popup_open')) {
     popupArray[1].classList.remove("popup_open");
-  } if (popupArray[2].classList.contains('popup_open')) {
-    popupArray[2].classList.remove("popup_open");
+  } if (popupArray[2].classList.contains('popup_open_image')) {
+    popupArray[2].classList.remove("popup_open_image");
   }
+
 };
 
 /*when clicks, the popup box closes */
@@ -61,6 +62,7 @@ function formSubmitEdit(evt) {
   profileName.textContent = newName.value;
   profileTitle.textContent = newTitle.value;
   closePopup();
+  form.body.style.animation = "animation: fade-out .4s ease";
   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
 }
 
@@ -98,10 +100,9 @@ function addPlace(place) {
   //opens a larger image popup of the place card image
   //opens the popup, but doesn't render picture yet.
   function picturePopup () {
-    popupArray[2].classList.add('popup_open');
+    popupArray[2].classList.add('popup_open_image');
     popupPhoto.src = placeImage.src;
     popupTitle.textContent = placeName.textContent;
-    console.log(popupPhoto);
     
   };
   //on click on an image in the place cards, a popup of the image will appear
@@ -167,9 +168,9 @@ function formSubmitAdd(evt) {
 /*when click the save button, runs the formSubmit function */
 form[1].addEventListener('submit', formSubmitAdd);
 
-/* delete place card */
+/* Delete place card */
 
- /* removes the selected place */
+/* removes the selected place */
  function deletePlace(evt) {
   evt.target.closest('.places__item').remove();
  };
@@ -177,8 +178,6 @@ form[1].addEventListener('submit', formSubmitAdd);
 
 
 /* ADD PLACE FORM */
-// inputFieldOne.placeholder.textContent = 'Title';
-// inputFieldTwo.placeholder.textContent = 'Image link';
 
 /* opens the Add card popup */
 function openPopupAdd() {
@@ -187,18 +186,8 @@ function openPopupAdd() {
 
 };
 
-
 /*when clicks, the popup box opens */
 addPlaceButton.addEventListener('click', openPopupAdd);
 
 /*when clicks, the popup box closes */
 buttonCloseArray[1].addEventListener('click', closePopup);
-
-
-
-/* Image pops up */
-
-// function picturePopup () {
-
-// };
-
