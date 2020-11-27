@@ -1,60 +1,65 @@
 
 /*profile section*/
-const editButton = document.querySelector('.profile__edit'); /*edit profile button*/
-let profileName = document.querySelector('.profile__name'); /*profile name */
-let profileTitle = document.querySelector('.profile__title'); /*profile description */
+const editButton = document.querySelector('.profile__edit'); //edit profile button
+const popupEditProfile = document.querySelector('.popup_edit-profile'); //edit profile popup
+let profileName = document.querySelector('.profile__name'); //profile name
+let profileTitle = document.querySelector('.profile__title'); //profile description
+const profileExit = document.querySelector('.popup__close-button_profile'); //close button
 
 /* add card */
-const addPlaceButton = document.querySelector('.profile__add');
-let imageTitle = document.querySelector('.popup__input_text_image-title');
-let imageLink = document.querySelector('.popup__input_text_image');
+const addPlaceButton = document.querySelector('.profile__add'); //add button
+const placesList = document.querySelector('.places__list'); //list of places
+const popupEditPlaces = document.querySelector('.popup_edit-places'); //popup for add place form
+const imageTitle = document.querySelector('.popup__input_text_image-title'); //input field for title
+const imageLink = document.querySelector('.popup__input_text_image'); //input field for image link
+const addPlacesExit = document.querySelector('.popup__close-button_places'); //close button
 
 /* form section */
-const form = document.querySelectorAll('.popup__form');
-formArray = Array.from(form);
-const buttonClose = document.querySelectorAll('.popup__close-button'); /*close button for the popup*/
-buttonCloseArray = Array.from(buttonClose);
-const popup = document.querySelectorAll('.popup'); /*popup has display: none*/
-popupArray = Array.from(popup);
+const popupForms = document.querySelectorAll('.popup__form');
+formArray = Array.from(popupForms);
+const popup = document.querySelector('.popup'); /*popup has display: none*/
 let newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
 let newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
 const saveButton = document.querySelectorAll('.popup__save-button'); /* save button */
 
 /* places image popup */
+const popupImageLarge = document.querySelector('.popup_image-large');
 const popupPhoto = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__image-title');
+const imagesExit = document.querySelector('.popup__close-button_images');
 
-
-
-/* EDIT PROFILE FORM */
-
-/*opens popup box*/
-// function openPopupEdit() {
-//   popup.classList.add('popup_open');
-//   newName.value = newName.textContent;
-//   newTitle.value = newTitle.textContent;
-// }
-function openPopupEdit() {
-  popupArray[0].classList.add('popup_open');
-  newName.value = newName.textContent;
-  newTitle.value = newTitle.textContent;
-}
-
-/*closes either popup box if one is open*/
-function closePopup() {
-  if (popupArray[0].classList.contains('popup_open')) {
-    popupArray[0].classList.remove("popup_open");
-  } if (popupArray[1].classList.contains('popup_open')) {
-    popupArray[1].classList.remove("popup_open");
-  } if (popupArray[2].classList.contains('popup_open_image')) {
-    popupArray[2].classList.remove("popup_open_image");
+/* determines which popup to open */
+function openPopup(evt) {
+  if (evt.target === editButton) {
+    popupEditProfile.classList.add('popup_open');
+    newName.value = newName.textContent;
+    newTitle.value = newTitle.textContent;
+  } else if (evt.target === addPlaceButton) {
+    popupEditPlaces.classList.add('popup_open');
   }
 };
 
-/*when clicks, the popup box closes */
-buttonCloseArray[0].addEventListener('click', closePopup);
-/*when clicks, the popup box opens */
-editButton.addEventListener('click', openPopupEdit);
+/*closes either popup box if one is open*/
+function closePopup() {
+  if (popupEditProfile.classList.contains('popup_open')) {
+    popupEditProfile.classList.remove("popup_open");
+  } else if (popupEditPlaces.classList.contains('popup_open')) {
+    popupEditPlaces.classList.remove("popup_open");
+  } else if (popupImageLarge.classList.contains('popup_open_image')) {
+    popupImageLarge.classList.remove("popup_open_image");
+  }
+};
+
+// when clicks, the edit popup box opens
+editButton.addEventListener('click', openPopup);
+// when clicks, the edit popup box closes
+profileExit.addEventListener('click', closePopup);
+// when clicks, the popup box opens 
+addPlaceButton.addEventListener('click', openPopup);
+// when clicks, the add places popup box closes
+addPlacesExit.addEventListener('click', closePopup);
+// on click of close button, the popup image will disappear
+imagesExit.addEventListener('click', closePopup);
 
 /*updates the name and title input field, closes the popup, and prevents the default response from browser */
 function formSubmitEdit(evt) {
@@ -65,49 +70,40 @@ function formSubmitEdit(evt) {
 }
 
 /*when click the save button, runs the formSubmit function */
-form[0].addEventListener('submit', formSubmitEdit);
+popupForms[0].addEventListener('submit', formSubmitEdit);
 
 /* PLACE CARD SECTION */
 
 /* Adds the 6 cards on load */
 function addPlace(place) {
-  const placesList = document.querySelector('.places__list');
+  // place card template
   const placeTemplate = document.querySelector('#place-template').content;
-
-  // clone content of template tag for places
+  // clone content of place card template tag
   const placeElement = placeTemplate.cloneNode(true);
   let placeImage = placeElement.querySelector('.places__img');
   let placeName = placeElement.querySelector('.places__name');
-  const placeContainer = placeElement.querySelector('.place__container');
 
-   /* like button */
-  const heartButton = placeElement.querySelector('.places__heart-button');
-
+  // using the text from the place card form fields, to create a new place card
   placeImage.src = place.link;
   placeImage.alt = place.name;
   placeName.textContent = place.name;
 
-
-/* When the heart button is clicked, a new class with a "liked" heart, appears */
+  // like button
+  const heartButton = placeElement.querySelector('.places__heart-button');
+  // When the heart button is clicked, a new class with a "liked" heart, appears
   heartButton.addEventListener('click', function(place) {
       heartButton.classList.toggle('places__heart-button_active');
-      console.log(place.target);
   });
 
-  /* new card popup */
-  //opens a larger image popup of the place card image
-  //opens the popup, but doesn't render picture yet.
+  // opens a large popup of current place card image
   function picturePopup () {
-    popupArray[2].classList.add('popup_open_image');
+    popupImageLarge.classList.add('popup_open_image');
     popupPhoto.src = placeImage.src;
     popupTitle.textContent = placeName.textContent;
-    
   };
+
   //on click on an image in the place cards, a popup of the image will appear
   placeImage.addEventListener('click', picturePopup);
-
-  //on click of close button, the popup will disappear
-  buttonCloseArray[2].addEventListener('click', closePopup);
 
   const deleteButton = placeElement.querySelector('.places__delete-button');
   deleteButton.addEventListener('click', deletePlace);
@@ -116,34 +112,6 @@ function addPlace(place) {
   placesList.prepend(placeElement);
    
 };
-
-/* 6 place cards to load initially */
-const initialPlaces = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
-  }
-]; 
 
 /* loops through the initialPlaces array to load each place card with the addPlace function */
 initialPlaces.forEach((place) => {
@@ -164,7 +132,7 @@ function formSubmitAdd(evt) {
 }
 
 /*when click the save button, runs the formSubmit function */
-form[1].addEventListener('submit', formSubmitAdd);
+popupForms[1].addEventListener('submit', formSubmitAdd);
 
 /* Delete place card */
 
@@ -173,19 +141,3 @@ form[1].addEventListener('submit', formSubmitAdd);
   evt.target.closest('.places__item').remove();
  };
 
-
-
-/* ADD PLACE FORM */
-
-/* opens the Add card popup */
-function openPopupAdd() {
-  //selects the add place popup
-  popupArray[1].classList.add('popup_open');
-
-};
-
-/*when clicks, the popup box opens */
-addPlaceButton.addEventListener('click', openPopupAdd);
-
-/*when clicks, the popup box closes */
-buttonCloseArray[1].addEventListener('click', closePopup);

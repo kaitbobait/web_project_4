@@ -12,7 +12,14 @@
   box-sizing: border-box;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 525px) {
+  .popup__container {
+    width: 350px;
+    padding: 0 22px;
+  }
+}
+
+@media only screen and (max-width: 355px) {
   .popup__container {
     width: 282px;
     padding: 0 22px;

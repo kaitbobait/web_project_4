@@ -35,9 +35,9 @@
       <footer class="footer">
         <p class="footer__copyright">&copy;2020 Around The U.S.</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup_edit-profile">
         <div class="popup__container">
-          <button class="popup__close-button" aria-label="Close" type="button"></button>
+          <button class="popup__close-button popup__close-button_profile" aria-label="Close" type="button"></button>
           <h2 class="popup__intro">Edit profile</h2>
           <form class="popup__form" action="#" >
             <input class="popup__input popup__input_text_name" type="text" name="name" placeholder="name" value="Jacques Cousteau" required>
@@ -46,21 +46,21 @@
           </form>
         </div>
       </div>
-      <div class="popup">
+      <div class="popup popup_edit-places">
         <div class="popup__container">
-          <button class="popup__close-button" aria-label="Close" type="button"></button>
+          <button class="popup__close-button popup__close-button_places" aria-label="Close" type="button"></button>
           <h2 class="popup__intro">New Place</h2>
           <form class="popup__form" action="#" >
             <input class="popup__input popup__input_text_image-title" type="text" name="name" placeholder="Title"  required>
-            <input class="popup__input popup__input_text_image" type="text" name="description" placeholder="Image link" required>
+            <input class="popup__input popup__input_text_image" type="url" name="description" placeholder="Image link" required>
             <button class="popup__save-button" type="submit">Create</button>
           </form>
         </div>
       </div>
 
-        <div class = "popup">
+        <div class = "popup popup_image-large">
           <div class = "popup__container popup__container_image">
-            <button class="popup__close-button" aria-label="Close" type="button"></button>
+            <button class="popup__close-button popup__close-button_images" aria-label="Close" type="button"></button>
             <img class = popup__image>
             <h3 class = popup__image-title></h3>
           </div>
@@ -77,6 +77,7 @@
           </div>
         </li>
       </template>
+      <script src="scripts/initialPlaces.js"></script>
       <script src="scripts/script.js"></script>
     </div>
   </body>
