@@ -32,8 +32,10 @@ const imagesExit = document.querySelector('.popup__close-button_images');
 const openPopup = (evt) => {
   if (evt.target === editButton) {
     popupEditProfile.classList.add('popup_open');
-    newName.value = newName.textContent;
-    newTitle.value = newTitle.textContent;
+    newName.value = profileName.textContent;
+    console.log(newName.value);
+    newTitle.value = profileTitle.textContent;
+    console.log(newTitle.value);
   } else if (evt.target === addPlaceButton) {
     popupEditPlaces.classList.add('popup_open');
   }
@@ -117,10 +119,13 @@ const addPlace = (place) => {
   placesList.prepend(placeElement); 
 };
 
-/* loops through the initialPlaces array to load each place card with the addPlace function */
-initialPlaces.forEach((place) => {
+const onload = (place) => {
   addPlace(place);
-});
+};
+
+/* loops through the initialPlaces array to load each place card with the addPlace function */
+initialPlaces.forEach(onload);
+
 
  /*updates the name and title input field, closes the popup, and prevents the default response from browser */
 const formSubmitEdit = (evt) => {
