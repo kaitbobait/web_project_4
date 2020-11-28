@@ -15,12 +15,12 @@ const imageLink = document.querySelector('.popup__input_text_image'); //input fi
 const addPlacesExit = document.querySelector('.popup__close-button_places'); //close button
 
 /* form section */
-const popupForms = document.querySelectorAll('.popup__form');
-formArray = Array.from(popupForms);
 const popup = document.querySelector('.popup'); /*popup has display: none*/
 let newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
 let newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
 const saveButton = document.querySelectorAll('.popup__save-button'); /* save button */
+let placesForm = document.querySelector('.popup__form-places');
+let profileForm = document.querySelector('.popup__form-profile');
 
 /* places image popup */
 const popupImageLarge = document.querySelector('.popup_image-large');
@@ -142,8 +142,8 @@ const formSubmitAdd = (evt) => {
 }
 
 /*when click the save button, runs the formSubmit function */
-popupForms[0].addEventListener('submit', formSubmitEdit);
+profileForm.addEventListener('submit', formSubmitEdit);
 /*when click the save button, runs the formSubmit function */
-popupForms[1].addEventListener('submit', formSubmitAdd);
+placesForm.addEventListener('submit', formSubmitAdd);
 
 
