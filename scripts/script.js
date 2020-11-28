@@ -19,8 +19,8 @@ const popup = document.querySelector('.popup'); /*popup has display: none*/
 let newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
 let newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
 const saveButton = document.querySelectorAll('.popup__save-button'); /* save button */
-let placesForm = document.querySelector('.popup__form-places');
-let profileForm = document.querySelector('.popup__form-profile');
+const placesForm = document.querySelector('.popup__form-places');
+const profileForm = document.querySelector('.popup__form-profile');
 
 /* places image popup */
 const popupImageLarge = document.querySelector('.popup_image-large');
