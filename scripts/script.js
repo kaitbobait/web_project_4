@@ -2,8 +2,8 @@
 /*profile section*/
 const editButton = document.querySelector('.profile__edit'); //edit profile button
 const popupEditProfile = document.querySelector('.popup_edit-profile'); //edit profile popup
-let profileName = document.querySelector('.profile__name'); //profile name
-let profileTitle = document.querySelector('.profile__title'); //profile description
+const profileName = document.querySelector('.profile__name'); //profile name
+const profileTitle = document.querySelector('.profile__title'); //profile description
 const profileExit = document.querySelector('.popup__close-button_profile'); //close button
 
 /* add card */
@@ -16,8 +16,8 @@ const addPlacesExit = document.querySelector('.popup__close-button_places'); //c
 
 /* form section */
 const popup = document.querySelector('.popup'); /*popup has display: none*/
-let newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
-let newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
+const newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
+const newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
 const saveButton = document.querySelectorAll('.popup__save-button'); /* save button */
 const placesForm = document.querySelector('.popup__form-places');
 const profileForm = document.querySelector('.popup__form-profile');
@@ -28,41 +28,47 @@ const popupPhoto = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__image-title');
 const imagesExit = document.querySelector('.popup__close-button_images');
 
-/* determines which popup to open */
-const openPopup = (evt) => {
-  if (evt.target === editButton) {
-    popupEditProfile.classList.add('popup_open');
-    newName.value = profileName.textContent;
-    console.log(newName.value);
-    newTitle.value = profileTitle.textContent;
-    console.log(newTitle.value);
-  } else if (evt.target === addPlaceButton) {
-    popupEditPlaces.classList.add('popup_open');
-  }
+/* passes in a popup through the event listener to open the popup */
+const openPopup = (popup) => {
+    popup.classList.add('popup_open');
 };
 
 /*closes either popup box if one is open*/
-const closePopup = () => {
-  if (popupEditProfile.classList.contains('popup_open')) {
-    popupEditProfile.classList.remove("popup_open");
-  } else if (popupEditPlaces.classList.contains('popup_open')) {
-    popupEditPlaces.classList.remove("popup_open");
-  } else if (popupImageLarge.classList.contains('popup_open_image')) {
-    popupImageLarge.classList.remove("popup_open_image");
-  }
+const closePopup = (popup) => {
+    popup.classList.remove("popup_open");
 };
 
 // when clicks, the edit popup box opens
-editButton.addEventListener('click', openPopup);
+editButton.addEventListener('click', () => {
+  newName.value = profileName.textContent;
+  newTitle.value = profileTitle.textContent;
+  openPopup(popupEditProfile);
+});
 // when clicks, the edit popup box closes
-profileExit.addEventListener('click', closePopup);
+profileExit.addEventListener('click', () => {
+  closePopup(popupEditProfile);
+});
 // when clicks, the popup box opens 
-addPlaceButton.addEventListener('click', openPopup);
+addPlaceButton.addEventListener('click', () => {
+  openPopup(popupEditPlaces);
+});
 // when clicks, the add places popup box closes
-addPlacesExit.addEventListener('click', closePopup);
-// on click of close button, the popup image will disappear
-imagesExit.addEventListener('click', closePopup);
+addPlacesExit.addEventListener('click', () => {
+  closePopup(popupEditPlaces);
+});
 
+// on click of close button, the popup image will disappear
+imagesExit.addEventListener('click', () => {
+  popupImageLarge.classList.remove("popup_open_image");
+  
+});
+
+// placeImage.addEventListener('click', () => {
+//   popupImageLarge.classList.add('popup_open_image');
+//   popupPhoto.src = placeImage.src;
+//   openPopup(popupImageLarge);
+//   popupTitle.textContent = placeName.textContent;
+// });
 
 /* PLACE CARD SECTION */
 
@@ -72,8 +78,8 @@ const createPlaceTemplate = (place) =>  {
   const placeTemplate = document.querySelector('#place-template').content;
   // clone content of place card template tag
   const placeElement = placeTemplate.cloneNode(true);
-  let placeImage = placeElement.querySelector('.places__img');
-  let placeName = placeElement.querySelector('.places__name');
+  const placeImage = placeElement.querySelector('.places__img');
+  const placeName = placeElement.querySelector('.places__name');
 
   // using the text from the place card form fields, to create a new place card
   placeImage.src = place.link;
@@ -100,13 +106,13 @@ const createPlaceTemplate = (place) =>  {
   // deletes place card on click of delete button
   deleteButton.addEventListener('click', deletePlace);
 
-  const picturePopup = () => {
+  const openPicturePopup = () => {
     popupImageLarge.classList.add('popup_open_image');
     popupPhoto.src = placeImage.src;
     popupTitle.textContent = placeName.textContent;
   };
-  //on click on an image in the place cards, a popup of the image will appear
-  placeImage.addEventListener('click', picturePopup);
+  // on click on an image in the place cards, a popup of the image will appear
+  placeImage.addEventListener('click', openPicturePopup);
 
   return placeElement;
 };
@@ -128,7 +134,7 @@ initialPlaces.forEach(onload);
 
 
  /*updates the name and title input field, closes the popup, and prevents the default response from browser */
-const formSubmitEdit = (evt) => {
+const submitEditForm = (evt) => {
   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
   profileName.textContent = newName.value;
   profileTitle.textContent = newTitle.value;
@@ -136,7 +142,7 @@ const formSubmitEdit = (evt) => {
 }
 
 //updates the title and image, closes the popup, and prevents the default response from browser
-const formSubmitAdd = (evt) => {
+const submitAddForm = (evt) => {
   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
   const place = {
     name: imageTitle.value,
@@ -147,8 +153,8 @@ const formSubmitAdd = (evt) => {
 }
 
 /*when click the save button, runs the formSubmit function */
-profileForm.addEventListener('submit', formSubmitEdit);
+profileForm.addEventListener('submit', submitEditForm);
 /*when click the save button, runs the formSubmit function */
-placesForm.addEventListener('submit', formSubmitAdd);
+placesForm.addEventListener('submit', submitAddForm);
 
 
