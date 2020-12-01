@@ -4,9 +4,10 @@
   flex-direction: column;
   position: relative;
   z-index: 5;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   max-width: 75vw;
+  /* max-width: 540px; */
   max-height: 75vh;
   background-color: transparent;
   margin: 90px auto;
@@ -14,15 +15,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: none;
-}
-
-.popup_container_image-text {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  max-width: 75vw;
-  max-height: 75vh;
-  margin: 0 auto;
 }
 
 @media only screen and (max-width: 320px) {
