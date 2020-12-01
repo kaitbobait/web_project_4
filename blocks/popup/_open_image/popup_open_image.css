@@ -1,16 +1,5 @@
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 
 .popup_open_image {
-  display: flex;
   background-color: rgba(0, 0, 0, 0.9);
-  animation: fade-in .4s ease;
-}
+}  
