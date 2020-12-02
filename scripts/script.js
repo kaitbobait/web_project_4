@@ -59,9 +59,8 @@ addPlacesExit.addEventListener('click', () => {
 
 // on click of close button, the popup image will disappear
 imagesExit.addEventListener('click', () => {
-  // popupImageLarge.classList.remove("popup_open_image");
-  popupImageLarge.classList.remove("popup_open");
-  
+  closePopup(popupImageLarge);
+
 });
 
 // placeImage.addEventListener('click', () => {
@@ -119,9 +118,7 @@ const createPlaceTemplate = (place) =>  {
   placeImage.addEventListener('click', () => {
     popupPhoto.src = placeImage.src;
     popupTitle.textContent = placeName.textContent;
-    popupImageLarge.classList.add('popup_open_image');
     openPopup(popupImageLarge);
-    // popup.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
   });
   
   return placeElement;
