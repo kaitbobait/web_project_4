@@ -142,29 +142,21 @@ const onload = (place) => {
 /* loops through the initialPlaces array to load each place card with the addPlace function */
 initialPlaces.forEach(onload);
 
-
- /*updates the name and title input field, closes the popup, and prevents the default response from browser */
-const submitEditForm = (evt) => {
+/* when click the save button, runs the submits the form, updates info, exits popup */
+profileForm.addEventListener('submit', (evt) => {
   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
   profileName.textContent = newName.value;
   profileTitle.textContent = newTitle.value;
-  closePopup();
-}
+  closePopup(popupEditProfile);
+});
 
-//updates the title and image, closes the popup, and prevents the default response from browser
-const submitAddForm = (evt) => {
+/* when click the save button, runs the submits the form, updates info, exits popup */
+placesForm.addEventListener('submit', (evt) => {
   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
   const place = {
     name: imageTitle.value,
     link: imageLink.value
   }
   addPlace(place);
-  closePopup();
-}
-
-/*when click the save button, runs the formSubmit function */
-profileForm.addEventListener('submit', submitEditForm);
-/*when click the save button, runs the formSubmit function */
-placesForm.addEventListener('submit', submitAddForm);
-
-
+  closePopup(popupEditPlaces);
+});
