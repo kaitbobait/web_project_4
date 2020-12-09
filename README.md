@@ -38,9 +38,9 @@ Have fun with JavaScript!
 **1**
 * Both fields required
 **2**
-* "Name" field 2 - 40 characters
+* (DONE)"Name" field 2 - 40 characters
 **3**
-* "About field 2 - 200 characters
+* (DONE)"About field 2 - 200 characters
 **4**
 * Use default error messages of the browser
 **5**

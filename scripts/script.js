@@ -150,4 +150,3 @@ placesForm.addEventListener('submit', (evt) => {
   closePopup(popupEditPlaces);
 });
 
-/* Form Validation */
