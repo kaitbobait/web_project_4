@@ -40,8 +40,8 @@
           <button class="popup__close-button popup__close-button_profile" aria-label="Close" type="button"></button>
           <h2 class="popup__intro">Edit profile</h2>
           <form class="popup__form popup__form-profile" action="#" >
-            <input class="popup__input popup__input_text_name" type="text" name="name" placeholder="name" value="Jacques Cousteau" required>
-            <input class="popup__input popup__input_text_title" type="text" name="description" placeholder="Occupation" value="Explorer" required>
+            <input class="popup__input popup__input_text_name" type="text" name="name" placeholder="name" value="Jacques Cousteau" minlength="2" maxlength="40" required>
+            <input class="popup__input popup__input_text_title" type="text" name="description" placeholder="Occupation" value="Explorer" minlength="2" maxlength="200" required>
             <button class="popup__save-button" type="submit">Save</button>
           </form>
         </div>
@@ -80,6 +80,7 @@
         </li>
       </template>
       <script src="scripts/initialPlaces.js"></script>
+      <script src="scripts/index.js"></script>
       <script src="scripts/script.js"></script>
     </div>
   </body>

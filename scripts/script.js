@@ -106,14 +106,6 @@ const createPlaceTemplate = (place) =>  {
   // deletes place card on click of delete button
   deleteButton.addEventListener('click', deletePlace);
 
-  // const openPicturePopup = () => {
-  //   // popupImageLarge.classList.add('popup_open_image');
-  //   popupPhoto.src = placeImage.src;
-  //   popupTitle.textContent = placeName.textContent;
-  //   popup.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
-  //   console.log(popup.style.backgroundColor);
-  //   openPopup(popupImageLarge);
-  // };
   // on click on an image in the place cards, a popup of the image will appear
   placeImage.addEventListener('click', () => {
     popupPhoto.src = placeImage.src;
@@ -157,3 +149,5 @@ placesForm.addEventListener('submit', (evt) => {
   addPlace(place);
   closePopup(popupEditPlaces);
 });
+
+/* Form Validation */

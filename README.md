@@ -34,41 +34,36 @@ Have fun with JavaScript!
 
 ### To Do List:
 
-##Cards
+## Validate Edit Form
 **1**
-* (DONE)create the 6 cards in JS - view project section on Practicum
+* Both fields required
 **2**
-* (DONE) when a card is added, put to front of card section
+* "Name" field 2 - 40 characters
 **3**
-* (DONE) add a "delete" icon to each card
-* (DONE) make the "delete" button able to remove that card
+* "About field 2 - 200 characters
 **4**
-* (DONE) each picture in cards - when clicked, the picture will popup
-* (DONE) when picture is popped up, when closed, should exit the popup
-* (DONE) max-width of an opened pictures is 75vw, max height: 75vh;
-* (DONE) Add title to bottom of popup image
-
-## Add Card Form
+* Use default error messages of the browser
 **5**
-* (DONE) copy the edit form structure for edit profile popup
-* (DONE) custom name and image
+* Save button should be inactive if ANY field doesn't pass validation
+
+
+## Validate New Place Form
 **6**
-* (DONE) save button adds card to page (submit event)
+* BOTH fields required
 **7**
-* (DONE) opens when the + button is clicked, and closes when the close button is clicked
-
-## Like button
+* "Title" field 2 - 30 characters
 **8**
-* (DONE)If user clicks "like button", the heart changes its color
-* (DONE) make it toggle (not a requirement, but good idea)
-
-## Popups
+* "image url" field must contain a URL
 **9**
-* (DONE) when opened: smoothly appear out from transparency
-* when closed: smoothly become completely transparent again
+* Save button should be inactive if ANY field doesn't pass validation
 
-## Media Query 
+## Close Popup by Clicking Overlay
 **10**
-* customize add place popup form
+* Allow user to close popup by clicking overlay
+## Close Popup by Clicking ESC key
 **11**
-* customize picture popup
+* Allow user to close popup by clicking overlay
+
+## Code Requirements
+**12**
+* make enableValidation() in a separate Javascript file, in index.js
