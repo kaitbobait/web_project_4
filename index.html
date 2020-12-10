@@ -39,8 +39,8 @@
         <div class="popup__container">
           <button class="popup__close-button popup__close-button_profile" aria-label="Close" type="button"></button>
           <h2 class="popup__intro">Edit profile</h2>
-          <form class="popup__form popup__form-profile" action="#" novalidate >
-            <input class="popup__input popup__input_text_name" id="input_text_name" type="text" name="name" placeholder="name" value="Jacques Cousteau" minlength="2" maxlength="40" required>
+          <form class="form popup__form popup__form-profile" action="#" novalidate >
+            <input class="popup__input popup__input_text_name" id="input_text_name" type="text" name="name" placeholder="Name" value="Jacques Cousteau" minlength="2" maxlength="40" required>
             <span class="popup__input-error" id="name-input-error"></span>
             <input class="popup__input popup__input_text_title" id="input_text_title" type="text" name="description" placeholder="Occupation" value="Explorer" minlength="2" maxlength="200" required>
             <span class="popup__input-error" id="occupation-input-error"></span>
@@ -52,10 +52,12 @@
         <div class="popup__container">
           <button class="popup__close-button popup__close-button_places" aria-label="Close" type="button"></button>
           <h2 class="popup__intro">New Place</h2>
-          <form class="popup__form popup__form-places" action="#" novalidate>
+          <form class="form popup__form popup__form-places" action="#" novalidate>
             <input class="popup__input popup__input_text_image-title" id="popup__input_text_image-title" type="text" name="name" placeholder="Title"  required>
+            <span class="popup__input-error" id="image_title-input-error"></span>
             <input class="popup__input popup__input_text_image" id="popup__input_text_image" type="url" name="description" placeholder="Image link" required>
-            <button class="popup__save-button" type="submit">Create</button>
+            <span class="popup__input-error" id="image_text-input-error"></span>
+            <button class="popup__save-button" type="submit">Save</button>
           </form>
         </div>
       </div>

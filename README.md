@@ -67,3 +67,13 @@ Have fun with JavaScript!
 ## Code Requirements
 **12**
 * make enableValidation() in a separate Javascript file, in index.js
+
+## Button
+**13** 
+* customize "button_inactive" in CSS
+
+## Error message
+**14**
+* Customize error message in CSS
+
+
