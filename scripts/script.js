@@ -63,6 +63,29 @@ imagesExit.addEventListener('click', () => {
 
 });
 
+const closePopupFromOverlay = () => {
+  const popupList = Array.from(document.querySelectorAll(".popup"));
+  popupList.forEach((popupElement) => {
+    popupElement.addEventListener('click', (evt) => {
+      if(evt.target.classList.contains('popup_open')) {
+        closePopup(evt.target);
+      };
+    });
+  });
+};
+
+closePopupFromOverlay();
+
+document.addEventListener("keyup", (evt) => {
+  const popup = document.querySelector(".popup_open");
+  if (evt.key === "Escape") {
+    if(popup) {
+      closePopup(popup);
+    };
+  } 
+});
+
+
 // placeImage.addEventListener('click', () => {
 //   popupImageLarge.classList.add('popup_open_image');
 //   popupPhoto.src = placeImage.src;
@@ -73,7 +96,7 @@ imagesExit.addEventListener('click', () => {
 /* PLACE CARD SECTION */
 
 // creates and returns a template for the place cards
-const createPlaceTemplate = (place) =>  {
+function createPlaceTemplate(place) {
   // place card template
   const placeTemplate = document.querySelector('#place-template').content;
   // clone content of place card template tag
@@ -93,7 +116,7 @@ const createPlaceTemplate = (place) =>  {
     heartButton.classList.toggle('places__heart-button_active');
   };
   // toggles like button when clicked
-  heartButton.addEventListener('click', likeButton); 
+  heartButton.addEventListener('click', likeButton);
 
   // image popup delete button
   const deleteButton = placeElement.querySelector('.places__delete-button');
@@ -112,9 +135,9 @@ const createPlaceTemplate = (place) =>  {
     popupTitle.textContent = placeName.textContent;
     openPopup(popupImageLarge);
   });
-  
+
   return placeElement;
-};
+}
 
 // accesses the place card template and places it in the DOM
 const addPlace = (place) => {
