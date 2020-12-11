@@ -11,22 +11,23 @@ const settingsObject = {
 
 // displays the error message by adding the input error message class
 const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${settingsObject.inputErrorClass}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   //add error classList to input element
-  inputElement.classList.add(settingsObject.inputErrorClass);
+  //inputElement.classList.add(settingsObject.inputErrorClass);
   // make the validation message the error message
   errorElement.textContent = errorMessage;
   // make error visible
-  inputElement.classList.add(settingsObject.errorClass);
+  //inputElement.classList.add(settingsObject.errorClass);
 
 };
 
 // hides the error message by removing the input error message class
 const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  
   //remove error classList to input element
-  inputElement.classList.remove(settingsObject.inputErrorClass);
-  errorElement.classList.remove(settingsObject.errorClass);
+  //inputElement.classList.remove(settingsObject.inputErrorClass);
+  //errorElement.classList.remove(settingsObject.errorClass);
   errorElement.textContent = "";
 };
 
@@ -35,7 +36,7 @@ const checkInputValidity = (formElement, inputElement) => {
   if(!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(inputElement);
+    hideInputError(formElement, inputElement);
   }
 };
 
@@ -50,8 +51,10 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (settingsObject, inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(settingsObject.inactiveButtonClass);
+    buttonElement.disabled = true;
   } else {
     buttonElement.classList.remove(settingsObject.inactiveButtonClass);
+    buttonElement.disabled = false;
   }
 };
 
@@ -68,6 +71,8 @@ const setEventListeners = (settingsObject, formElement) => {
     inputElement.addEventListener("input", function() {
       checkInputValidity(formElement, inputElement);
       toggleButtonState(settingsObject, inputList, buttonElement);
+      
+      
     });
   });
 };

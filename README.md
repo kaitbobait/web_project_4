@@ -42,20 +42,20 @@ Have fun with JavaScript!
 **3**
 * (DONE)"About field 2 - 200 characters
 **4**
-* Use default error messages of the browser
+* (DONE)Use default error messages of the browser
 **5**
-* Save button should be inactive if ANY field doesn't pass validation
+* (DONE)Save button should be inactive if ANY field doesn't pass validation
 
 
 ## Validate New Place Form
 **6**
-* BOTH fields required
+* (DONE)BOTH fields required
 **7**
-* "Title" field 2 - 30 characters
+* (DONE)"Title" field 2 - 30 characters
 **8**
-* "image url" field must contain a URL
+* (DONE)"image url" field must contain a URL
 **9**
-* Save button should be inactive if ANY field doesn't pass validation
+* (DONE)Save button should be inactive if ANY field doesn't pass validation
 
 ## Close Popup by Clicking Overlay
 **10**
@@ -66,14 +66,14 @@ Have fun with JavaScript!
 
 ## Code Requirements
 **12**
-* make enableValidation() in a separate Javascript file, in index.js
+* (DONE)make enableValidation() in a separate Javascript file, in index.js
 
 ## Button
 **13** 
-* customize "button_inactive" in CSS
+* (DONE)customize "button_inactive" in CSS
 
 ## Error message
 **14**
-* Customize error message in CSS
+* (DONE)Customize error message in CSS
 
 
