@@ -25,17 +25,3 @@
 @import url('../blocks/popup/_open/popup_open.css');
 @import url('../blocks/popup/_open_image/popup_open_image.css');
 
-.popup__save-button_disabled {
-  opacity: .2;
-  border: 1px solid #E5E5E5;
-}
-
-.popup__input-error {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  line-height: 14.52px;
-  align-self: flex-start;
-  color: rgba(255,0,0,1);
-  padding: 0;
-  margin: 5px 0 13px;
-}

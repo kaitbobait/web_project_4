@@ -36,7 +36,7 @@ Have fun with JavaScript!
 
 ## Validate Edit Form
 **1**
-* Both fields required
+* (DONE)Both fields required
 **2**
 * (DONE)"Name" field 2 - 40 characters
 **3**
@@ -59,10 +59,10 @@ Have fun with JavaScript!
 
 ## Close Popup by Clicking Overlay
 **10**
-* Allow user to close popup by clicking overlay
+* (DONE)Allow user to close popup by clicking overlay
 ## Close Popup by Clicking ESC key
 **11**
-* Allow user to close popup by clicking overlay
+* (DONE)Allow user to close popup by clicking overlay
 
 ## Code Requirements
 **12**
