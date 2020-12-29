@@ -34,46 +34,25 @@ Have fun with JavaScript!
 
 ### To Do List:
 
-## Validate Edit Form
-**1**
-* (DONE)Both fields required
-**2**
-* (DONE)"Name" field 2 - 40 characters
-**3**
-* (DONE)"About field 2 - 200 characters
-**4**
-* (DONE)Use default error messages of the browser
-**5**
-* (DONE)Save button should be inactive if ANY field doesn't pass validation
+## Create Card Class
 
+**takes a text and image link**
+* takes card data (text and link), and a template selector as parameter
+* has private methods for working with markup and adding event listeners.
+* has private methods for each event handler.
+* It has one public method that returns a fully functional card element populated with data.
 
-## Validate New Place Form
-**6**
-* (DONE)BOTH fields required
-**7**
-* (DONE)"Title" field 2 - 30 characters
-**8**
-* (DONE)"image url" field must contain a URL
-**9**
-* (DONE)Save button should be inactive if ANY field doesn't pass validation
+## Create FormValidator Class
 
-## Close Popup by Clicking Overlay
-**10**
-* (DONE)Allow user to close popup by clicking overlay
-## Close Popup by Clicking ESC key
-**11**
-* (DONE)Allow user to close popup by clicking overlay
+**sets settings for validating form fields according to the following reqs**
 
-## Code Requirements
-**12**
-* (DONE)make enableValidation() in a separate Javascript file, in index.js
+**constructor:**
+* 1. settings object that stores selectors and form classes
+* 2. takes a form element to be validated
 
-## Button
-**13** 
-* (DONE)customize "button_inactive" in CSS
+* has private methods for processing the form, which include: checking the field's validity, changing the state of the Submit button, and adding all the needed handlers.
+* It has one public method enableValidation(), which enables form validation.
+* Create an instance of the FormValidator class for each form that should be validated
 
-## Error message
-**14**
-* (DONE)Customize error message in CSS
 
 

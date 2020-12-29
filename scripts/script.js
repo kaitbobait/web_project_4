@@ -1,3 +1,6 @@
+import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
+import { renderElements } from "./Card.js";
+
 
 /*profile section*/
 const editButton = document.querySelector('.profile__edit'); //edit profile button
@@ -29,18 +32,18 @@ const popupTitle = document.querySelector('.popup__image-title');
 const imagesExit = document.querySelector('.popup__close-button_images');
 
 /* passes in a popup through the event listener to open the popup */
-const openPopup = (popup) => {
-    popup.classList.add('popup_open');
-    // adds listener for ESC button
-    document.addEventListener("keydown", closePopupWithEsc);
-};
+// const openPopup = (popup) => {
+//     popup.classList.add('popup_open');
+//     // adds listener for ESC button
+//     document.addEventListener("keydown", closePopupWithEsc);
+// };
 
-/*closes either popup box if one is open*/
-const closePopup = (popup) => {
-    popup.classList.remove("popup_open");
-    // removes listener for ESC button
-    document.removeEventListener("keydown", closePopupWithEsc);
-};
+// /*closes either popup box if one is open*/
+// const closePopup = (popup) => {
+//     popup.classList.remove("popup_open");
+//     // removes listener for ESC button
+//     document.removeEventListener("keydown", closePopupWithEsc);
+// };
 
 // when clicks, the edit popup box opens
 editButton.addEventListener('click', () => {
@@ -67,43 +70,36 @@ imagesExit.addEventListener('click', () => {
 
 });
 
-const closePopupFromOverlay = () => {
-  const popupList = Array.from(document.querySelectorAll(".popup"));
-  popupList.forEach((popupElement) => {
-    popupElement.addEventListener('click', (evt) => {
-      if(evt.target.classList.contains('popup_open')) {
-        closePopup(evt.target);
-      }
-    });
-  });
-};
+// const closePopupFromOverlay = () => {
+//   const popupList = Array.from(document.querySelectorAll(".popup"));
+//   popupList.forEach((popupElement) => {
+//     popupElement.addEventListener('click', (evt) => {
+//       if(evt.target.classList.contains('popup_open')) {
+//         closePopup(evt.target);
+//       }
+//     });
+//   });
+// };
 
 closePopupFromOverlay();
 
 // document listens for use of ESC key, when popup is open, to close popup
-const closePopupWithEsc = (evt) => {
-  const popup = document.querySelector(".popup_open");
-  if (evt.key === "Escape") {
-    if(popup) {
-      closePopup(popup);
-    };
-  } 
-};
+// const closePopupWithEsc = (evt) => {
+//   const popup = document.querySelector(".popup_open");
+//   if (evt.key === "Escape") {
+//     if(popup) {
+//       closePopup(popup);
+//     };
+//   } 
+// };
 
-
-
-
-// placeImage.addEventListener('click', () => {
-//   popupImageLarge.classList.add('popup_open_image');
-//   popupPhoto.src = placeImage.src;
-//   openPopup(popupImageLarge);
-//   popupTitle.textContent = placeName.textContent;
-// });
 
 /* PLACE CARD SECTION */
 
 // creates and returns a template for the place cards
+/*
 function createPlaceTemplate(place) {
+ 
   // place card template
   const placeTemplate = document.querySelector('#place-template').content;
   // clone content of place card template tag
@@ -145,21 +141,21 @@ function createPlaceTemplate(place) {
 
   return placeElement;
 }
-
+*/
 // accesses the place card template and places it in the DOM
-const addPlace = (place) => {
-  const placeElement = createPlaceTemplate(place);
+// const addPlace = (place) => {
+//   const placeElement = createPlaceTemplate(place);
    
-  //make cards appear online
-  placesList.prepend(placeElement); 
-};
+//   //make cards appear online
+//   placesList.prepend(placeElement); 
+// };
 
-const onload = (place) => {
-  addPlace(place);
-};
+// const onload = (place) => {
+//   addPlace(place);
+// };
 
 /* loops through the initialPlaces array to load each place card with the addPlace function */
-initialPlaces.forEach(onload);
+// initialPlaces.forEach(onload);
 
 /* when click the save button, runs the submits the form, updates info, exits popup */
 profileForm.addEventListener('submit', (evt) => {
