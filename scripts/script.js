@@ -172,7 +172,8 @@ placesForm.addEventListener('submit', (evt) => {
     name: imageTitle.value,
     link: imageLink.value
   }
-  addPlace(place);
+  // addPlace(place);
+  renderElements(place);
   closePopup(popupEditPlaces);
 });
 

@@ -98,9 +98,11 @@ class DefaultCard extends Card {
 
     const placeImage = this._element.querySelector('.places__img');
     const placeName = this._element.querySelector('.places__name');
+    this.placeImage = placeImage;
+    this.placeName = placeName;
     
-    placeImage.src = this._link;
-    placeName.textContent = this._name;
+    this.placeImage.src = this._link;
+    this.placeName.textContent = this._name;
 
     this._setEventListeners();
 
@@ -128,11 +130,11 @@ class DefaultCard extends Card {
     deleteButton.addEventListener('click', deletePlace);
 
     // on click on an image in the place cards, a popup of the image will appear
-    const placeImage = this._element.querySelector('.places__img');
-    const placeName = this._element.querySelector('.places__name');
-    placeImage.addEventListener('click', () => {
-      popupPhoto.src = placeImage.src;
-      popupTitle.textContent = placeName.textContent;
+    // const placeImage = this._element.querySelector('.places__img');
+    // const placeName = this._element.querySelector('.places__name');
+    this.placeImage.addEventListener('click', () => {
+      popupPhoto.src = this.placeImage.src;
+      popupTitle.textContent = this.placeName.textContent;
       openPopup(popupImageLarge);
     });
 
@@ -143,15 +145,22 @@ class DefaultCard extends Card {
 
 }
 
-const renderElements = () => {
-  initialPlaces.forEach((item) => {
-    const card = new DefaultCard(item, "#place-template")
+const renderElements = (place) => {
+  const card = new DefaultCard(place, "#place-template");
+  const placeElement = card.generateCard();
+  placesList.prepend(placeElement); 
+}
+
+
+const onload = () => {
+  initialPlaces.forEach((place) => {
+    const card = new DefaultCard(place, "#place-template")
 
     const placeElement = card.generateCard();
     placesList.prepend(placeElement); 
   })
 }
 
-renderElements();
+onload();
 
 export {renderElements}; 
