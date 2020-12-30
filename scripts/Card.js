@@ -1,4 +1,5 @@
 import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
+import { initialPlaces } from "./initialPlaces.js";
 
 
 /* add card */
@@ -17,35 +18,6 @@ const popupTitle = document.querySelector('.popup__image-title');
 const imagesExit = document.querySelector('.popup__close-button_images');
 
 
-
-
-const initialPlaces = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
-  }
-]; 
-
 class Card {
   constructor(template) {
     this._template = template;
@@ -60,27 +32,32 @@ class Card {
 
   }
 
-  // _openPopup() {
-  //   popup.classList.add('popup_open');
-  //   // adds listener for ESC button
-  //   document.addEventListener("keydown", closePopupWithEsc);
-  // }
-
-  // _closePopup() {
-  //   popup.classList.remove("popup_open");
-  //   // removes listener for ESC button
-  //   document.removeEventListener("keydown", closePopupWithEsc);
-  // }
-
   _setEventListeners() {
-  //   this._element.addEventListener("click", () => {
-  //     this._openPopup();
-  //   });
+    const heartButton = this._element.querySelector('.places__heart-button');
+    // When the heart button is clicked, a new class with a "liked" heart, appears
+    const likeButton = place => {
+      heartButton.classList.toggle('places__heart-button_active');
+    };
+    // toggles like button when clicked
+    heartButton.addEventListener('click', likeButton);
 
-  //   imagesExit.addEventListener("click", () => {
-  //     this._closePopup();
-  //   })
-    
+    // image popup delete button
+    const deleteButton = this._element.querySelector('.places__delete-button');
+
+    // removes the selected place card 
+    const deletePlace = (evt) => {
+      evt.target.closest('.places__item').remove();
+    };
+
+    // deletes place card on click of delete button
+    deleteButton.addEventListener('click', deletePlace);
+
+    // on click on an image in the place cards, a popup of the image will appear
+    this.placeImage.addEventListener('click', () => {
+      popupPhoto.src = this.placeImage.src;
+      popupTitle.textContent = this.placeName.textContent;
+      openPopup(popupImageLarge);
+    });
   }
 
 };
@@ -108,40 +85,6 @@ class DefaultCard extends Card {
 
     return this._element;
   }
-
-  _setEventListeners() {
-    const heartButton = this._element.querySelector('.places__heart-button');
-    // When the heart button is clicked, a new class with a "liked" heart, appears
-    const likeButton = place => {
-      heartButton.classList.toggle('places__heart-button_active');
-    };
-    // toggles like button when clicked
-    heartButton.addEventListener('click', likeButton);
-
-    // image popup delete button
-    const deleteButton = this._element.querySelector('.places__delete-button');
-
-    // removes the selected place card 
-    const deletePlace = (evt) => {
-      evt.target.closest('.places__item').remove();
-    };
-
-    // deletes place card on click of delete button
-    deleteButton.addEventListener('click', deletePlace);
-
-    // on click on an image in the place cards, a popup of the image will appear
-    // const placeImage = this._element.querySelector('.places__img');
-    // const placeName = this._element.querySelector('.places__name');
-    this.placeImage.addEventListener('click', () => {
-      popupPhoto.src = this.placeImage.src;
-      popupTitle.textContent = this.placeName.textContent;
-      openPopup(popupImageLarge);
-    });
-
-    super._setEventListeners();
-  }
-
-  
 
 }
 

@@ -26,3 +26,5 @@ const initialPlaces = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg"
   }
 ]; 
+
+export {initialPlaces};
