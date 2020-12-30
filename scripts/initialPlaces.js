@@ -27,4 +27,4 @@ const initialPlaces = [
   }
 ]; 
 
-export {initialPlaces};
+export { initialPlaces };

@@ -1,5 +1,6 @@
 import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
 import { renderElements } from "./Card.js";
+import { renderFormValidation } from "./FormValidator.js";
 
 
 /*profile section*/
