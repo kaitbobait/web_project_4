@@ -19,8 +19,11 @@ const imagesExit = document.querySelector('.popup__close-button_images');
 
 
 class Card {
-  constructor(template) {
+  constructor(data, template) {
     this._template = template;
+    this._name = data.name;
+    this._link = data.link;
+    this._alt = data.name;
   }
 
   _getTemplate() {
@@ -60,18 +63,8 @@ class Card {
     });
   }
 
-};
-
-class DefaultCard extends Card {
-  constructor(data, template) {
-    super(template);
-    this._name = data.name;
-    this._link = data.link;
-    this._alt = data.name;
-  }
-
   generateCard() {
-    this._element = super._getTemplate();
+    this._element = this._getTemplate();
 
     const placeImage = this._element.querySelector('.places__img');
     const placeName = this._element.querySelector('.places__name');
@@ -86,10 +79,10 @@ class DefaultCard extends Card {
     return this._element;
   }
 
-}
+};
 
 const renderElements = (place) => {
-  const card = new DefaultCard(place, "#place-template");
+  const card = new Card(place, "#place-template");
   const placeElement = card.generateCard();
   placesList.prepend(placeElement); 
 }
@@ -97,7 +90,7 @@ const renderElements = (place) => {
 
 const onload = () => {
   initialPlaces.forEach((place) => {
-    const card = new DefaultCard(place, "#place-template")
+    const card = new Card(place, "#place-template")
 
     const placeElement = card.generateCard();
     placesList.prepend(placeElement); 
