@@ -1,5 +1,4 @@
 import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
-import { initialPlaces } from "./initialPlaces.js";
 
 
 /* add card */
@@ -16,6 +15,33 @@ const popupImageLarge = document.querySelector('.popup_image-large');
 const popupPhoto = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__image-title');
 const imagesExit = document.querySelector('.popup__close-button_images');
+
+const initialPlaces = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  }
+]; 
 
 
 class Card {
