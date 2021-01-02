@@ -160,8 +160,6 @@ class FormValidator {
   };
 
   enableValidation(settingsObject) {
-    //const formList = Array.from(document.querySelectorAll(settingsObject.formSelector));
-    //formList.forEach((formElement) => {
 
     this.formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();

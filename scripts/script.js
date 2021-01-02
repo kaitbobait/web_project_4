@@ -106,12 +106,14 @@ placesForm.addEventListener('submit', (evt) => {
   closePopup(popupEditPlaces);
 });
 
+// creates a new instance of a Card
 const renderElements = (place) => {
   const card = new Card(place, "#place-template");
   const placeElement = card.generateCard();
   placesList.prepend(placeElement); 
 };
 
+// creates instance of a Card from an array
 const onload = () => {
   initialPlaces.forEach((place) => {
     const card = new Card(place, "#place-template")
@@ -122,9 +124,11 @@ const onload = () => {
 };
 
 
-export { renderElements, onload }; 
+
 
 closePopupFromOverlay();
+
+// allows the pre-existing cards to automatically load onload of site
 onload();
 
 /* PLACE CARD SECTION */
@@ -191,5 +195,4 @@ function createPlaceTemplate(place) {
 // initialPlaces.forEach(onload);
 
 
-
-export { initialPlaces };
+export { initialPlaces }; 
