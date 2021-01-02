@@ -1,5 +1,5 @@
 import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
-import { renderElements } from "./Card.js";
+import { Card } from "./Card.js";
 import { renderFormValidation } from "./FormValidator.js";
 
 
@@ -32,19 +32,34 @@ const popupPhoto = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__image-title');
 const imagesExit = document.querySelector('.popup__close-button_images');
 
-/* passes in a popup through the event listener to open the popup */
-// const openPopup = (popup) => {
-//     popup.classList.add('popup_open');
-//     // adds listener for ESC button
-//     document.addEventListener("keydown", closePopupWithEsc);
-// };
+const initialPlaces = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  }
+]; 
 
-// /*closes either popup box if one is open*/
-// const closePopup = (popup) => {
-//     popup.classList.remove("popup_open");
-//     // removes listener for ESC button
-//     document.removeEventListener("keydown", closePopupWithEsc);
-// };
+
 
 // when clicks, the edit popup box opens
 editButton.addEventListener('click', () => {
@@ -71,29 +86,46 @@ imagesExit.addEventListener('click', () => {
 
 });
 
-// const closePopupFromOverlay = () => {
-//   const popupList = Array.from(document.querySelectorAll(".popup"));
-//   popupList.forEach((popupElement) => {
-//     popupElement.addEventListener('click', (evt) => {
-//       if(evt.target.classList.contains('popup_open')) {
-//         closePopup(evt.target);
-//       }
-//     });
-//   });
-// };
+/* when click the save button, runs the submits the form, updates info, exits popup */
+profileForm.addEventListener('submit', (evt) => {
+  evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
+  profileName.textContent = newName.value;
+  profileTitle.textContent = newTitle.value;
+  closePopup(popupEditProfile);
+});
+
+/* when click the save button, runs the submits the form, updates info, exits popup */
+placesForm.addEventListener('submit', (evt) => {
+  evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
+  const place = {
+    name: imageTitle.value,
+    link: imageLink.value
+  }
+  // addPlace(place);
+  renderElements(place);
+  closePopup(popupEditPlaces);
+});
+
+const renderElements = (place) => {
+  const card = new Card(place, "#place-template");
+  const placeElement = card.generateCard();
+  placesList.prepend(placeElement); 
+};
+
+const onload = () => {
+  initialPlaces.forEach((place) => {
+    const card = new Card(place, "#place-template")
+
+    const placeElement = card.generateCard();
+    placesList.append(placeElement); 
+  })
+};
+
+
+export { renderElements, onload }; 
 
 closePopupFromOverlay();
-
-// document listens for use of ESC key, when popup is open, to close popup
-// const closePopupWithEsc = (evt) => {
-//   const popup = document.querySelector(".popup_open");
-//   if (evt.key === "Escape") {
-//     if(popup) {
-//       closePopup(popup);
-//     };
-//   } 
-// };
-
+onload();
 
 /* PLACE CARD SECTION */
 
@@ -158,23 +190,6 @@ function createPlaceTemplate(place) {
 /* loops through the initialPlaces array to load each place card with the addPlace function */
 // initialPlaces.forEach(onload);
 
-/* when click the save button, runs the submits the form, updates info, exits popup */
-profileForm.addEventListener('submit', (evt) => {
-  evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
-  profileName.textContent = newName.value;
-  profileTitle.textContent = newTitle.value;
-  closePopup(popupEditProfile);
-});
 
-/* when click the save button, runs the submits the form, updates info, exits popup */
-placesForm.addEventListener('submit', (evt) => {
-  evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
-  const place = {
-    name: imageTitle.value,
-    link: imageLink.value
-  }
-  // addPlace(place);
-  renderElements(place);
-  closePopup(popupEditPlaces);
-});
 
+export { initialPlaces };

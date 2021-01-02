@@ -1,47 +1,15 @@
-import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
 
+import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
+import { initialPlaces } from "./script.js";
 
 /* add card */
-const addPlaceButton = document.querySelector('.profile__add'); //add button
 const placesList = document.querySelector('.places__list'); //list of places
-const popupEditPlaces = document.querySelector('.popup_edit-places'); //popup for add place form
-const imageTitle = document.querySelector('.popup__input_text_image-title'); //input field for title
-const imageLink = document.querySelector('.popup__input_text_image'); //input field for image link
-const addPlacesExit = document.querySelector('.popup__close-button_places'); //close button
 
 /* places image popup */ 
-//need to be in here?
 const popupImageLarge = document.querySelector('.popup_image-large');
 const popupPhoto = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__image-title');
-const imagesExit = document.querySelector('.popup__close-button_images');
 
-const initialPlaces = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
-  }
-]; 
 
 
 class Card {
@@ -62,6 +30,20 @@ class Card {
   }
 
   _setEventListeners() {
+
+    this._handleLikeButton();
+    this._handleDeleteButton();
+
+    // on click on an image in the place cards, a popup of the image will appear
+    this.placeImage.addEventListener('click', () => {
+      popupPhoto.src = this.placeImage.src;
+      popupPhoto.alt = this.placeName.textContent;
+      popupTitle.textContent = this.placeName.textContent;
+      openPopup(popupImageLarge);
+    });
+  }
+
+  _handleLikeButton() {
     const heartButton = this._element.querySelector('.places__heart-button');
     // When the heart button is clicked, a new class with a "liked" heart, appears
     const likeButton = place => {
@@ -69,24 +51,25 @@ class Card {
     };
     // toggles like button when clicked
     heartButton.addEventListener('click', likeButton);
+  }
 
+  _handleDeleteButton() {
     // image popup delete button
     const deleteButton = this._element.querySelector('.places__delete-button');
 
-    // removes the selected place card 
+    //removes the selected place card 
     const deletePlace = (evt) => {
       evt.target.closest('.places__item').remove();
     };
+    // const deletePlace = (evt) => {
+    //   this._element.remove();
+    // };
+  
+  
+
 
     // deletes place card on click of delete button
     deleteButton.addEventListener('click', deletePlace);
-
-    // on click on an image in the place cards, a popup of the image will appear
-    this.placeImage.addEventListener('click', () => {
-      popupPhoto.src = this.placeImage.src;
-      popupTitle.textContent = this.placeName.textContent;
-      openPopup(popupImageLarge);
-    });
   }
 
   generateCard() {
@@ -99,6 +82,7 @@ class Card {
     
     this.placeImage.src = this._link;
     this.placeName.textContent = this._name;
+    this.placeImage.alt = this.placeName.textContent;
 
     this._setEventListeners();
 
@@ -107,22 +91,4 @@ class Card {
 
 };
 
-const renderElements = (place) => {
-  const card = new Card(place, "#place-template");
-  const placeElement = card.generateCard();
-  placesList.prepend(placeElement); 
-}
-
-
-const onload = () => {
-  initialPlaces.forEach((place) => {
-    const card = new Card(place, "#place-template")
-
-    const placeElement = card.generateCard();
-    placesList.prepend(placeElement); 
-  })
-}
-
-onload();
-
-export {renderElements}; 
+export { Card };
