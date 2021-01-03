@@ -33,6 +33,7 @@ const popupPhoto = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__image-title');
 const imagesExit = document.querySelector('.popup__close-button_images');
 
+
 const initialPlaces = [
   {
     name: "Yosemite Valley",
@@ -138,4 +139,4 @@ closePopupFromOverlay();
 onload();
 
 
-export { initialPlaces }; 
+export { initialPlaces, popupImageLarge, popupPhoto, popupTitle, placesList }; 

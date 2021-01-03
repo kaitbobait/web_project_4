@@ -1,14 +1,8 @@
 
 import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
-import { initialPlaces } from "./script.js";
+import { initialPlaces, popupImageLarge, popupPhoto, popupTitle, placesList } from "./script.js";
 
-/* add card */
-const placesList = document.querySelector('.places__list'); //list of places
 
-/* places image popup */ 
-const popupImageLarge = document.querySelector('.popup_image-large');
-const popupPhoto = document.querySelector('.popup__image');
-const popupTitle = document.querySelector('.popup__image-title');
 
 
 
