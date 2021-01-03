@@ -74,6 +74,8 @@ profileExit.addEventListener('click', () => {
 // when clicks, the popup box opens 
 addPlaceButton.addEventListener('click', () => {
   openPopup(popupEditPlaces);
+  imageLink.value = "";
+  imageTitle.value = "";
 });
 // when clicks, the add places popup box closes
 addPlacesExit.addEventListener('click', () => {
