@@ -6,7 +6,8 @@ const settingsObject = {
   inputSelector: ".popup__input",
   submitButton: ".popup__save-button",
   inactiveButtonClass: "popup__save-button_disabled",
-  inputErrorClass: "popup__input-error"
+  inputErrorClass: "popup__input-error",
+  inputBorderError: "popup__input-error_color"
 };
 
 
@@ -17,13 +18,14 @@ class FormValidator {
     this._submitButton = settingsObject.submitButton;
     this._inactiveButtonClass = settingsObject.inactiveButtonClass;
     this._inputErrorClass = settingsObject.inputErrorClass;
+    this._inputBorderError = settingsObject.inputBorderError;
     this.formElement = formElement;
   }
 
   // displays the error message by adding the input error message class
   _showInputError(inputElement, errorMessage) {
     const errorElement = this.formElement.querySelector(`#${inputElement.id}-error`);
-
+    inputElement.classList.add(this._inputBorderError);
     // make the validation message the error message
     errorElement.textContent = errorMessage;
 
@@ -32,7 +34,7 @@ class FormValidator {
   // hides the error message by removing the input error message class
   _hideInputError(inputElement) {
     const errorElement = this.formElement.querySelector(`#${inputElement.id}-error`);
-
+    inputElement.classList.remove(this._inputBorderError);
     //remove error classList to input element
     errorElement.textContent = "";
   };

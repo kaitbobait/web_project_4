@@ -11,6 +11,7 @@
 @import url('__image-title/popup__image-title.css');
 @import url('__save-button_disabled/popup__save-button_disabled.css');
 @import url('__input-error/popup__input-error.css');
+@import url('__input-error_color/popup__input-error_color.css');
 
 
 .popup {
@@ -29,7 +30,6 @@
   visibility: hidden;
   transition: opacity .3s, visibility .3s ease;
 }
-
 
 
 
