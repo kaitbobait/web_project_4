@@ -138,5 +138,7 @@ closePopupFromOverlay();
 // allows the pre-existing cards to automatically load onload of site
 onload();
 
+renderFormValidation();
+
 
 export { initialPlaces, popupImageLarge, popupPhoto, popupTitle, placesList }; 

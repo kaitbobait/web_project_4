@@ -96,6 +96,12 @@ class FormValidator {
 
 };
 
+/*
+* creates an array from all forms in document
+* creates a new instance of FormValidator for each form
+* calls enableValidation on new instance to start the validation process
+
+*/
 const renderFormValidation = () => {
 
   const formList = Array.from(document.querySelectorAll(settingsObject.formSelector));
@@ -105,6 +111,6 @@ const renderFormValidation = () => {
   });
 };
 
-renderFormValidation();
+
 
 export { renderFormValidation };
