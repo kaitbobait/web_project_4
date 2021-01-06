@@ -27,8 +27,12 @@ class Card {
 
     this._handleLikeButton();
     this._handleDeleteButton();
+    this._handlePicturePopup();
+    
+  }
 
-    // on click on an image in the place cards, a popup of the image will appear
+  // on click on an image in the place cards, a popup of the image will appear
+  _handlePicturePopup() {
     this.placeImage.addEventListener('click', () => {
       popupPhoto.src = this.placeImage.src;
       popupPhoto.alt = this.placeName.textContent;
