@@ -1,6 +1,6 @@
-import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
+import { settingsObject, openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
 import { Card } from "./Card.js";
-import { renderFormValidation } from "./FormValidator.js";
+import { FormValidator } from "./FormValidator.js";
 
 
 /*profile section*/
@@ -109,9 +109,11 @@ placesForm.addEventListener('submit', (evt) => {
   closePopup(popupEditPlaces);
 });
 
+// reset form, may delete, created in PopupWithForm class
 const resetForm = (form) => {
   form.reset();
 }
+
 
 // creates a new instance of a Card
 const renderElements = (place) => {
@@ -130,13 +132,24 @@ const onload = () => {
   })
 };
 
-
-
-
 closePopupFromOverlay();
 
 // allows the pre-existing cards to automatically load onload of site
 onload();
+
+/**
+ * creates an array of new forms
+ * for each form, an instance of FormValidator is created
+ * calls function to begin validation
+ */
+const renderFormValidation = () => {
+
+  const formList = Array.from(document.querySelectorAll(settingsObject.formSelector));
+  formList.forEach((formElement) => {
+    const formValidator = new FormValidator(settingsObject, formElement);
+    formValidator.enableValidation(settingsObject);
+  });
+};
 
 renderFormValidation();
 

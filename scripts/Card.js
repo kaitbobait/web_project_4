@@ -7,11 +7,12 @@ import { initialPlaces, popupImageLarge, popupPhoto, popupTitle, placesList } fr
 
 
 class Card {
-  constructor(data, template) {
+  constructor(data, template, handleCardClick) {
     this._template = template;
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -32,6 +33,7 @@ class Card {
   }
 
   // on click on an image in the place cards, a popup of the image will appear
+  //moving to PopupWithImage class
   _handlePicturePopup() {
     this.placeImage.addEventListener('click', () => {
       popupPhoto.src = this.placeImage.src;
@@ -73,7 +75,7 @@ class Card {
   generateCard() {
     this._element = this._getTemplate();
 
-    const placeImage = this._element.querySelector('.places__img');
+    const placeImage = this._element.querySelector('.places__img'); //move to popupwithimage class
     const placeName = this._element.querySelector('.places__name');
     this.placeImage = placeImage;
     this.placeName = placeName;

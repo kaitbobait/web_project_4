@@ -1,0 +1,21 @@
+{
+  "name": "web_project_4-MASTER",
+  "version": "1.0.0",
+  "description": "* This is a site that you'll be able to edit your name and occupation. You will be able to add images and titles do the site, as well like \"like\" any photo.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaitbobait/web_project_4.git"
+  },
+  "keywords": [],
+  "author": "Kaitlyn Hiller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaitbobait/web_project_4/issues"
+  },
+  "homepage": "https://github.com/kaitbobait/web_project_4#readme",
+  "dependencies": {}
+}

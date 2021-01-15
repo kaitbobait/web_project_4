@@ -34,25 +34,98 @@ Have fun with JavaScript!
 
 ### To Do List:
 
-## Create Card Class
+## Create Section Class
 
-**takes a text and image link**
-* takes card data (text and link), and a template selector as parameter
-* has private methods for working with markup and adding event listeners.
-* has private methods for each event handler.
-* It has one public method that returns a fully functional card element populated with data.
+** Renders a list of elements on a page according
 
-## Create FormValidator Class
+** (DONE)first parameter: object with 2 properties (items, renderer)
+* items property is an array of data which needs to be added on a page when initializing the class
+* renderer property is a function responsible for creating and rendering data on a page
 
-**sets settings for validating form fields according to the following reqs**
+** (DONE)second parameter: CSS class selector where you'll add the card elements
 
-**constructor:**
-* 1. settings object that stores selectors and form classes
-* 2. takes a form element to be validated
+** stores a public method that renders all elements on the page.
+* The renderer() function will render each element on a page
 
-* has private methods for processing the form, which include: checking the field's validity, changing the state of the Submit button, and adding all the needed handlers.
-* It has one public method enableValidation(), which enables form validation.
-* Create an instance of the FormValidator class for each form that should be validated
+** Stores a public method called addItem() that takes a DOM element and adds it to the container
+* does not contain any markup. 
+* receives markup through the callback function and inserts it in the container
+
+## Create Popup Class
+
+**Create Popup class that opens and closes the popup window, as per the following requirements**
+** (DONE)Constructor has 1 parameter: the popup selector
+
+** (DONE)Stores the public methods that will open and close the popup:
+* (DONE)open() 
+* (DONE)close() 
+
+** stores the private method that stores teh logic for closing the popup by pressing the Esc key:
+* (DONE)_handleEscClose()
+
+** stores a public method that adds a click event listener to the close icon of the popup
+* (DONE)setEventListeners()
+
+## Create PopupWithImage Class
+
+** Create the PopupWithImage class as a child of Popup
+* this class has to change the parent open() method.
+
+** The open() method with the PopupWithImage class, you need to add:
+* an image to the popup
+* the corresponding image src attribute 
+* caption for the image
+
+## Create the PopupWithForm Class
+
+** Create this class as a child class of Popup
+
+** Constructor: 
+* Takes a callback of the form submission
+* The popup selector
+
+** Stores a private Methode named _getInputValues()
+* collects data from all the input fields
+
+** Modifies the setEventListeners() parent method
+
+** The setEventListeners() method of the PopupWithForm class has to:
+* add the click event listener to the close icon
+* add the submit event handler
+
+** Modifies the close() parent method in order to reset the form once the popup is closed
+
+** Create an instance of the PopupWithForm class for EACH popup
+
+## Create UserInfo Class
+
+** This class is responsible for rendering information about the user on the page
+
+** Takes an object with the selectors of 2 elements into the constructor:
+* 1. containing the user's name
+* 2. containing the user's job
+
+** Stores a public method named getUserInfo()
+* returns an object with information about the user
+* This method will be handy for cases when it's necessary to display the user data in the open form
+
+** Stores a public method named setUserInfo() 
+* takes a new suer data and adds it on the page
+
+## Transforming the Card Class
+
+** Connect the Card class to the popup
+
+** (DONE) Make Card take the handleCardClick() function into the constructor
+
+** When user clicks on the card, this function will open the popup with an image
+
+## Create the .gitignore File
+
+## Set up Webpack and Bundle and Build
+
+
+
 
 
 

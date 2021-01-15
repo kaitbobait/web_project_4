@@ -1,14 +1,5 @@
 
-import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
-
-const settingsObject = {
-  formSelector: ".form",
-  inputSelector: ".popup__input",
-  submitButton: ".popup__save-button",
-  inactiveButtonClass: "popup__save-button_disabled",
-  inputErrorClass: "popup__input-error",
-  inputBorderError: "popup__input-error_color"
-};
+import { settingsObject, openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
 
 
 class FormValidator {
@@ -96,21 +87,5 @@ class FormValidator {
 
 };
 
-/*
-* creates an array from all forms in document
-* creates a new instance of FormValidator for each form
-* calls enableValidation on new instance to start the validation process
 
-*/
-const renderFormValidation = () => {
-
-  const formList = Array.from(document.querySelectorAll(settingsObject.formSelector));
-  formList.forEach((formElement) => {
-    const formValidator = new FormValidator(settingsObject, formElement);
-    formValidator.enableValidation(settingsObject);
-  });
-};
-
-
-
-export { renderFormValidation };
+export { FormValidator };

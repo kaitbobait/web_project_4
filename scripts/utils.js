@@ -1,4 +1,14 @@
 
+const settingsObject = {
+  formSelector: ".form",
+  inputSelector: ".popup__input",
+  submitButton: ".popup__save-button",
+  inactiveButtonClass: "popup__save-button_disabled",
+  inputErrorClass: "popup__input-error",
+  inputBorderError: "popup__input-error_color"
+};
+
+
 const closePopupWithEsc = (evt) => {
   const popup = document.querySelector(".popup_open");
   if (evt.key === "Escape") {
@@ -35,4 +45,4 @@ const closePopup = (popup) => {
 
 
 
-export { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay};
+export { settingsObject, openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay};
