@@ -1,15 +1,25 @@
-
+import Popup from './Popup.js';
 import { popupPhoto, popupTitle } from "./script.js";
 
+
+/**
+ * Opens a popup of the selected Card Image
+ * in Open(), uses the src and caption arguments to populate Card Image
+ */
 class PopupWithImage extends Popup {
-  constructor(poupSelector) {
+  constructor(popupSelector) {
     super(popupSelector);
   }
 
-  open() {
-    const placeImage = this_popup.querySelector('.places__img'); //likely will not work
-    popupPhoto.src = this.placeImage.src;
-    popupPhoto.alt = this.placeName.textContent;
-    popupTitle.textContent = this.placeName.textContent;
+  open(newSrc, newCaption) {
+    super.open();
+
+    const popupPhoto = this._popup.querySelector('.popup__image');
+    const popupTitle = this._popup.querySelector('.popup__image-title')
+    
+    popupPhoto.src = newSrc;
+    popupTitle.textContent = newCaption;
   }
 }
+
+export default PopupWithImage;

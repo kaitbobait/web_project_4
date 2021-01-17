@@ -7,11 +7,13 @@ import { initialPlaces, popupImageLarge, popupPhoto, popupTitle, placesList } fr
 
 
 class Card {
-  constructor(data, template, handleCardClick) {
+  constructor({data, handleCardClick}, template) {
     this._template = template;
+
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name;
+
     this._handleCardClick = handleCardClick;
   }
 
@@ -28,15 +30,18 @@ class Card {
 
     this._handleLikeButton();
     this._handleDeleteButton();
-    this._handlePicturePopup();
+    //this._handlePicturePopup();
+    this._handleCardClick(this._link, this._name);
     
   }
-
+  
   // on click on an image in the place cards, a popup of the image will appear
-  //moving to PopupWithImage class
-  _handlePicturePopup() {
-    this.placeImage.addEventListener('click', () => {
-      popupPhoto.src = this.placeImage.src;
+  // will be replaced with PopupWithImage class
+  // will instead use _handleCardClick
+  _handleCardClick() {
+    const popupPhoto = this._element.querySelector('.popup__image');
+    popupPhoto.addEventListener('click', () => {
+      popupPhoto.src = this.imageLink.src;
       popupPhoto.alt = this.placeName.textContent;
       popupTitle.textContent = this.placeName.textContent;
       openPopup(popupImageLarge);
@@ -61,12 +66,6 @@ class Card {
     const deletePlace = (evt) => {
       evt.target.closest('.places__item').remove();
     };
-    // const deletePlace = (evt) => {
-    //   this._element.remove();
-    // };
-  
-  
-
 
     // deletes place card on click of delete button
     deleteButton.addEventListener('click', deletePlace);
@@ -91,4 +90,4 @@ class Card {
 
 };
 
-export { Card };
+export default Card;

@@ -1,6 +1,10 @@
 import { settingsObject, openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import Popup from './Popup.js'; 
+import PopupWithForm from './PopupWithForm.js';
+import PopupWithImage from "./PopupWithImage.js";
+import Section from "./Section.js";
 
 
 /*profile section*/
@@ -61,6 +65,62 @@ const initialPlaces = [
   }
 ]; 
 
+/* POPUP SECTION */
+
+const createCard = (item) => {
+  const card = new Card({
+    data: item, 
+    handleCardClick: (name, link) => {
+      imagePopup.open(name, link)
+    }
+  }, "#place-template");
+  const placeElement = card.generateCard();
+  return placeElement;
+}
+
+// const addPlacesPopup = new PopupWithForm('.popup_edit-places', () => {
+//   const card = new Card({
+
+//   });
+  
+// })
+
+// const editProfilePopup = new PopupWithForm('.popup_edit-profile', () => {
+
+// })
+
+const imagePopup = new PopupWithImage('.popup_image-large');
+
+//incomplete
+const createNewPopup = () => {
+  const popupList = Array.from(document.querySelectorAll('.popup'));
+  // const popup = 
+
+}
+
+// replace onload
+const initialCardsList = new Section({
+  items: initialPlaces,
+  renderer:(item) => {
+    const placeElement = createCard(item);
+
+      initialCardsList.addItem(placeElement);//why does this work? callback?
+  }
+},
+  ".places__list");
+
+initialCardsList.renderItems();
+
+// creates instance of a Card from an array
+// const onload = () => {
+//   initialPlaces.forEach((place) => {
+//     const card = new Card(place, "#place-template")
+
+//     const placeElement = card.generateCard();
+//     placesList.append(placeElement); 
+//   })
+// };
+
 
 
 // when clicks, the edit popup box opens
@@ -114,28 +174,31 @@ const resetForm = (form) => {
   form.reset();
 }
 
-
+//recreated
 // creates a new instance of a Card
-const renderElements = (place) => {
-  const card = new Card(place, "#place-template");
-  const placeElement = card.generateCard();
-  placesList.prepend(placeElement); 
-};
+// const renderElements = (place) => {
+//   const card = new Card(place, "#place-template", (link, name) => {
+//     imagePopup.open(link, name);
+//   });
+//   const placeElement = card.generateCard();
+//   placesList.prepend(placeElement); 
+// };
 
+// recreated
 // creates instance of a Card from an array
-const onload = () => {
-  initialPlaces.forEach((place) => {
-    const card = new Card(place, "#place-template")
+// const onload = () => {
+//   initialPlaces.forEach((place) => {
+//     const card = new Card(place, "#place-template")
 
-    const placeElement = card.generateCard();
-    placesList.append(placeElement); 
-  })
-};
+//     const placeElement = card.generateCard();
+//     placesList.append(placeElement); 
+//   })
+// };
 
 closePopupFromOverlay();
 
 // allows the pre-existing cards to automatically load onload of site
-onload();
+
 
 /**
  * creates an array of new forms
@@ -154,4 +217,7 @@ const renderFormValidation = () => {
 renderFormValidation();
 
 
-export { initialPlaces, popupImageLarge, popupPhoto, popupTitle, placesList }; 
+
+
+
+export { initialPlaces, popupImageLarge, popupPhoto, popupTitle, placesList, placesForm, imageLink }; 
