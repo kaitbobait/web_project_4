@@ -1,4 +1,4 @@
-import { settingsObject, openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
+import { initialPlaces, settingsObject, openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import Popup from './Popup.js'; 
@@ -38,45 +38,48 @@ const popupTitle = document.querySelector('.popup__image-title');
 const imagesExit = document.querySelector('.popup__close-button_images');
 
 
-const initialPlaces = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
-  }
-]; 
-
-/* POPUP SECTION */
-
+/** 
+ * create a new instance of Card
+ * call imagePopup on click, which opens and popuplates the popup Image
+ * template: clones the template
+ * generates a card from the template
+ * returns new Card element
+*/
 const createCard = (item) => {
   const card = new Card({
     data: item, 
     handleCardClick: (name, link) => {
       imagePopup.open(name, link)
-    }
-  }, "#place-template");
+  }, 
+  template: "#place-template"});
   const placeElement = card.generateCard();
   return placeElement;
 }
+
+/**
+ * creates a new instance of Section
+ * takes in an array of items
+ * take in each item in array and creates a card instance
+ * adds each item 
+ */
+const initialCardsList = new Section({
+  items: initialPlaces,
+  renderer:(item) => {
+    const placeElement = createCard(item);
+
+      initialCardsList.addItem(placeElement);//why does this work? callback?
+  }
+},
+  ".places__list");
+
+// initializes the initialPlaces array to be rendered
+initialCardsList.renderItems();
+
+/**
+ * creates an instance of PopupWithImage
+ * takes in the large image class in the template
+ */
+const imagePopup = new PopupWithImage('.popup_image-large');
 
 // const addPlacesPopup = new PopupWithForm('.popup_edit-places', () => {
 //   const card = new Card({
@@ -89,7 +92,7 @@ const createCard = (item) => {
 
 // })
 
-const imagePopup = new PopupWithImage('.popup_image-large');
+
 
 //incomplete
 const createNewPopup = () => {
@@ -98,18 +101,8 @@ const createNewPopup = () => {
 
 }
 
-// replace onload
-const initialCardsList = new Section({
-  items: initialPlaces,
-  renderer:(item) => {
-    const placeElement = createCard(item);
 
-      initialCardsList.addItem(placeElement);//why does this work? callback?
-  }
-},
-  ".places__list");
 
-initialCardsList.renderItems();
 
 // creates instance of a Card from an array
 // const onload = () => {

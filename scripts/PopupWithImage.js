@@ -11,7 +11,7 @@ class PopupWithImage extends Popup {
     super(popupSelector);
   }
 
-  open(newSrc, newCaption) {
+  open(newCaption, newSrc) {
     super.open();
 
     const popupPhoto = this._popup.querySelector('.popup__image');
@@ -19,6 +19,7 @@ class PopupWithImage extends Popup {
     
     popupPhoto.src = newSrc;
     popupTitle.textContent = newCaption;
+    console.log(popupTitle.textContent);
   }
 }
 

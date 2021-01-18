@@ -7,7 +7,7 @@ import { initialPlaces, popupImageLarge, popupPhoto, popupTitle, placesList } fr
 
 
 class Card {
-  constructor({data, handleCardClick}, template) {
+  constructor({data, handleCardClick, template}) {
     this._template = template;
 
     this._name = data.name;
@@ -31,21 +31,10 @@ class Card {
     this._handleLikeButton();
     this._handleDeleteButton();
     //this._handlePicturePopup();
-    this._handleCardClick(this._link, this._name);
+    this.placeImage.addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link);
+    })
     
-  }
-  
-  // on click on an image in the place cards, a popup of the image will appear
-  // will be replaced with PopupWithImage class
-  // will instead use _handleCardClick
-  _handleCardClick() {
-    const popupPhoto = this._element.querySelector('.popup__image');
-    popupPhoto.addEventListener('click', () => {
-      popupPhoto.src = this.imageLink.src;
-      popupPhoto.alt = this.placeName.textContent;
-      popupTitle.textContent = this.placeName.textContent;
-      openPopup(popupImageLarge);
-    });
   }
 
   _handleLikeButton() {

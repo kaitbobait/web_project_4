@@ -21,8 +21,8 @@ class Popup {
   open() {
     this._popup.classList.add('popup_open');
     // adds listener for ESC button
-    document.addEventListener("keydown", () => {
-      this._handleEscClose();
+    document.addEventListener("keydown", (evt) => {
+      this._handleEscClose(evt);
     });
   }
 
