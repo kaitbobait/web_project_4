@@ -56,7 +56,7 @@ class Card {
   generateCard() {
     this._element = this._getTemplate();
 
-    const placeImage = this._element.querySelector('.places__img'); //move to popupwithimage class
+    const placeImage = this._element.querySelector('.places__img');
     const placeName = this._element.querySelector('.places__name');
     this.placeImage = placeImage;
     this.placeName = placeName;

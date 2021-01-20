@@ -22,7 +22,7 @@ class Section {
 
   // takes a DOM element and adds to a container
   addItem(element) {
-    this._cardElement.append(element);
+    this._cardElement.prepend(element);
   }
 }
 

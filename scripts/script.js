@@ -114,7 +114,7 @@ const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
 
 })
 
-addPlacesPopup.setEventListeners();
+  addPlacesPopup.setEventListeners();
 
 // creates instance of a Card from an array
 // const onload = () => {
@@ -167,17 +167,17 @@ profileForm.addEventListener('submit', (evt) => {
 });
 
 /* when click the save button, runs the submits the form, updates info, exits popup */
-placesForm.addEventListener('submit', (evt) => {
-  evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
-  const place = {
-    name: imageTitle.value,
-    link: imageLink.value
-  }
+// placesForm.addEventListener('submit', (evt) => {
+//   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
+//   const place = {
+//     name: imageTitle.value,
+//     link: imageLink.value
+//   }
   
-  const newCard = createCard(place);
-  newSection.addItem(newCard);
-  // closePopup(popupEditPlaces);
-});
+//   const newCard = createCard(place);
+//   newSection.addItem(newCard);
+//   // closePopup(popupEditPlaces);
+// });
 
 // reset form, may delete, created in PopupWithForm class
 const resetForm = (form) => {
