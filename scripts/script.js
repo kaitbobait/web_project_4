@@ -109,8 +109,8 @@ const editProfilePopup = new PopupWithForm('.popup_edit-profile', (values) => {
 editProfilePopup.setEventListeners();
 
 const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
-  createCard(data);
-
+  const newCard = createCard(data);
+  newSection.addItem(newCard);
 
 })
 
@@ -174,8 +174,9 @@ placesForm.addEventListener('submit', (evt) => {
     link: imageLink.value
   }
   
-  renderElements(place);
-  closePopup(popupEditPlaces);
+  const newCard = createCard(place);
+  newSection.addItem(newCard);
+  // closePopup(popupEditPlaces);
 });
 
 // reset form, may delete, created in PopupWithForm class
