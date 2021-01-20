@@ -1,13 +1,6 @@
 
-import { openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
-import { initialPlaces, popupImageLarge, popupPhoto, popupTitle, placesList } from "./script.js";
-
-
-
-
-
 class Card {
-  constructor({data, handleCardClick, template}) {
+  constructor({data, handleCardClick, template} ) {
     this._template = template;
 
     this._name = data.name;

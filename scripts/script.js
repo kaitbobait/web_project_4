@@ -5,6 +5,7 @@ import Popup from './Popup.js';
 import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from "./PopupWithImage.js";
 import Section from "./Section.js";
+import UserInfo from "./UserInfo.js";
 
 
 /*profile section*/
@@ -57,52 +58,63 @@ const createCard = (item) => {
 }
 
 /**
- * creates a new instance of Section
- * takes in an array of items
- * take in each item in array and creates a card instance
- * adds each item 
- */
-const initialCardsList = new Section({
-  items: initialPlaces,
-  renderer:(item) => {
-    const placeElement = createCard(item);
-
-      initialCardsList.addItem(placeElement);//why does this work? callback?
-  }
-},
-  ".places__list");
-
-// initializes the initialPlaces array to be rendered
-initialCardsList.renderItems();
-
-/**
  * creates an instance of PopupWithImage
  * takes in the large image class in the template
  */
 const imagePopup = new PopupWithImage('.popup_image-large');
 
-// const addPlacesPopup = new PopupWithForm('.popup_edit-places', () => {
-//   const card = new Card({
+/**
+ * Creates a new instance of UserInfo
+ * Takes in the classes of the profile section that display "content"
+ */
+const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.profile__title'});
 
-//   });
-  
-// })
+const newSection = new Section({
+  items: initialPlaces,
+  renderer:(item) => {
+    const placeElement = createCard(item);
+    newSection.addItem(placeElement);
+  }
+},
+  ".places__list");
+  newSection.renderItems();
 
-// const editProfilePopup = new PopupWithForm('.popup_edit-profile', () => {
+/**
+ * creates a new instance of Section
+ * takes in an array of items
+ * take in each item in array and creates a card instance
+ * adds each item 
+ */
+// const initialCardsList = new Section({
+//   items: initialPlaces,
+//   renderer:(item) => {
+//     const placeElement = createCard(item);
 
-// })
+//       initialCardsList.addItem(placeElement);
+//   }
+// },
+//   ".places__list");
+
+// newSection.renderItems();
+
+// initializes the initialPlaces array to be rendered
+// initialCardsList.renderItems();
 
 
 
-//incomplete
-const createNewPopup = () => {
-  const popupList = Array.from(document.querySelectorAll('.popup'));
-  // const popup = 
+const editProfilePopup = new PopupWithForm('.popup_edit-profile', (values) => {
+  newUserInfo.setUserInfo(values);
+});
 
-}
+editProfilePopup.setEventListeners();
+
+const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
+  createCard(data);
 
 
+})
 
+addPlacesPopup.setEventListeners();
 
 // creates instance of a Card from an array
 // const onload = () => {
@@ -143,10 +155,14 @@ imagesExit.addEventListener('click', () => {
 });
 
 /* when click the save button, runs the submits the form, updates info, exits popup */
+// profileForm.addEventListener('submit', (evt) => {
+//   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
+//   profileName.textContent = newName.value;
+//   profileTitle.textContent = newTitle.value;
+//   closePopup(popupEditProfile);
+// });
 profileForm.addEventListener('submit', (evt) => {
   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
-  profileName.textContent = newName.value;
-  profileTitle.textContent = newTitle.value;
   closePopup(popupEditProfile);
 });
 
@@ -157,7 +173,7 @@ placesForm.addEventListener('submit', (evt) => {
     name: imageTitle.value,
     link: imageLink.value
   }
-  // addPlace(place);
+  
   renderElements(place);
   closePopup(popupEditPlaces);
 });
