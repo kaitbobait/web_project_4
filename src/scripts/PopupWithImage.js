@@ -18,7 +18,6 @@ class PopupWithImage extends Popup {
     
     popupPhoto.src = newSrc;
     popupTitle.textContent = newCaption;
-    console.log(popupTitle.textContent);
   }
 }
 
