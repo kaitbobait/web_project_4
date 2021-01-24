@@ -36,41 +36,30 @@ const initialPlaces = [
   }
 ]; 
 
+const imagesExit = document.querySelector('.popup__close-button_images');
+const placesForm = document.querySelector('.popup__form-places');
+const popup = document.querySelector('.popup'); /*popup has display: none*/
+const newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
+const newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
+const addPlacesExit = document.querySelector('.popup__close-button_places'); //close button
+const addPlaceButton = document.querySelector('.profile__add'); //add button
 
-const closePopupWithEsc = (evt) => {
-  const popup = document.querySelector(".popup_open");
-  if (evt.key === "Escape") {
-    if(popup) {
-      closePopup(popup);
-    };
-  } 
-};
+/*profile section*/
+const editButton = document.querySelector('.profile__edit'); //edit profile button
+const profileName = document.querySelector('.profile__name'); //profile name
+const profileTitle = document.querySelector('.profile__title'); //profile description
+const profileExit = document.querySelector('.popup__close-button_profile'); //close button
 
-const closePopupFromOverlay = () => {
-  const popupList = Array.from(document.querySelectorAll(".popup"));
-  popupList.forEach((popupElement) => {
-    popupElement.addEventListener('click', (evt) => {
-      if(evt.target.classList.contains('popup_open')) {
-        closePopup(evt.target);
-      }
-    });
-  });
-};
-
-/* passes in a popup through the event listener to open the popup */
-const openPopup = (popup) => {
-  popup.classList.add('popup_open');
-  // adds listener for ESC button
-  document.addEventListener("keydown", closePopupWithEsc);
-};
-
-/*closes either popup box if one is open*/
-const closePopup = (popup) => {
-  popup.classList.remove("popup_open");
-  // removes listener for ESC button
-  document.removeEventListener("keydown", closePopupWithEsc);
-};
+// const closePopupFromOverlay = () => {
+//   const popupList = Array.from(document.querySelectorAll(".popup"));
+//   popupList.forEach((popupElement) => {
+//     popupElement.addEventListener('click', (evt) => {
+//       if(evt.target.classList.contains('popup_open')) {
+//         closePopup(evt.target);
+//       }
+//     });
+//   });
+// };
 
 
-
-export { initialPlaces, settingsObject, openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay};
+export { initialPlaces, settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit };

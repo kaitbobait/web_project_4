@@ -1,7 +1,4 @@
 
-import { settingsObject, openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
-
-
 class FormValidator {
   constructor(settingsObject, formElement) {
     this.settingsObj = settingsObject;

@@ -1,5 +1,4 @@
 import Popup from './Popup.js';
-import { popupPhoto, popupTitle } from "./script.js";
 
 
 /**

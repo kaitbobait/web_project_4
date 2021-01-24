@@ -16,6 +16,12 @@ class Popup {
           this.close();
         };
       } 
+  
+  handleCloseOverlay() {
+    if(this._popup.classList.contains('popup_open')) {
+      this.close();
+    }
+  }
 
   // opens popup
   open() {
@@ -40,7 +46,13 @@ class Popup {
     closeButton.addEventListener('click', () => {
       this.close();
     });
+
+    // const popupOverlay = this._popup.querySelector(".popup");
+    // popupOverlay.addEventListener('click', () => {
+    //   this.handleCloseOverlay();
+    // })
   }
+
 }
 
 export default Popup;

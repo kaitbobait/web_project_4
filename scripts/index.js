@@ -1,4 +1,6 @@
-import { initialPlaces, settingsObject, openPopup, closePopup, closePopupWithEsc, closePopupFromOverlay } from "./utils.js";
+import 
+  { initialPlaces, settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit }
+from "./utils.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import Popup from './Popup.js'; 
@@ -6,38 +8,6 @@ import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from "./PopupWithImage.js";
 import Section from "./Section.js";
 import UserInfo from "./UserInfo.js";
-
-
-/*profile section*/
-const editButton = document.querySelector('.profile__edit'); //edit profile button
-const popupEditProfile = document.querySelector('.popup_edit-profile'); //edit profile popup
-const profileName = document.querySelector('.profile__name'); //profile name
-const profileTitle = document.querySelector('.profile__title'); //profile description
-const profileExit = document.querySelector('.popup__close-button_profile'); //close button
-
-/* add card */
-const addPlaceButton = document.querySelector('.profile__add'); //add button
-const placesList = document.querySelector('.places__list'); //list of places
-const popupEditPlaces = document.querySelector('.popup_edit-places'); //popup for add place form
-const imageTitle = document.querySelector('.popup__input_text_image-title'); //input field for title
-const imageLink = document.querySelector('.popup__input_text_image'); //input field for image link
-const addPlacesExit = document.querySelector('.popup__close-button_places'); //close button
-
-/* form section */
-const popup = document.querySelector('.popup'); /*popup has display: none*/
-const newName = document.querySelector('.popup__input_text_name'); /*name written in the name input */
-const newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
-const saveButton = document.querySelectorAll('.popup__save-button'); /* save button */
-const placesForm = document.querySelector('.popup__form-places');
-const profileForm = document.querySelector('.popup__form-profile');
-const form = document.querySelector('.form');
-
-/* places image popup */
-const popupImageLarge = document.querySelector('.popup_image-large');
-const popupPhoto = document.querySelector('.popup__image');
-const popupTitle = document.querySelector('.popup__image-title');
-const imagesExit = document.querySelector('.popup__close-button_images');
-
 
 /** 
  * create a new instance of Card
@@ -114,57 +84,36 @@ const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
 
 })
 
-  addPlacesPopup.setEventListeners();
-
-// creates instance of a Card from an array
-// const onload = () => {
-//   initialPlaces.forEach((place) => {
-//     const card = new Card(place, "#place-template")
-
-//     const placeElement = card.generateCard();
-//     placesList.append(placeElement); 
-//   })
-// };
-
+addPlacesPopup.setEventListeners();
 
 
 // when clicks, the edit popup box opens
 editButton.addEventListener('click', () => {
   newName.value = profileName.textContent;
   newTitle.value = profileTitle.textContent;
-  openPopup(popupEditProfile);
+  editProfilePopup.open();
+  
 });
 // when clicks, the edit popup box closes
 profileExit.addEventListener('click', () => {
-  closePopup(popupEditProfile);
+  editProfilePopup.close();
 });
 // when clicks, the popup box opens 
 addPlaceButton.addEventListener('click', () => {
-  openPopup(popupEditPlaces);
+  addPlacesPopup.open();
   resetForm(placesForm);
+  
 });
 // when clicks, the add places popup box closes
 addPlacesExit.addEventListener('click', () => {
-  closePopup(popupEditPlaces);
+  addPlacesPopup.close();
 });
 
 // on click of close button, the popup image will disappear
 imagesExit.addEventListener('click', () => {
-  closePopup(popupImageLarge);
-
+  imagePopup.close();
 });
 
-/* when click the save button, runs the submits the form, updates info, exits popup */
-// profileForm.addEventListener('submit', (evt) => {
-//   evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
-//   profileName.textContent = newName.value;
-//   profileTitle.textContent = newTitle.value;
-//   closePopup(popupEditProfile);
-// });
-profileForm.addEventListener('submit', (evt) => {
-  evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
-  closePopup(popupEditProfile);
-});
 
 /* when click the save button, runs the submits the form, updates info, exits popup */
 // placesForm.addEventListener('submit', (evt) => {
@@ -205,8 +154,6 @@ const resetForm = (form) => {
 //   })
 // };
 
-closePopupFromOverlay();
-
 // allows the pre-existing cards to automatically load onload of site
 
 
@@ -228,6 +175,3 @@ renderFormValidation();
 
 
 
-
-
-export { initialPlaces, popupImageLarge, popupPhoto, popupTitle, placesList, placesForm, imageLink }; 
