@@ -1,3 +1,4 @@
+import "../pages/index.css";
 import 
   { initialPlaces, settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit }
 from "./utils.js";
