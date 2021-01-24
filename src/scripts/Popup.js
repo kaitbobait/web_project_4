@@ -47,10 +47,11 @@ class Popup {
       this.close();
     });
 
-    // const popupOverlay = this._popup.querySelector(".popup");
-    // popupOverlay.addEventListener('click', () => {
-    //   this.handleCloseOverlay();
-    // })
+    this._popup.addEventListener('click', (evt) => {
+      if(evt.target.classList.contains("popup")){
+        this.handleCloseOverlay();
+      }
+    })
   }
 
 }
