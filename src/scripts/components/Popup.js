@@ -8,7 +8,8 @@
 class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
-    this._handleEscClose =  this._handleEscClose.bind(this)
+    this._handleEscClose =  this._handleEscClose.bind(this);
+    this.handleCloseOverlay = this.handleCloseOverlay.bind(this);
   }
 
   // closes popup by pressing Esc key
@@ -30,11 +31,7 @@ class Popup {
     // adds listener for ESC button
     document.addEventListener("keydown", this._handleEscClose);
 
-    this._popup.addEventListener('click', (evt) => {
-      if(evt.target.classList.contains("popup")){
-        this.handleCloseOverlay();
-      }
-    })  
+    this._popup.addEventListener('click', this.handleCloseOverlay);
   }
 
   // closes popup
@@ -43,11 +40,7 @@ class Popup {
     // removes listener for ESC button
     document.removeEventListener("keydown", this._handleEscClose);
 
-    this._popup.removeEventListener('click', (evt) => {
-      if(evt.target.classList.contains("popup")){
-        this.handleCloseOverlay();
-      }
-    })  
+    this._popup.removeEventListener('click', this.handleCloseOverlay); 
   }
 
   setEventListeners() {
