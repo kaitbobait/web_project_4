@@ -14,10 +14,10 @@ module.exports = {
   },
   mode: "development",
   devServer: {
-    contentBase: path.resolve(__dirname, "./dist"),
-    compress: true,
-    port: 8080,
-    open: true
+    contentBase: path.resolve(__dirname, "./dist"), // tells the server where to serve content from in dev mode
+    compress: true, // speeds up file loading in development mode
+    port: 8080, 
+    open: true // stie will automatically open in the browser after executing npm run dev
   },
   module: {
     rules: [
