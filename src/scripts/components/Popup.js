@@ -19,8 +19,8 @@ class Popup {
         };
       } 
   
-  handleCloseOverlay() {
-    if(this._popup.classList.contains('popup_open')) {
+  handleCloseOverlay(evt) {
+    if(evt.target.classList.contains('popup_open')) {
       this.close();
     }
   }
