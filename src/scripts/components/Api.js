@@ -5,16 +5,16 @@
  * All requests are methods of this Class
  */
 class Api {
-  constructor(options) {
-    // constructor body
+  constructor({baseUrl, headers}) {
+    this._baseUrl = baseUrl;
+    this._authorize = headers.authorization;
+    this._contentType = headers["Content-Type"];
   }
 
   getInitialCards() {
-    return fetch("https://around.nomoreparties.co/v1/group-8/cards", {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
-      headers: {
-        authorization: "b69d5aa5-1ef4-42e6-80ff-c5b2987c86bb"
-      }
+      headers: this._authorize
     })
       .then(res => {
         if (res.ok) {
@@ -31,11 +31,9 @@ class Api {
 
   // GETs information for the user profile
   getUserInfo() {
-    return fetch("https://around.nomoreparties.co/v1/group-8/users/me", {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: {
-        authorization: "b69d5aa5-1ef4-42e6-80ff-c5b2987c86bb"
-      }
+      headers: this._authorize
     })
       .then((res) => {
         if(res.ok){
@@ -50,11 +48,11 @@ class Api {
 
   // modified the profile text content
   editProfile() {
-    fetch("https://around.nomoreparties.co/v1/group-8/users/me", {
+    fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
-        authorization: "b69d5aa5-1ef4-42e6-80ff-c5b2987c86bb",
-        "Content-Type": "application/json"
+        authorization: this._authorize,
+        "Content-Type": this._contentType
       },
       body: JSON.stringify({
         name: "Marie Skłodowska Curie",
@@ -73,11 +71,11 @@ class Api {
   }
 
   addCard() {
-    fetch("https://around.nomoreparties.co/v1/group-8/cards", {
+    fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
-        authorization: "b69d5aa5-1ef4-42e6-80ff-c5b2987c86bb",
-        "Content-Type": "application/json"
+        authorization: this._authorize,
+        "Content-Type": this._contentType
       },
       body: JSON.stringify({
         name: "//name of created card",
@@ -101,10 +99,4 @@ class Api {
   
 }
 
-const api = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/group-8",
-  headers: {
-    authorization: "b69d5aa5-1ef4-42e6-80ff-c5b2987c86bb",
-    "Content-Type": "application/json"
-  }
-});
+export default Api;

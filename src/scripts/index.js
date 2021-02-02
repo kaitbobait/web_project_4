@@ -1,3 +1,5 @@
+
+import Api from "./components/Api.js";
 import "../page/index.css";
 import 
   { initialPlaces, settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit }
@@ -9,6 +11,14 @@ import PopupWithForm from './components/PopupWithForm.js';
 import PopupWithImage from "./components/PopupWithImage.js";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
+
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/group-8",
+  headers: {
+    authorization: "b69d5aa5-1ef4-42e6-80ff-c5b2987c86bb",
+    "Content-Type": "application/json"
+  }
+});
 
 /** 
  * create a new instance of Card
