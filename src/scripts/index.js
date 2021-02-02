@@ -2,7 +2,7 @@
 import Api from "./components/Api.js";
 import "../page/index.css";
 import 
-  { initialPlaces, settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit }
+  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit }
 from "./utils.js";
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
@@ -50,15 +50,24 @@ imagePopup.setEventListeners();
  */
 const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.profile__title'});
 
+api.getInitialCards()
+  .then((res) => {
+    const cardArray = res.forEach((card) => {
+      const cardElement = createCard(card);
+      const newCard = newSection.addItem(cardElement);
+    })
+    
+})
+
 const newSection = new Section({
-  items: initialPlaces,
+  items: [],
   renderer:(item) => {
     const placeElement = createCard(item);
     newSection.addItem(placeElement);
   }
 },
   ".places__list");
-  newSection.renderItems();
+  // newSection.renderItems();
 
 
 const editProfilePopup = new PopupWithForm('.popup_edit-profile', (values) => {

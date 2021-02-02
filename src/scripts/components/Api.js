@@ -14,7 +14,10 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
-      headers: this._authorize
+      headers: {
+        authorization: this._authorize
+        
+      }
     })
       .then(res => {
         if (res.ok) {
@@ -33,7 +36,9 @@ class Api {
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: this._authorize
+      headers: {
+        authorization: this._authorize
+      }
     })
       .then((res) => {
         if(res.ok){
