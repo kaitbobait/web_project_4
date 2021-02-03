@@ -69,9 +69,30 @@ const newSection = new Section({
   ".places__list");
   // newSection.renderItems();
 
+  
+/**
+ * retrieves user data
+ * sets the current user data
+ */
+api.getUserInfo()
+  .then((res) => {
+    newUserInfo.setUserInfo(res);
+  })
+
+
+
+
+
+// const editProfilePopup = new PopupWithForm('.popup_edit-profile', (values) => {
+//   newUserInfo.setUserInfo(values);
+// });
 
 const editProfilePopup = new PopupWithForm('.popup_edit-profile', (values) => {
-  newUserInfo.setUserInfo(values);
+  api.editProfile(values)
+    .then((res) => {
+      newUserInfo.setUserInfo(res);
+      
+    })
 });
 
 editProfilePopup.setEventListeners();

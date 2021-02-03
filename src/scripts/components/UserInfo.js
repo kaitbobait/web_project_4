@@ -5,6 +5,7 @@ class UserInfo {
   constructor({nameSelector, jobSelector}) {
     this._name = document.querySelector(nameSelector);
     this._job = document.querySelector(jobSelector);
+    // this._avatar = document.querySelector(avatarSelector);
   }
 
   // returns an object with information that is currently displayed
@@ -17,8 +18,8 @@ class UserInfo {
 
   // takes user info and adds it to the page
   setUserInfo(data) {
-    this._name.textContent = data["profile-name"];
-    this._job.textContent = data["profile-description"];
+    this._name.textContent = data.name;
+    this._job.textContent = data.about;
   }
 }
 

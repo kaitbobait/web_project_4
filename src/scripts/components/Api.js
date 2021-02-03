@@ -52,16 +52,16 @@ class Api {
   }
 
   // modified the profile text content
-  editProfile() {
-    fetch(`${this._baseUrl}/users/me`, {
+  editProfile(values) {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
         authorization: this._authorize,
         "Content-Type": this._contentType
       },
       body: JSON.stringify({
-        name: "Marie Skłodowska Curie",
-        about: "Physicist and Chemist"
+        name: values.name,
+        about: values.about
       })
     })
     .then((res) => {
