@@ -56,7 +56,6 @@ api.getInitialCards()
       const cardElement = createCard(card);
       const newCard = newSection.addItem(cardElement);
     })
-    
 })
 
 const newSection = new Section({
@@ -79,14 +78,10 @@ api.getUserInfo()
     newUserInfo.setUserInfo(res);
   })
 
-
-
-
-
-// const editProfilePopup = new PopupWithForm('.popup_edit-profile', (values) => {
-//   newUserInfo.setUserInfo(values);
-// });
-
+/**
+ * FETCHs new values with editProfile()
+ * adds new user data to profile
+ */
 const editProfilePopup = new PopupWithForm('.popup_edit-profile', (values) => {
   api.editProfile(values)
     .then((res) => {
@@ -94,12 +89,19 @@ const editProfilePopup = new PopupWithForm('.popup_edit-profile', (values) => {
       
     })
 });
-
 editProfilePopup.setEventListeners();
 
+/**
+ * get data from addPlaces popup
+ * POST data to the server
+ * add data to places list on DOM
+ */
 const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
-  const newCard = createCard(data);
-  newSection.addItem(newCard);
+  api.addCard(data)
+    .then((res) => {
+      const newCard = createCard(res);
+      newSection.addItem(newCard);
+    })
 
 })
 

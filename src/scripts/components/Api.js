@@ -75,16 +75,16 @@ class Api {
     });  
   }
 
-  addCard() {
-    fetch(`${this._baseUrl}/cards`, {
+  addCard(data) {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
         authorization: this._authorize,
         "Content-Type": this._contentType
       },
       body: JSON.stringify({
-        name: "//name of created card",
-        link: "//link to card image",
+        name: data.name,
+        link: data.link
       })
     })
     .then((res) => {
