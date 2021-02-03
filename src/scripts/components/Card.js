@@ -30,6 +30,7 @@ class Card {
   }
 
   _handleLikeButton() {
+    
     const heartButton = this._element.querySelector('.places__heart-button');
     // When the heart button is clicked, a new class with a "liked" heart, appears
     const likeButton = place => {

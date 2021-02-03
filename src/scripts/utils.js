@@ -15,7 +15,6 @@ const newName = document.querySelector('.popup__input_text_name'); /*name writte
 const newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
 const addPlacesExit = document.querySelector('.popup__close-button_places'); //close button
 const addPlaceButton = document.querySelector('.profile__add'); //add button
-const trashButton = document.querySelector('.places__delete-button');
 
 
 /*profile section*/
@@ -36,4 +35,4 @@ const profileExit = document.querySelector('.popup__close-button_profile'); //cl
 // };
 
 
-export { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, trashButton };
+export { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit };

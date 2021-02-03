@@ -2,7 +2,7 @@
 import Api from "./components/Api.js";
 import "../page/index.css";
 import 
-  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, trashButton }
+  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit }
 from "./utils.js";
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
@@ -11,6 +11,7 @@ import PopupWithForm from './components/PopupWithForm.js';
 import PopupWithImage from "./components/PopupWithImage.js";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
+import PopupDeleteCard from "./components/PopupDeleteCard.js";
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-8",
@@ -58,12 +59,13 @@ const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.
 
 api.getInitialCards()
   .then((res) => {
-    console.log(res);
     res.reverse();
     const cardArray = res.forEach((card) => {
       const cardElement = createCard(card);
       // const newCard = appendItem(".places__list", cardElement);
       const newCard = newSection.addItem(cardElement);
+      const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button');
+      deleteCardPopup.setEventListeners();
     })
 })
 
@@ -151,6 +153,8 @@ imagesExit.addEventListener('click', () => {
   imagePopup.close();
 });
 
+// const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button');
+// deleteCardPopup.setEventListeners();
 
 
 // reset form, may delete, created in PopupWithForm class
