@@ -50,10 +50,19 @@ imagePopup.setEventListeners();
  */
 const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.profile__title'});
 
+// appends an item to a list rather than *prepend*
+// function appendItem(cardElement, element) {
+//   const cardSelector = document.querySelector(cardElement);
+//   cardSelector.append(element);
+// }
+
 api.getInitialCards()
   .then((res) => {
+    console.log(res);
+    res.reverse();
     const cardArray = res.forEach((card) => {
       const cardElement = createCard(card);
+      // const newCard = appendItem(".places__list", cardElement);
       const newCard = newSection.addItem(cardElement);
     })
 })
@@ -66,9 +75,7 @@ const newSection = new Section({
   }
 },
   ".places__list");
-  // newSection.renderItems();
 
-  
 /**
  * retrieves user data
  * sets the current user data
