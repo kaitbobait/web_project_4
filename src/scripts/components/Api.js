@@ -98,9 +98,30 @@ class Api {
     });
   }
 
-  // showLikes() {
+  showLikes() {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "GET",
+      headers: {
+        authorization: this._authorize
+        
+      }
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        // if server returns an error, reject the promise
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      // if there is an error, log it
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
-  // }
+  deleteCard() {
+    
+  }
   
 }
 

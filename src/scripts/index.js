@@ -2,7 +2,7 @@
 import Api from "./components/Api.js";
 import "../page/index.css";
 import 
-  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit }
+  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, trashButton }
 from "./utils.js";
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
@@ -111,8 +111,17 @@ const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
     })
 
 })
-
 addPlacesPopup.setEventListeners();
+
+const showLikeStatus = () => {
+  api.showLikes()
+    .then((res) => {
+      const currentLikes = res.likes;
+      const likeStatus = document.querySelector('.places__heart-count');
+      likeStatus.textContent = currentLikes;
+    })
+}
+
 
 
 // when clicks, the edit popup box opens
@@ -141,6 +150,7 @@ addPlacesExit.addEventListener('click', () => {
 imagesExit.addEventListener('click', () => {
   imagePopup.close();
 });
+
 
 
 // reset form, may delete, created in PopupWithForm class

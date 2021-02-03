@@ -70,8 +70,15 @@
               <h3 class = popup__image-title></h3>
             </div>
           </div>
-          
         </div>
+
+      <div class = "popup popup__delete">
+        <div class = "popup__container">
+          <button class = "popup__close-button popup__close-button_delete"></button>
+          <h2>Are you sure?</h2>
+          <button class = "popup__save-button">Yes</button>
+        </div>
+      </div>
      
       <template id = "place-template">
         <li class="places__item">
@@ -79,7 +86,10 @@
           <button class = "places__delete-button"></button>
           <div class="places__title-section">
             <h2 class="places__name"></h2>
-            <button class="places__heart-button" aria-label="like" type="button"></button>
+            <div class = "places__heart">
+              <button class="places__heart-button" aria-label="like" type="button"></button>
+              <div class = "places__heart-count">0</div>
+            </div>
           </div>
         </li>
       </template>

@@ -8,34 +8,6 @@ const settingsObject = {
   inputBorderError: "popup__input-error_color"
 };
 
-
-// const initialPlaces = [
-//   {
-//     name: "Yosemite Valley",
-//     link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-//   },
-//   {
-//     name: "Lake Louise",
-//     link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-//   },
-//   {
-//     name: "Bald Mountains",
-//     link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-//   },
-//   {
-//     name: "Latemar",
-//     link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-//   },
-//   {
-//     name: "Vanoise National Park",
-//     link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-//   },
-//   {
-//     name: "Lago di Braies",
-//     link: "https://code.s3.yandex.net/web-code/lago.jpg"
-//   }
-// ]; 
-
 const imagesExit = document.querySelector('.popup__close-button_images');
 const placesForm = document.querySelector('.popup__form-places');
 const popup = document.querySelector('.popup'); /*popup has display: none*/
@@ -43,6 +15,8 @@ const newName = document.querySelector('.popup__input_text_name'); /*name writte
 const newTitle = document.querySelector('.popup__input_text_title'); /*title written in the title input */
 const addPlacesExit = document.querySelector('.popup__close-button_places'); //close button
 const addPlaceButton = document.querySelector('.profile__add'); //add button
+const trashButton = document.querySelector('.places__delete-button');
+
 
 /*profile section*/
 const editButton = document.querySelector('.profile__edit'); //edit profile button
@@ -62,4 +36,4 @@ const profileExit = document.querySelector('.popup__close-button_profile'); //cl
 // };
 
 
-export { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit };
+export { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, trashButton };
