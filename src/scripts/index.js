@@ -60,14 +60,41 @@ const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.
 api.getInitialCards()
   .then((res) => {
     res.reverse();
+    console.log(res);
     const cardArray = res.forEach((card) => {
       const cardElement = createCard(card);
       // const newCard = appendItem(".places__list", cardElement);
       const newCard = newSection.addItem(cardElement);
-      const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button');
+      const cardId = card._id;
+      const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button')
+        // console.log(api.deleteCard(cardId))
+        //   .then((res) => {
+        //     console.log(res);
+        //     deleteCardPopup.close();
+        //   })
+      // });
       deleteCardPopup.setEventListeners();
+
+function removeCard({data}) {
+  console.log(api.deleteCard(cardId))
+   .then((res) => {
+    console.log(res);
+    deleteCardPopup.close();
+    })
+}
+
+
+      // const saveButton = document.querySelector('.popup__save-button');
+      // saveButton.addEventListener('submit', () => {
+      //   api.deleteCard({card:cardId});
+        
+      // })
     })
 })
+
+
+
+
 
 const newSection = new Section({
   items: [],
@@ -78,6 +105,8 @@ const newSection = new Section({
 },
   ".places__list");
 
+
+  
 /**
  * retrieves user data
  * sets the current user data

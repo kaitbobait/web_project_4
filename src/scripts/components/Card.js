@@ -1,6 +1,6 @@
 
 class Card {
-  constructor({data, handleCardClick, template} ) {
+  constructor({data, handleCardClick, handleDeleteClick, template} ) {
     this._template = template;
 
     this._name = data.name;
@@ -8,6 +8,7 @@ class Card {
     this._alt = data.name;
 
     this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _getTemplate() {
@@ -19,10 +20,11 @@ class Card {
 
   }
 
+
   _setEventListeners() {
 
     this._handleLikeButton();
-    this._handleDeleteButton();
+    // this._handleDeleteButton();
     this.placeImage.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
     })
@@ -50,13 +52,6 @@ class Card {
     const deletePlace = (evt) => {
       evt.target.closest('.places__item').remove();
     };
-
-    // const openPopup = () => {
-    //   deleteCardPopup.classList.add('popup_open');
-    // }
-
-    // trashButton.addEventListener('click', openPopup);
-    
 
     // deletes place card on click of delete button
     deleteButton.addEventListener('click', deletePlace);

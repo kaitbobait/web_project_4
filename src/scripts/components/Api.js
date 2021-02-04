@@ -119,8 +119,25 @@ class Api {
       });
   }
 
-  deleteCard() {
-    
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._authorize,
+        "Content-Type": this._contentType
+      }
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      // if server returns an error, reject the promise
+      return Promise.reject(`Error: ${res.status}`);
+    })
+    // if there is an error, log it
+    .catch(err => {
+      console.log(err);
+    });
   }
   
 }
