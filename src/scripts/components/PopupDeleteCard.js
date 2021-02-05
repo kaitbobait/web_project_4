@@ -10,7 +10,7 @@ class PopupDeleteCard extends Popup {
   _openDeletePopup() {
     console.log(this._popup);
     this.open();
-    
+    this._submitHandler();
   }
 
 
@@ -22,7 +22,6 @@ class PopupDeleteCard extends Popup {
       this._openDeletePopup();
 
     })
-    this._submitHandler();
   }
 }
 
