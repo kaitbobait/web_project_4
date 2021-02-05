@@ -129,7 +129,8 @@ class Api {
     })
     .then(res => {
       if (res.ok) {
-        return res.json();
+        // return res.json();
+        return res;
       }
       // if server returns an error, reject the promise
       return Promise.reject(`Error: ${res.status}`);

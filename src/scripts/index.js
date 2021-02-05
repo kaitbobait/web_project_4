@@ -68,9 +68,9 @@ api.getInitialCards()
       const submitHandler = () => {
         document.querySelector('.popup__save-button_delete').addEventListener('click', () => {
           api.deleteCard(cardData._id)
-          .then((res) => {
-            console.log(res); //undefined
+          .then(() => {
             deleteCardPopup.close();
+            deleteCardPopup.removeCard();
           })
         })
       };

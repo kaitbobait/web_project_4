@@ -5,6 +5,7 @@ class PopupDeleteCard extends Popup {
     super(popupSelector);
     this._cardSelector = document.querySelector(cardSelector);
     this._submitHandler = submitHandler;
+    this._card = this._cardSelector.closest(".places__item");
   }
 
   _openDeletePopup() {
@@ -13,7 +14,9 @@ class PopupDeleteCard extends Popup {
     this._submitHandler();
   }
 
-
+  removeCard() {
+    this._card.remove();
+  }
 
   setEventListeners() {
     super.setEventListeners();
