@@ -60,21 +60,25 @@ const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.
 api.getInitialCards()
   .then((res) => {
     res.reverse();
-    console.log(res);
     const cardArray = res.forEach((card) => {
       const cardElement = createCard(card);
-      // const newCard = appendItem(".places__list", cardElement);
       const newCard = newSection.addItem(cardElement);
-      const cardId = card._id;
-      const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button');
-        api.deleteCard(cardId)
+      const cardData = card;
+
+      const submitHandler = () => {
+        document.querySelector('.popup__save-button_delete').addEventListener('click', () => {
+          api.deleteCard(cardData._id)
           .then((res) => {
-            console.log(res);
+            console.log(res); //undefined
             deleteCardPopup.close();
           })
-          deleteCardPopup.setEventListeners();
-      });
-    })
+        })
+      };
+
+      const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button', submitHandler);
+      deleteCardPopup.setEventListeners();
+    });
+  });
       
 
     
