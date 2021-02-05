@@ -1,6 +1,6 @@
 
 class Card {
-  constructor({data, handleCardClick, handleDeleteClick, template} ) {
+  constructor({data, handleCardClick, template} ) {
     this._template = template;
 
     this._name = data.name;
@@ -8,7 +8,6 @@ class Card {
     this._alt = data.name;
 
     this._handleCardClick = handleCardClick;
-    this._handleDeleteClick = handleDeleteClick;
   }
 
   _getTemplate() {

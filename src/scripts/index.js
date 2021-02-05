@@ -67,30 +67,27 @@ api.getInitialCards()
       const newCard = newSection.addItem(cardElement);
       const cardId = card._id;
       const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button')
-        // console.log(api.deleteCard(cardId))
-        //   .then((res) => {
-        //     console.log(res);
-        //     deleteCardPopup.close();
-        //   })
-      // });
-      deleteCardPopup.setEventListeners();
-
-function removeCard({data}) {
-  console.log(api.deleteCard(cardId))
-   .then((res) => {
-    console.log(res);
-    deleteCardPopup.close();
+        api.deleteCard(cardId)
+          .then((res) => {
+            console.log(res);
+            deleteCardPopup.close();
+          })
+          deleteCardPopup.setEventListeners();
+      });
     })
-}
+      
 
+    
 
-      // const saveButton = document.querySelector('.popup__save-button');
-      // saveButton.addEventListener('submit', () => {
-      //   api.deleteCard({card:cardId});
-        
-      // })
-    })
-})
+// function removeCard({data}) {
+//   console.log(api.deleteCard(cardId))
+//    .then((res) => {
+//     console.log(res);
+//     deleteCardPopup.close();
+//     })
+// }
+//     })
+// })
 
 
 
@@ -206,10 +203,4 @@ const renderFormValidation = () => {
 };
 
 renderFormValidation();
-
-
-
-
-
-
 
