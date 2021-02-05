@@ -56,6 +56,10 @@ class Card {
     deleteButton.addEventListener('click', deletePlace);
   }
 
+  removeCard() {
+    this._element.remove('.places__item');
+  }
+
   generateCard() {
     this._element = this._getTemplate();
 

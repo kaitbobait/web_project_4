@@ -66,7 +66,7 @@ api.getInitialCards()
       // const newCard = appendItem(".places__list", cardElement);
       const newCard = newSection.addItem(cardElement);
       const cardId = card._id;
-      const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button')
+      const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button');
         api.deleteCard(cardId)
           .then((res) => {
             console.log(res);
