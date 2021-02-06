@@ -72,6 +72,7 @@ api.getInitialCards()
             deleteCardPopup.close();
             deleteCardPopup.removeCard();
           })
+          
         })
       };
 
@@ -149,11 +150,12 @@ const showLikeStatus = () => {
   api.showLikes()
     .then((res) => {
       const currentLikes = res.likes;
+      console.log(currentLikes);
       const likeStatus = document.querySelector('.places__heart-count');
       likeStatus.textContent = currentLikes;
     })
 }
-
+// showLikeStatus();
 
 
 // when clicks, the edit popup box opens
