@@ -8,6 +8,8 @@ class Card {
     this._alt = data.name;
 
     this._handleCardClick = handleCardClick;
+
+    // this._myId = userData.owner._myId;
   }
 
   _getTemplate() {
@@ -41,19 +43,13 @@ class Card {
     heartButton.addEventListener('click', likeButton);
   }
 
-  _handleDeleteButton() {
+  _removeDeleteButton() {
     // image popup delete button
-    const deleteButton = this._element.querySelector('.places__delete-button');
-    const deleteCardPopup = this._element.querySelector('.popup__delete');
-    // const trashButton = this._element.querySelector('.places__delete-button');
+    
+    if(this.myId !== userId) {
+      this._trashButton.style.display = "none";
+    }
 
-    //removes the selected place card 
-    const deletePlace = (evt) => {
-      evt.target.closest('.places__item').remove();
-    };
-
-    // deletes place card on click of delete button
-    deleteButton.addEventListener('click', deletePlace);
   }
 
 
@@ -62,8 +58,8 @@ class Card {
 
     const placeImage = this._element.querySelector('.places__img');
     const placeName = this._element.querySelector('.places__name');
+    this._trashButton = this._element.querySelector('.places__delete-button');
     
-
     this.placeImage = placeImage;
     this.placeName = placeName;
     

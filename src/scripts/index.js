@@ -28,12 +28,13 @@ const api = new Api({
  * generates a card from the template
  * returns new Card element
 */
-const createCard = (item) => {
+const createCard = (item, userId) => {
   const card = new Card({
     data: item, 
     handleCardClick: (name, link) => {
       imagePopup.open(name, link)
-  }, 
+    },
+    
   template: "#place-template"});
   const placeElement = card.generateCard();
   return placeElement;
@@ -61,9 +62,19 @@ api.getInitialCards()
   .then((res) => {
     res.reverse();
     const cardArray = res.forEach((card) => {
-      const cardElement = createCard(card);
+      const cardElement = createCard(card, userId);
       const newCard = newSection.addItem(cardElement);
       const cardData = card;
+      const userId = cardData.owner._id;
+      // console.log(myId); //b87734f9492289578a8951cc myId
+
+      const myId = 
+      api.getUserInfo()
+        .then((res) => {
+          const myId = res._id;
+            return myId
+      });
+
 
       const submitHandler = () => {
         document.querySelector('.popup__save-button_delete').addEventListener('click', () => {
@@ -72,7 +83,6 @@ api.getInitialCards()
             deleteCardPopup.close();
             deleteCardPopup.removeCard();
           })
-          
         })
       };
 
@@ -80,9 +90,8 @@ api.getInitialCards()
       deleteCardPopup.setEventListeners();
     });
   });
-      
 
-    
+
 
 // function removeCard({data}) {
 //   console.log(api.deleteCard(cardId))

@@ -75,6 +75,29 @@ class Api {
     });  
   }
 
+  editAvatar(link) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authorize,
+        "Content-Type": this._contentType
+      },
+      body: JSON.stringify({
+        avatar: link
+      })
+    })
+    .then((res) => {
+      if(res.ok){
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });  
+  }
+
+
   addCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
