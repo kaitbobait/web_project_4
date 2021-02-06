@@ -23,16 +23,8 @@ const profileName = document.querySelector('.profile__name'); //profile name
 const profileTitle = document.querySelector('.profile__title'); //profile description
 const profileExit = document.querySelector('.popup__close-button_profile'); //close button
 
-// const closePopupFromOverlay = () => {
-//   const popupList = Array.from(document.querySelectorAll(".popup"));
-//   popupList.forEach((popupElement) => {
-//     popupElement.addEventListener('click', (evt) => {
-//       if(evt.target.classList.contains('popup_open')) {
-//         closePopup(evt.target);
-//       }
-//     });
-//   });
-// };
+const editAvatar = document.querySelector('.profile__img-edit'); // pencil icon on hover of avatar
 
 
-export { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit };
+
+export { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, editAvatar };

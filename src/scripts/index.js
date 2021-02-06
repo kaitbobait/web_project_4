@@ -2,7 +2,7 @@
 import Api from "./components/Api.js";
 import "../page/index.css";
 import 
-  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit }
+  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, editAvatar }
 from "./utils.js";
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
@@ -28,14 +28,15 @@ const api = new Api({
  * generates a card from the template
  * returns new Card element
 */
-const createCard = (item, userId) => {
+const createCard = (item) => {
   const card = new Card({
     data: item, 
     handleCardClick: (name, link) => {
       imagePopup.open(name, link)
     },
     
-  template: "#place-template"});
+    template: "#place-template"
+  });
   const placeElement = card.generateCard();
   return placeElement;
 }
@@ -50,7 +51,7 @@ imagePopup.setEventListeners();
  * Creates a new instance of UserInfo
  * Takes in the classes of the profile section that display "content"
  */
-const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.profile__title'});
+const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.profile__title', avatarSelector: '.profile__img'});
 
 // appends an item to a list rather than *prepend*
 // function appendItem(cardElement, element) {
@@ -58,38 +59,39 @@ const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.
 //   cardSelector.append(element);
 // }
 
-api.getInitialCards()
+api.getUserInfo()
   .then((res) => {
-    res.reverse();
-    const cardArray = res.forEach((card) => {
-      const cardElement = createCard(card, userId);
-      const newCard = newSection.addItem(cardElement);
-      const cardData = card;
-      const userId = cardData.owner._id;
-      // console.log(myId); //b87734f9492289578a8951cc myId
+    newUserInfo.setUserInfo(res);
+    const myId = res._id;
+  })
+  .then((res) => {
+    api.getInitialCards()
+      .then((res) => {
+        res.reverse();
+        res.forEach((card) => {
+          const cardElement = createCard(card);
+          const newCard = newSection.addItem(cardElement);
+          const cardData = card;
+          const userId = cardData.owner._id;
+          
+          // console.log(myId); //b87734f9492289578a8951cc myId
 
-      const myId = 
-      api.getUserInfo()
-        .then((res) => {
-          const myId = res._id;
-            return myId
+          const submitHandler = () => {
+            document.querySelector('.popup__save-button_delete').addEventListener('click', () => {
+              api.deleteCard(cardData._id)
+              .then(() => {
+                deleteCardPopup.close();
+                deleteCardPopup.removeCard();
+              })
+            })
+          };
+
+          const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button', submitHandler);
+          deleteCardPopup.setEventListeners();
+        });
       });
+    })
 
-
-      const submitHandler = () => {
-        document.querySelector('.popup__save-button_delete').addEventListener('click', () => {
-          api.deleteCard(cardData._id)
-          .then(() => {
-            deleteCardPopup.close();
-            deleteCardPopup.removeCard();
-          })
-        })
-      };
-
-      const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button', submitHandler);
-      deleteCardPopup.setEventListeners();
-    });
-  });
 
 
 
@@ -122,10 +124,10 @@ const newSection = new Section({
  * retrieves user data
  * sets the current user data
  */
-api.getUserInfo()
-  .then((res) => {
-    newUserInfo.setUserInfo(res);
-  })
+// api.getUserInfo()
+//   .then((res) => {
+//     newUserInfo.setUserInfo(res);
+//   })
 
 /**
  * FETCHs new values with editProfile()
@@ -135,7 +137,6 @@ const editProfilePopup = new PopupWithForm('.popup_edit-profile', (values) => {
   api.editProfile(values)
     .then((res) => {
       newUserInfo.setUserInfo(res);
-      
     })
 });
 editProfilePopup.setEventListeners();
@@ -148,12 +149,25 @@ editProfilePopup.setEventListeners();
 const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
   api.addCard(data)
     .then((res) => {
+      console.log(res);
       const newCard = createCard(res);
       newSection.addItem(newCard);
     })
 
 })
 addPlacesPopup.setEventListeners();
+
+const editAvatarPopup = new PopupWithForm('.popup__edit-avatar', (link) => {
+  api.editAvatar(link)
+    .then((res) => {
+      console.log(res);
+    })
+})
+
+editAvatar.addEventListener('click', () => {
+  console.log('avatar');
+  editAvatarPopup;
+})
 
 const showLikeStatus = () => {
   api.showLikes()
@@ -193,10 +207,6 @@ addPlacesExit.addEventListener('click', () => {
 imagesExit.addEventListener('click', () => {
   imagePopup.close();
 });
-
-// const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button');
-// deleteCardPopup.setEventListeners();
-
 
 // reset form, may delete, created in PopupWithForm class
 const resetForm = (form) => {

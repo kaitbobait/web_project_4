@@ -2,10 +2,11 @@
 
 // renders information about the User on the page
 class UserInfo {
-  constructor({nameSelector, jobSelector}) {
+  constructor({nameSelector, jobSelector, avatarSelector}) {
     this._name = document.querySelector(nameSelector);
     this._job = document.querySelector(jobSelector);
-    // this._avatar = document.querySelector(avatarSelector);
+    // this._myId = myId;
+    this._avatar = document.querySelector(avatarSelector);
   }
 
   // returns an object with information that is currently displayed
@@ -20,6 +21,11 @@ class UserInfo {
   setUserInfo(data) {
     this._name.textContent = data.name;
     this._job.textContent = data.about;
+    
+  }
+
+  changeAvatar(data) {
+    this._avatar.style.backgroundImage = `url(${data.link})`;
   }
 }
 

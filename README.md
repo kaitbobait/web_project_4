@@ -34,95 +34,39 @@ Have fun with JavaScript!
 
 ### To Do List:
 
-## Create Section Class
+## Update Profile Picture
+**(DONE)Send a PATCH request to change profile photo**
+**pass the JSON body with property avatar**
+* avatar property should only contain a link to a profile picture
+* if anything else is passed, the server will return an error (do I code this?)
+**(DONE)When user hovers over picture, edit icon appear**
+**When clicking this icon, the popup with a form must be opened**
+* You need to code this form
+* Should have 1 field - a link to a new profile photo
+* take url reference from create card form
 
-** Renders a list of elements on a page according
+## Showing How Many Likes a Card Has
+**Add a feaeture that shows how many likes each card has**
+**Send a PUT request to like a card**
+* https://around.nomoreparties.co/v1/groupId/cards/likes/cardId 
+**To remove the like, simply send a DELETE request with the same url:**
+* https://around.nomoreparties.co/v1/groupId/cards/likes/cardId 
+**cardId in the URL should be repalces with the _id property of the corresponding card**
+**The response will contain updated JSON with a card.**
+* Inside this JSON, the array of likes will already be updated(?)
+**After adding or removing a like, the heart icon should change color**
+* and the like counter should increase or decrease respectively
+**To change the number of likes, you'll either add or subtract 1 from the current number.**
+* We recommend taking this number from the server's response and not from the HTML code. 
+* Otherwise there will be an error if two users try to like one card at the same time
 
-** (DONE)first parameter: object with 2 properties (items, renderer)
-* items property is an array of data which needs to be added on a page when initializing the class
-* renderer property is a function responsible for creating and rendering data on a page
 
-** (DONE)second parameter: CSS class selector where you'll add the card elements
+## Improving UX of all Forms
+**Change the button text to be "Saving..."**
+* Should be shown until the data has finihsed uploading
+* reference the loading section in lesson
+* Do the same thing for the forms used to add: New card && Update User Profile Picture
 
-** stores a public method that renders all elements on the page.
-* The renderer() function will render each element on a page
-
-** Stores a public method called addItem() that takes a DOM element and adds it to the container
-* does not contain any markup. 
-* receives markup through the callback function and inserts it in the container
-
-## Create Popup Class
-
-**Create Popup class that opens and closes the popup window, as per the following requirements**
-** (DONE)Constructor has 1 parameter: the popup selector
-
-** (DONE)Stores the public methods that will open and close the popup:
-* (DONE)open() 
-* (DONE)close() 
-
-** stores the private method that stores teh logic for closing the popup by pressing the Esc key:
-* (DONE)_handleEscClose()
-
-** stores a public method that adds a click event listener to the close icon of the popup
-* (DONE)setEventListeners()
-
-## Create PopupWithImage Class
-
-** Create the PopupWithImage class as a child of Popup
-* this class has to change the parent open() method.
-
-** The open() method with the PopupWithImage class, you need to add:
-* an image to the popup
-* the corresponding image src attribute 
-* caption for the image
-
-## Create the PopupWithForm Class
-
-** Create this class as a child class of Popup
-
-** Constructor: 
-* Takes a callback of the form submission
-* The popup selector
-
-** Stores a private Methode named _getInputValues()
-* collects data from all the input fields
-
-** Modifies the setEventListeners() parent method
-
-** The setEventListeners() method of the PopupWithForm class has to:
-* add the click event listener to the close icon
-* add the submit event handler
-
-** Modifies the close() parent method in order to reset the form once the popup is closed
-
-** Create an instance of the PopupWithForm class for EACH popup
-
-## Create UserInfo Class
-
-** This class is responsible for rendering information about the user on the page
-
-** Takes an object with the selectors of 2 elements into the constructor:
-* 1. containing the user's name
-* 2. containing the user's job
-
-** Stores a public method named getUserInfo()
-* returns an object with information about the user
-* This method will be handy for cases when it's necessary to display the user data in the open form
-
-** Stores a public method named setUserInfo() 
-* takes a new suer data and adds it on the page
-
-## Transforming the Card Class
-
-** Connect the Card class to the popup
-
-** (DONE) Make Card take the handleCardClick() function into the constructor
-
-** When user clicks on the card, this function will open the popup with an image
-
-## Create the .gitignore File
-
-## Set up Webpack and Bundle and Build
 
 
 

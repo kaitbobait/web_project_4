@@ -1,6 +1,6 @@
 
 class Card {
-  constructor({data, handleCardClick, template} ) {
+  constructor({data, handleCardClick, template}) {
     this._template = template;
 
     this._name = data.name;
@@ -9,7 +9,8 @@ class Card {
 
     this._handleCardClick = handleCardClick;
 
-    // this._myId = userData.owner._myId;
+    // this._myId = myId;
+    // this._userId = userId;
   }
 
   _getTemplate() {
