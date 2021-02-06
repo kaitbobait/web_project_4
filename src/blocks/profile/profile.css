@@ -9,6 +9,7 @@
 
 .profile {
   display: grid;
+  position: relative;
   max-width: 880px;
   grid-template-columns: 150px 1fr 150px;
   /* grid-template-columns: 168.75px 1fr 150px; */
