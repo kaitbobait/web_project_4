@@ -1,11 +1,9 @@
 
 import Popup from './Popup.js';
 class PopupDeleteCard extends Popup {
-  constructor(popupSelector, cardSelector, submitHandler) {
+  constructor(popupSelector, submitHandler) {
     super(popupSelector);
-    this._cardSelector = document.querySelector(cardSelector);
     this._submitHandler = submitHandler;
-    this._card = this._cardSelector.closest(".places__item");
   }
 
   _openDeletePopup() {
@@ -14,17 +12,13 @@ class PopupDeleteCard extends Popup {
     this._submitHandler();
   }
 
-  removeCard() {
-    this._card.remove();
-  }
-
   setEventListeners() {
     super.setEventListeners();
     
-    this._cardSelector.addEventListener('click', () => {
-      this._openDeletePopup();
+    // this._cardSelector.addEventListener('click', () => {
+    //   this._openDeletePopup();
 
-    })
+    // })
   }
 }
 

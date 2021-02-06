@@ -28,15 +28,31 @@ const api = new Api({
  * generates a card from the template
  * returns new Card element
 */
-const createCard = (item) => {
+const createCard = (item, isMine) => {
   const card = new Card({
     data: item, 
     handleCardClick: (name, link) => {
       imagePopup.open(name, link)
     },
-    
-    template: "#place-template"
+    template: "#place-template",
+    isMine,
+    handleDeleteCard: () => {
+      deleteCardPopup._openDeletePopup();
+    }
   });
+  const submitHandler = () => {
+    document.querySelector('.popup__save-button_delete').addEventListener('click', () => {
+      api.deleteCard(item._id)
+      .then(() => {
+        deleteCardPopup.close();
+        placeElement.remove();
+      })
+    })
+  };
+
+  const deleteCardPopup = new PopupDeleteCard('.popup__delete', submitHandler);
+  deleteCardPopup.setEventListeners();
+
   const placeElement = card.generateCard();
   return placeElement;
 }
@@ -59,35 +75,37 @@ const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.
 //   cardSelector.append(element);
 // }
 
+// function myId(card) {
+//   if(card._id !== res._id) {
+//     console.log(card._id);
+//     // console.log(res._id);
+//     createCard.removeDeleteButton();
+//   }
+// }
+
+function myId(card) {
+    console.log(card._id);
+    // console.log(res._id);
+    // createCard.removeDeleteButton();
+  }
+
+
 api.getUserInfo()
   .then((res) => {
     newUserInfo.setUserInfo(res);
-    const myId = res._id;
+    newUserInfo.getUserInfo();
   })
   .then((res) => {
     api.getInitialCards()
       .then((res) => {
         res.reverse();
         res.forEach((card) => {
-          const cardElement = createCard(card);
+
+          const isMine = card.owner._id === newUserInfo.getUserInfo().myId;
+          console.log(newUserInfo.getUserInfo().myId);
+          const cardElement = createCard(card, isMine);
           const newCard = newSection.addItem(cardElement);
-          const cardData = card;
-          const userId = cardData.owner._id;
-          
-          // console.log(myId); //b87734f9492289578a8951cc myId
 
-          const submitHandler = () => {
-            document.querySelector('.popup__save-button_delete').addEventListener('click', () => {
-              api.deleteCard(cardData._id)
-              .then(() => {
-                deleteCardPopup.close();
-                deleteCardPopup.removeCard();
-              })
-            })
-          };
-
-          const deleteCardPopup = new PopupDeleteCard('.popup__delete', '.places__delete-button', submitHandler);
-          deleteCardPopup.setEventListeners();
         });
       });
     })
@@ -149,7 +167,6 @@ editProfilePopup.setEventListeners();
 const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
   api.addCard(data)
     .then((res) => {
-      console.log(res);
       const newCard = createCard(res);
       newSection.addItem(newCard);
     })

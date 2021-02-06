@@ -46,6 +46,7 @@ module.exports = {
       }
     ]
   },
+  devtool: 'inline-source-map',
   stats: { children: true }, // Print child process errors instead of hiding them
   plugins: [
     new HtmlWebpackPlugin({

@@ -10,10 +10,11 @@ class UserInfo {
   }
 
   // returns an object with information that is currently displayed
+
   getUserInfo() {
     const name = this._name.textContent;
     const job = this._job.textContent;
-    const getInfo = {name, job};
+    const getInfo = {name, job, myId: this.myId};
     return getInfo;
   }
 
@@ -21,6 +22,7 @@ class UserInfo {
   setUserInfo(data) {
     this._name.textContent = data.name;
     this._job.textContent = data.about;
+    this.myId = data._id;
     
   }
 

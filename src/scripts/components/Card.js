@@ -1,6 +1,6 @@
 
 class Card {
-  constructor({data, handleCardClick, template}) {
+  constructor({data, handleCardClick, template, isMine, handleDeleteCard}) {
     this._template = template;
 
     this._name = data.name;
@@ -8,9 +8,9 @@ class Card {
     this._alt = data.name;
 
     this._handleCardClick = handleCardClick;
+    this._isMine = isMine;
 
-    // this._myId = myId;
-    // this._userId = userId;
+    this._handleDeleteCard = handleDeleteCard;
   }
 
   _getTemplate() {
@@ -31,6 +31,10 @@ class Card {
       this._handleCardClick(this._name, this._link);
     })
     
+    this._trashButton.addEventListener('click', () => {
+      this._handleDeleteCard();
+    })
+
   }
 
   _handleLikeButton() {
@@ -47,9 +51,7 @@ class Card {
   _removeDeleteButton() {
     // image popup delete button
     
-    if(this.myId !== userId) {
       this._trashButton.style.display = "none";
-    }
 
   }
 
@@ -68,9 +70,12 @@ class Card {
     this.placeName.textContent = this._name;
     this.placeImage.alt = this.placeName.textContent;
 
-    this._setEventListeners();
+    if(!this._isMine) {
+      this._removeDeleteButton();
+    }
 
-    return this._element;
+    this._setEventListeners();
+    return this._element.firstElementChild;
   }
 
 };
