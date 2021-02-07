@@ -39,7 +39,7 @@ const createCard = (item, isMine) => {
     handleDeleteCard: () => {
       deleteCardPopup._openDeletePopup();
     },
-    handleCardLikes: (item) => {
+    handleCardLikes: () => {
       console.log(item)
       // item.forEach((like) => {
       //   console.log(item._id);
@@ -47,7 +47,7 @@ const createCard = (item, isMine) => {
     }
   });
 
-  
+
   const submitHandler = () => {
     document.querySelector('.popup__save-button_delete').addEventListener('click', () => {
       api.deleteCard(item._id)

@@ -39,7 +39,7 @@ class Card {
     })
     
     this._likeButton.addEventListener('click', () => {
-      this._handleCardLikes(this._data);
+      this._handleCardLikes();
     })
   }
 
