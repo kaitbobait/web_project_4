@@ -5,7 +5,6 @@ class UserInfo {
   constructor({nameSelector, jobSelector, avatarSelector}) {
     this._name = document.querySelector(nameSelector);
     this._job = document.querySelector(jobSelector);
-    // this._myId = myId;
     this._avatar = document.querySelector(avatarSelector);
   }
 
@@ -27,7 +26,7 @@ class UserInfo {
   }
 
   changeAvatar(data) {
-    this._avatar.style.backgroundImage = `url(${data.link})`;
+    this._avatar.style.backgroundImage = `url(${data.avatar})`;
   }
 }
 

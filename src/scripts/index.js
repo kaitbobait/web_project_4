@@ -2,7 +2,7 @@
 import Api from "./components/Api.js";
 import "../page/index.css";
 import 
-  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, editAvatar }
+  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, editAvatar, avatarClose }
 from "./utils.js";
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
@@ -90,22 +90,6 @@ api.getUserInfo()
     })
 
 
-
-
-// function removeCard({data}) {
-//   console.log(api.deleteCard(cardId))
-//    .then((res) => {
-//     console.log(res);
-//     deleteCardPopup.close();
-//     })
-// }
-//     })
-// })
-
-
-
-
-
 const newSection = new Section({
   items: [],
   renderer:(item) => {
@@ -157,13 +141,14 @@ const editAvatarPopup = new PopupWithForm('.popup__edit-avatar', (link) => {
   api.editAvatar(link)
     .then((res) => {
       console.log(res);
+      newUserInfo.changeAvatar(res);
     })
 })
 
 editAvatar.addEventListener('click', () => {
-  console.log('avatar');
-  editAvatarPopup;
+  editAvatarPopup.open();
 })
+editAvatarPopup.setEventListeners();
 
 const showLikeStatus = () => {
   api.showLikes()
@@ -203,6 +188,10 @@ addPlacesExit.addEventListener('click', () => {
 imagesExit.addEventListener('click', () => {
   imagePopup.close();
 });
+
+avatarClose.addEventListener('click', () => {
+  editAvatarPopup.close();
+})
 
 // reset form, may delete, created in PopupWithForm class
 const resetForm = (form) => {

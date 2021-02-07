@@ -24,7 +24,8 @@ const profileTitle = document.querySelector('.profile__title'); //profile descri
 const profileExit = document.querySelector('.popup__close-button_profile'); //close button
 
 const editAvatar = document.querySelector('.profile__img-edit'); // pencil icon on hover of avatar
+const avatarClose = document.querySelector('.popup__close-button_avatar');
 
 
 
-export { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, editAvatar };
+export { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, editAvatar, avatarClose };
