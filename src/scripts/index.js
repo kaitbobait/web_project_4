@@ -38,8 +38,16 @@ const createCard = (item, isMine) => {
     isMine,
     handleDeleteCard: () => {
       deleteCardPopup._openDeletePopup();
+    },
+    handleCardLikes: (item) => {
+      console.log(item)
+      // item.forEach((like) => {
+      //   console.log(item._id);
+      // })
     }
   });
+
+  
   const submitHandler = () => {
     document.querySelector('.popup__save-button_delete').addEventListener('click', () => {
       api.deleteCard(item._id)
@@ -80,11 +88,14 @@ api.getUserInfo()
       .then((res) => {
         res.reverse();
         res.forEach((card) => {
-
+          console.log(card.likes);
           const isMine = card.owner._id === newUserInfo.getUserInfo().myId;
           const cardElement = createCard(card, isMine);
           const newCard = newSection.addItem(cardElement);
-
+          
+          const likeStatus = document.querySelector('.places__heart-count');
+          likeStatus.textContent = card.likes.length;
+          
         });
       });
     })
@@ -151,12 +162,12 @@ editAvatar.addEventListener('click', () => {
 editAvatarPopup.setEventListeners();
 
 const showLikeStatus = () => {
-  api.showLikes()
+  api.addLike()
     .then((res) => {
       const currentLikes = res.likes;
       console.log(currentLikes);
-      const likeStatus = document.querySelector('.places__heart-count');
-      likeStatus.textContent = currentLikes;
+      // const likeStatus = document.querySelector('.places__heart-count');
+      // likeStatus.textContent = currentLikes;
     })
 }
 // showLikeStatus();

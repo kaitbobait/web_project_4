@@ -67,6 +67,11 @@ Have fun with JavaScript!
 * reference the loading section in lesson
 * Do the same thing for the forms used to add: New card && Update User Profile Picture
 
+## Fix
+**After deleting 2 cards in a row - 403 forbidden error**
+**when updating avatar, on refresh, image reverts back to previous image**
+* However, the data link is the correct link...
+
 
 
 

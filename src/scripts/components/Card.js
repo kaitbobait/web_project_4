@@ -1,8 +1,9 @@
 
 class Card {
-  constructor({data, handleCardClick, template, isMine, handleDeleteCard}) {
+  constructor({data, handleCardClick, template, isMine, handleDeleteCard, handleCardLikes}) {
     this._template = template;
 
+    this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name;
@@ -11,6 +12,8 @@ class Card {
     this._isMine = isMine;
 
     this._handleDeleteCard = handleDeleteCard;
+
+    this._handleCardLikes = handleCardLikes;
   }
 
   _getTemplate() {
@@ -34,7 +37,10 @@ class Card {
     this._trashButton.addEventListener('click', () => {
       this._handleDeleteCard();
     })
-
+    
+    this._likeButton.addEventListener('click', () => {
+      this._handleCardLikes(this._data);
+    })
   }
 
   _handleLikeButton() {
@@ -62,6 +68,7 @@ class Card {
     const placeImage = this._element.querySelector('.places__img');
     const placeName = this._element.querySelector('.places__name');
     this._trashButton = this._element.querySelector('.places__delete-button');
+    this._likeButton = this._element.querySelector('.places__heart-button');
     
     this.placeImage = placeImage;
     this.placeName = placeName;
