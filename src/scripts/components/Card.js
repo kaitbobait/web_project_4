@@ -1,6 +1,6 @@
 
 class Card {
-  constructor({data, handleCardClick, template, isMine, handleDeleteCard, handleCardLikes}) {
+  constructor({data, handleCardClick, template, isMine, myId, handleDeleteCard, handleCardLikes}) {
     this._template = template;
     this._element = this._getTemplate();
 
@@ -8,12 +8,14 @@ class Card {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name;
+    this._likes = data.likes;
 
     this._handleCardClick = handleCardClick;
     this._isMine = isMine;
+    this._myId = myId;
 
     this._handleDeleteCard = handleDeleteCard;
-    this._handleCardLikes = handleCardLikes;
+    this.handleCardLikes = handleCardLikes;
 
     this._heartButton = this._element.querySelector('.places__heart-button');
     this._heartCount = this._element.querySelector('.places__heart-count');
@@ -31,7 +33,7 @@ class Card {
 
   _setEventListeners() {
 
-    this._handleLikeButton();
+    // this._handleLikeButton();
     // this._handleDeleteButton();
     this.placeImage.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
@@ -41,21 +43,39 @@ class Card {
       this._handleDeleteCard();
     })
     
-    this._likeButton.addEventListener('click', () => {
-      this._handleCardLikes();
+    this._heartButton.addEventListener('click', () => {
+      // if(this._likes.some(this._myId)){
+      //   this._heartButton.classList.toggle('places__heart-button_active');
+      // }
+      this.handleCardLikes();
     })
   }
 
-  _handleLikeButton() {
-    
-    // const heartButton = this._element.querySelector('.places__heart-button');
-    // When the heart button is clicked, a new class with a "liked" heart, appears
-    const likeButton = place => {
-      this._heartButton.classList.toggle('places__heart-button_active');
-    };
-    // toggles like button when clicked
-    this._heartButton.addEventListener('click', likeButton);
+  addLike() {
+    this._heartButton.classList.add('places__heart-button_active');
   }
+
+  removeLike(){
+    this._heartButton.classList.remove('places__heart-button_active');
+  }
+
+  // _handleLikeButton() {
+    
+  //   // const heartButton = this._element.querySelector('.places__heart-button');
+  //   // When the heart button is clicked, a new class with a "liked" heart, appears
+  //   const likeButton = place => {
+  //     this._heartButton.classList.toggle('places__heart-button_active');
+  //   };
+
+  //   // toggles like button when clicked
+  //   this._heartButton.addEventListener('click', likeButton);
+  // }
+  
+  // showLikes() {
+  //   if(this._likes.contains(this._myId)){
+  //     this._heartButton.classList.add('places__heart-button_active');
+  //   }
+  // }
 
   _removeDeleteButton() {
     // image popup delete button
@@ -71,8 +91,6 @@ class Card {
     const placeImage = this._element.querySelector('.places__img');
     const placeName = this._element.querySelector('.places__name');
     this._trashButton = this._element.querySelector('.places__delete-button');
-    this._likeButton = this._element.querySelector('.places__heart-button');
-    
     
     this.placeImage = placeImage;
     this.placeName = placeName;

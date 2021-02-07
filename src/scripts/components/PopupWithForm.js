@@ -5,6 +5,7 @@ class PopupWithForm extends Popup {
     super(popupSelector);
     this._submitHandler = submitHandler; 
     this._form = this._popup.querySelector('.form');
+    this._saveButton = this._popup.querySelector('.popup__save-button');
   }
 
   // collects data from all the input fields
@@ -26,16 +27,30 @@ class PopupWithForm extends Popup {
     this._form.reset();
   }
 
+  isLoading(status) {
+    if(status){
+      this._saveButton.textContent = "Saving...";
+      console.log(this._saveButton.textContent);
+    } else {
+      this._saveButton.textContent = "";
+      console.log(this._saveButton.textContent);
+    }
+  }
+
   setEventListeners() {
     super.setEventListeners();
 
     this._form.addEventListener('submit', (evt) => {
+      this.isLoading(true);
+      console.log('loading');
       const values = this._getInputValues();
       this._submitHandler(values);
 
       evt.preventDefault(); //stops browser from submitting the form in the default way (refreshes whenever you submit)
       
       this.close();
+      this.isLoading(false);
+      console.log('loaded');
     })
 
 

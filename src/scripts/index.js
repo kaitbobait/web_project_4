@@ -2,7 +2,7 @@
 import Api from "./components/Api.js";
 import "../page/index.css";
 import 
-  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, editAvatar, avatarClose }
+  { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, editAvatar, avatarClose, heartButton }
 from "./utils.js";
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
@@ -28,7 +28,7 @@ const api = new Api({
  * generates a card from the template
  * returns new Card element
 */
-const createCard = (item, isMine) => {
+const createCard = (item, isMine, myId) => {
   const card = new Card({
     data: item, 
     handleCardClick: (name, link) => {
@@ -36,22 +36,25 @@ const createCard = (item, isMine) => {
     },
     template: "#place-template",
     isMine,
+    myId,
     handleDeleteCard: () => {
       deleteCardPopup._openDeletePopup();
     },
     handleCardLikes: () => {
-      if(card._heartButton.classList.contains('places__heart-button_active')){
-        console.log('liked');
+      if(!card._heartButton.classList.contains('places__heart-button_active')){
         api.addLike(item._id)
           .then((res) => {
             console.log(res.likes.length);
+            // card._handleLikeButton();
             card._heartCount.textContent++;
+            card.addLike();
           })
       } else {
-        console.log('unliked');
         api.removeLike(item._id)
           .then((res) => {
+            // card._handleLikeButton();
             card._heartCount.textContent--;
+            card.removeLike();
           })
       }
     }
@@ -99,13 +102,25 @@ api.getUserInfo()
       .then((res) => {
         res.reverse();
         res.forEach((card) => {
-          const isMine = card.owner._id === newUserInfo.getUserInfo().myId;
-          const cardElement = createCard(card, isMine);
-          const newCard = newSection.addItem(cardElement);
           
+          const isMine = card.owner._id === newUserInfo.getUserInfo().myId;
+          const myId = newUserInfo.getUserInfo().myId;
+          
+          const cardElement = createCard(card, isMine, myId);
+          const newCard = newSection.addItem(cardElement);
           const likeStatus = document.querySelector('.places__heart-count');
           likeStatus.textContent = card.likes.length;
-          
+
+          //array of likes for each card
+          const likes = card.likes;
+        
+          likes.forEach((like) => {
+            if(like._id === myId){
+              cardElement.querySelector('.places__heart-button').classList.add('places__heart-button_active');
+            }
+          })
+
+
         });
       });
     })
@@ -153,8 +168,9 @@ const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
     .then((res) => {
       const newCard = createCard(res, true);
       newSection.addItem(newCard);
+      addPlacesPopup.isLoading(true);
     })
-
+    addPlacesPopup.isLoading(false);
 })
 addPlacesPopup.setEventListeners();
 

@@ -26,6 +26,8 @@ const profileExit = document.querySelector('.popup__close-button_profile'); //cl
 const editAvatar = document.querySelector('.profile__img-edit'); // pencil icon on hover of avatar
 const avatarClose = document.querySelector('.popup__close-button_avatar');
 
+const heartButton = document.querySelector('.places__heart-button');
 
 
-export { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, editAvatar, avatarClose };
+
+export { settingsObject, imagesExit, placesForm, popup, newName, newTitle, addPlacesExit, addPlaceButton, editButton, profileName, profileTitle, profileExit, editAvatar, avatarClose, heartButton };

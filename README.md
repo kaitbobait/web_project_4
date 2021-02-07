@@ -34,7 +34,7 @@ Have fun with JavaScript!
 
 ### To Do List:
 
-## Update Profile Picture
+## (DONE) Update Profile Picture
 **(DONE)Send a PATCH request to change profile photo**
 **pass the JSON body with property avatar**
 * avatar property should only contain a link to a profile picture
@@ -45,7 +45,7 @@ Have fun with JavaScript!
 * Should have 1 field - a link to a new profile photo
 * take url reference from create card form
 
-## Showing How Many Likes a Card Has
+## (DONE) Showing How Many Likes a Card Has
 **Add a feaeture that shows how many likes each card has**
 **Send a PUT request to like a card**
 * https://around.nomoreparties.co/v1/groupId/cards/likes/cardId 
@@ -69,8 +69,9 @@ Have fun with JavaScript!
 
 ## Fix
 **After deleting 2 cards in a row - 403 forbidden error**
-**when updating avatar, on refresh, image reverts back to previous image**
+**(DONE)when updating avatar, on refresh, image reverts back to previous image**
 * However, the data link is the correct link...
+* Fixed by asking server to set the avatar onload with GetUserInfo
 
 
 
