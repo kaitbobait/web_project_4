@@ -40,10 +40,20 @@ const createCard = (item, isMine) => {
       deleteCardPopup._openDeletePopup();
     },
     handleCardLikes: () => {
-      console.log(item)
-      // item.forEach((like) => {
-      //   console.log(item._id);
-      // })
+      if(card._heartButton.classList.contains('places__heart-button_active')){
+        console.log('liked');
+        api.addLike(item._id)
+          .then((res) => {
+            console.log(res.likes.length);
+            card._heartCount.textContent++;
+          })
+      } else {
+        console.log('unliked');
+        api.removeLike(item._id)
+          .then((res) => {
+            card._heartCount.textContent--;
+          })
+      }
     }
   });
 
@@ -81,6 +91,7 @@ const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.
 api.getUserInfo()
   .then((res) => {
     newUserInfo.setUserInfo(res);
+    newUserInfo.changeAvatar(res);
     // newUserInfo.getUserInfo();
   })
   .then((res) => {
@@ -88,7 +99,6 @@ api.getUserInfo()
       .then((res) => {
         res.reverse();
         res.forEach((card) => {
-          console.log(card.likes);
           const isMine = card.owner._id === newUserInfo.getUserInfo().myId;
           const cardElement = createCard(card, isMine);
           const newCard = newSection.addItem(cardElement);

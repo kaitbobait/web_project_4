@@ -2,6 +2,7 @@
 class Card {
   constructor({data, handleCardClick, template, isMine, handleDeleteCard, handleCardLikes}) {
     this._template = template;
+    this._element = this._getTemplate();
 
     this._data = data;
     this._name = data.name;
@@ -12,8 +13,10 @@ class Card {
     this._isMine = isMine;
 
     this._handleDeleteCard = handleDeleteCard;
-
     this._handleCardLikes = handleCardLikes;
+
+    this._heartButton = this._element.querySelector('.places__heart-button');
+    this._heartCount = this._element.querySelector('.places__heart-count');
   }
 
   _getTemplate() {
@@ -45,13 +48,13 @@ class Card {
 
   _handleLikeButton() {
     
-    const heartButton = this._element.querySelector('.places__heart-button');
+    // const heartButton = this._element.querySelector('.places__heart-button');
     // When the heart button is clicked, a new class with a "liked" heart, appears
     const likeButton = place => {
-      heartButton.classList.toggle('places__heart-button_active');
+      this._heartButton.classList.toggle('places__heart-button_active');
     };
     // toggles like button when clicked
-    heartButton.addEventListener('click', likeButton);
+    this._heartButton.addEventListener('click', likeButton);
   }
 
   _removeDeleteButton() {
@@ -63,12 +66,13 @@ class Card {
 
 
   generateCard() {
-    this._element = this._getTemplate();
+    // this._element = this._getTemplate();
 
     const placeImage = this._element.querySelector('.places__img');
     const placeName = this._element.querySelector('.places__name');
     this._trashButton = this._element.querySelector('.places__delete-button');
     this._likeButton = this._element.querySelector('.places__heart-button');
+    
     
     this.placeImage = placeImage;
     this.placeName = placeName;
