@@ -73,7 +73,7 @@ class Card {
     if(!this._isMine) {
       this._removeDeleteButton();
     }
-
+    
     this._setEventListeners();
     return this._element.firstElementChild;
   }

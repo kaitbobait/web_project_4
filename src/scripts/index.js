@@ -69,31 +69,11 @@ imagePopup.setEventListeners();
  */
 const newUserInfo = new UserInfo({nameSelector:'.profile__name', jobSelector: '.profile__title', avatarSelector: '.profile__img'});
 
-// appends an item to a list rather than *prepend*
-// function appendItem(cardElement, element) {
-//   const cardSelector = document.querySelector(cardElement);
-//   cardSelector.append(element);
-// }
-
-// function myId(card) {
-//   if(card._id !== res._id) {
-//     console.log(card._id);
-//     // console.log(res._id);
-//     createCard.removeDeleteButton();
-//   }
-// }
-
-function myId(card) {
-    console.log(card._id);
-    // console.log(res._id);
-    // createCard.removeDeleteButton();
-  }
-
 
 api.getUserInfo()
   .then((res) => {
     newUserInfo.setUserInfo(res);
-    newUserInfo.getUserInfo();
+    // newUserInfo.getUserInfo();
   })
   .then((res) => {
     api.getInitialCards()
@@ -102,7 +82,6 @@ api.getUserInfo()
         res.forEach((card) => {
 
           const isMine = card.owner._id === newUserInfo.getUserInfo().myId;
-          console.log(newUserInfo.getUserInfo().myId);
           const cardElement = createCard(card, isMine);
           const newCard = newSection.addItem(cardElement);
 
@@ -130,7 +109,7 @@ api.getUserInfo()
 const newSection = new Section({
   items: [],
   renderer:(item) => {
-    const placeElement = createCard(item);
+    const placeElement = createCard(item, isMine);
     newSection.addItem(placeElement);
   }
 },
@@ -167,7 +146,7 @@ editProfilePopup.setEventListeners();
 const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
   api.addCard(data)
     .then((res) => {
-      const newCard = createCard(res);
+      const newCard = createCard(res, true);
       newSection.addItem(newCard);
     })
 
