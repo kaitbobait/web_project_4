@@ -19,7 +19,6 @@ class UserInfo {
 
   // takes user info and adds it to the page
   setUserInfo(data) {
-    console.log(data);
     this._name.textContent = data.name;
     this._job.textContent = data.about;
     this.myId = data._id;

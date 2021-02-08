@@ -68,9 +68,16 @@ class FormValidator {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
         this._toggleButtonState(inputList, buttonElement);
-
       });
     });
+
+    this.formElement.addEventListener('reset', () => {
+      inputList.forEach((inputElement) => {
+        this._hideInputError(inputElement);
+        this._toggleButtonState(inputList, buttonElement); //why do I need to do this? I already call here //above
+      })
+    })
+
   };
 
   enableValidation(settingsObject) {

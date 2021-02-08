@@ -41,19 +41,18 @@ const createCard = (item, isMine, myId) => {
       deleteCardPopup._openDeletePopup();
     },
     handleCardLikes: () => {
-      if(!card._heartButton.classList.contains('places__heart-button_active')){
+      if(!card.isLiked()){
         api.addLike(item._id)
           .then((res) => {
-            console.log(res.likes.length);
-            // card._handleLikeButton();
-            card._heartCount.textContent++;
+            // card._heartCount.textContent++;
+            card.updateLikes(res.likes);
             card.addLike();
           })
       } else {
         api.removeLike(item._id)
           .then((res) => {
-            // card._handleLikeButton();
-            card._heartCount.textContent--;
+            // card._heartCount.textContent--;
+            card.updateLikes(res.likes);
             card.removeLike();
           })
       }
@@ -77,6 +76,9 @@ const createCard = (item, isMine, myId) => {
   const placeElement = card.generateCard();
   return placeElement;
 }
+
+//  const deleteCardPopup = new PopupDeleteCard('.popup__delete', submitHandler);
+//   deleteCardPopup.setEventListeners();
 
 /**
  * creates an instance of PopupWithImage
@@ -108,12 +110,9 @@ api.getUserInfo()
           
           const cardElement = createCard(card, isMine, myId);
           const newCard = newSection.addItem(cardElement);
-          const likeStatus = document.querySelector('.places__heart-count');
-          likeStatus.textContent = card.likes.length;
 
           //array of likes for each card
           const likes = card.likes;
-        
           likes.forEach((like) => {
             if(like._id === myId){
               cardElement.querySelector('.places__heart-button').classList.add('places__heart-button_active');
@@ -156,6 +155,9 @@ const editProfilePopup = new PopupWithForm('.popup_edit-profile', (values) => {
     .then((res) => {
       newUserInfo.setUserInfo(res);
     })
+    .catch((err) => {
+      console.log(err);
+    })
 });
 editProfilePopup.setEventListeners();
 
@@ -171,6 +173,9 @@ const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
       newSection.addItem(newCard);
       addPlacesPopup.isLoading(true);
     })
+    .catch((err) => {
+      console.log(err);
+    })
     addPlacesPopup.isLoading(false);
 })
 addPlacesPopup.setEventListeners();
@@ -181,6 +186,9 @@ const editAvatarPopup = new PopupWithForm('.popup__edit-avatar', (link) => {
       console.log(res);
       newUserInfo.changeAvatar(res);
     })
+    .catch((err) => {
+      console.log(err);
+    })
 })
 
 editAvatar.addEventListener('click', () => {
@@ -188,22 +196,16 @@ editAvatar.addEventListener('click', () => {
 })
 editAvatarPopup.setEventListeners();
 
-const showLikeStatus = () => {
-  api.addLike()
-    .then((res) => {
-      const currentLikes = res.likes;
-      console.log(currentLikes);
-      // const likeStatus = document.querySelector('.places__heart-count');
-      // likeStatus.textContent = currentLikes;
-    })
-}
-// showLikeStatus();
-
 
 // when clicks, the edit popup box opens
 editButton.addEventListener('click', () => {
-  newName.value = profileName.textContent;
-  newTitle.value = profileTitle.textContent;
+  const info = newUserInfo.getUserInfo();
+  console.log(info);
+  newName.value = info.name;
+  newTitle.value = info.job;
+  // newName.value = profileName.textContent;
+  // newTitle.value = profileTitle.textContent;
+
   editProfilePopup.open();
   
 });

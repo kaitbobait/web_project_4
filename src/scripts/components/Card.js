@@ -51,12 +51,24 @@ class Card {
     })
   }
 
+  isLiked() {
+    if(this._heartButton.classList.contains('places__heart-button_active')){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   addLike() {
     this._heartButton.classList.add('places__heart-button_active');
   }
 
   removeLike(){
     this._heartButton.classList.remove('places__heart-button_active');
+  }
+
+  updateLikes(likeCount) {
+    this._heartCount.textContent = likeCount.length;
   }
 
   // _handleLikeButton() {
@@ -102,11 +114,14 @@ class Card {
     if(!this._isMine) {
       this._removeDeleteButton();
     }
+
+    this._heartCount.textContent = this._data.likes.length;
     
     this._setEventListeners();
     return this._element.firstElementChild;
-  }
 
+  }
+    
 };
 
 export default Card;
