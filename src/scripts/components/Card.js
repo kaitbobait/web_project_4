@@ -83,11 +83,13 @@ class Card {
   //   this._heartButton.addEventListener('click', likeButton);
   // }
   
-  // showLikes() {
-  //   if(this._likes.contains(this._myId)){
-  //     this._heartButton.classList.add('places__heart-button_active');
-  //   }
-  // }
+  _showLikes() {
+    this._likes.forEach((like) => {
+      if(like._id === this._myId()){
+        this._heartButton.classList.add('places__heart-button_active');
+      }
+    })
+  }
 
   _removeDeleteButton() {
     // image popup delete button
@@ -111,9 +113,11 @@ class Card {
     this.placeName.textContent = this._name;
     this.placeImage.alt = this.placeName.textContent;
 
-    if(!this._isMine) {
+    if(!this._isMine()) {
       this._removeDeleteButton();
-    }
+    } 
+   
+    this._showLikes();
 
     this._heartCount.textContent = this._data.likes.length;
     

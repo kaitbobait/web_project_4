@@ -28,15 +28,19 @@ const api = new Api({
  * generates a card from the template
  * returns new Card element
 */
-const createCard = (item, isMine, myId) => {
+const createCard = (item) => {
   const card = new Card({
     data: item, 
     handleCardClick: (name, link) => {
       imagePopup.open(name, link)
     },
     template: "#place-template",
-    isMine,
-    myId,
+    isMine: () => {
+      return item.owner._id === newUserInfo.getUserInfo().myId;
+    },
+    myId: () => {
+      return newUserInfo.getUserInfo().myId;
+    },
     handleDeleteCard: () => {
       deleteCardPopup._openDeletePopup();
       api.deleteCard(item._id)
@@ -108,22 +112,6 @@ api.getUserInfo()
     api.getInitialCards()
       .then((res) => {
         newSection.renderItems(res.reverse());
-        res.forEach((card) => {
-          
-          const isMine = card.owner._id === newUserInfo.getUserInfo().myId;
-          const myId = newUserInfo.getUserInfo().myId;
-          
-          const cardElement = createCard(card, isMine, myId);
-          const newCard = newSection.addItem(cardElement);
-
-          //array of likes for each card
-          const likes = card.likes;
-          likes.forEach((like) => {
-            if(like._id === myId){
-              cardElement.querySelector('.places__heart-button').classList.add('places__heart-button_active');
-            }
-          })
-        });
       })
       .catch((err) => {
         console.log(err);
@@ -174,7 +162,7 @@ editProfilePopup.setEventListeners();
 const addPlacesPopup = new PopupWithForm('.popup_edit-places', (data) => {
   api.addCard(data)
     .then((res) => {
-      const newCard = createCard(res, true);
+      const newCard = createCard(res);
       newSection.addItem(newCard);
       addPlacesPopup.isLoading(true);
     })
