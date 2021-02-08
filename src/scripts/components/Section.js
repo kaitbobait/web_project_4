@@ -13,9 +13,9 @@ class Section {
   }
 
   // renders all the elements on the page
-  renderItems() {
+  renderItems(items) {
     // this._items.forEach(item => this.renderer(item)); 
-    this._items.forEach(item => {
+    items.forEach(item => {
       this._renderer(item); 
     });
   }

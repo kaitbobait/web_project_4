@@ -100,7 +100,7 @@ api.getUserInfo()
   .then((res) => {
     api.getInitialCards()
       .then((res) => {
-        res.reverse();
+        newSection.renderItems(res.reverse());
         res.forEach((card) => {
           
           const isMine = card.owner._id === newUserInfo.getUserInfo().myId;
@@ -119,17 +119,18 @@ api.getUserInfo()
               cardElement.querySelector('.places__heart-button').classList.add('places__heart-button_active');
             }
           })
-
-
         });
-      });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     })
 
 
 const newSection = new Section({
   items: [],
   renderer:(item) => {
-    const placeElement = createCard(item, isMine);
+    const placeElement = createCard(item);
     newSection.addItem(placeElement);
   }
 },
