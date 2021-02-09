@@ -43,7 +43,9 @@ const createCard = (item) => {
     },
     handleDeleteCard: () => {
       deleteCardPopup._openDeletePopup();
-      deleteCardPopup.setSubmitAction(item);
+      deleteCardPopup.setSubmitAction(() => {
+        confirmDelete(item, placeElement);
+      });
       
     },
     handleCardLikes: () => {
@@ -65,37 +67,21 @@ const createCard = (item) => {
     }
   });
 
-
-  // const submitHandler = () => {
-  //   document.querySelector('.popup__save-button_delete').addEventListener('click', () => {
-  //     api.deleteCard(item._id)
-  //     .then(() => {
-  //       deleteCardPopup.close();
-  //       placeElement.remove();
-  //     })
-  //   })
-  // };
-
-  // const deleteCardPopup = new PopupDeleteCard('.popup__delete', submitHandler);
-  // deleteCardPopup.setEventListeners();
-
   const placeElement = card.generateCard();
   return placeElement;
 }
 
-//  const deleteCardPopup = new PopupDeleteCard('.popup__delete', (item) => {
-//    {setSubmitAction : confirmDelete(item)};
-//  });
+ const deleteCardPopup = new PopupDeleteCard('.popup__delete')
 
- const deleteCardPopup = new PopupDeleteCard('.popup__delete', (item) => {
-  confirmDelete(item);
-});
+//  const deleteCardPopup = new PopupDeleteCard('.popup__delete', (item) => {
+//   setSubmitAction(confirmDelete(item));
+// });
 
   deleteCardPopup.setEventListeners();
 
-  const confirmDelete = (item) => {
+  const confirmDelete = (item, placeElement) => {
     api.deleteCard(item._id)
-      .then((res) => {
+      .then(() => {
         deleteCardPopup.close();
         placeElement.remove();
       })

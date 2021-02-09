@@ -2,10 +2,8 @@
 import { popup } from '../utils.js';
 import Popup from './Popup.js';
 class PopupDeleteCard extends Popup {
-  constructor(popupSelector, setSubmitAction) {
+  constructor(popupSelector) {
     super(popupSelector);
-    
-    this._handleSubmitCallback = setSubmitAction;
     this._submitDelete = document.querySelector('.popup__save-button_delete');
   }
 
@@ -13,8 +11,8 @@ class PopupDeleteCard extends Popup {
     this.open();
   }
 
-  setSubmitAction(action) {
-    this._handleSubmitCallback(action);
+  setSubmitAction(handleSubmitCallback) {
+    this._handleSubmitCallback = handleSubmitCallback;
   }
 
   setEventListeners() {
@@ -22,9 +20,7 @@ class PopupDeleteCard extends Popup {
     super.setEventListeners();
 
     this._submitDelete.addEventListener("click", () => {
-        console.log('delete me');
-        console.log(this._handleSubmitCallback);
-        this.setSubmitAction();
+        this._handleSubmitCallback();
       })
     
   }
