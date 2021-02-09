@@ -43,11 +43,8 @@ const createCard = (item) => {
     },
     handleDeleteCard: () => {
       deleteCardPopup._openDeletePopup();
-      api.deleteCard(item._id)
-      .then(() => {
-        deleteCardPopup.close();
-        placeElement.remove();
-      })
+      deleteCardPopup.setSubmitAction(item);
+      
     },
     handleCardLikes: () => {
       if(!card.isLiked()){
@@ -86,8 +83,23 @@ const createCard = (item) => {
   return placeElement;
 }
 
- const deleteCardPopup = new PopupDeleteCard('.popup__delete');
+//  const deleteCardPopup = new PopupDeleteCard('.popup__delete', (item) => {
+//    {setSubmitAction : confirmDelete(item)};
+//  });
+
+ const deleteCardPopup = new PopupDeleteCard('.popup__delete', (item) => {
+  confirmDelete(item);
+});
+
   deleteCardPopup.setEventListeners();
+
+  const confirmDelete = (item) => {
+    api.deleteCard(item._id)
+      .then((res) => {
+        deleteCardPopup.close();
+        placeElement.remove();
+      })
+  }
 
 /**
  * creates an instance of PopupWithImage

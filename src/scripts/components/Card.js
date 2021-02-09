@@ -19,6 +19,9 @@ class Card {
 
     this._heartButton = this._element.querySelector('.places__heart-button');
     this._heartCount = this._element.querySelector('.places__heart-count');
+
+    //popup delete element
+    // this._submitDelete = document.querySelector('.popup__save-button_delete');
   }
 
   _getTemplate() {
@@ -49,8 +52,14 @@ class Card {
       // }
       this.handleCardLikes();
     })
-  }
 
+    // popupDelete element
+    // this._submitDelete.addEventListener("click", () => {
+    //   console.log('delete me');
+    //   this._handleDeleteCard();
+    // })
+
+  }
   isLiked() {
     if(this._heartButton.classList.contains('places__heart-button_active')){
       return true;
